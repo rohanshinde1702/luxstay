@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxStay — React Hotel & Travel Template Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f172a;
+      --primary-light: #1e293b;
+      --gold: #c5a880;
+      --gold-dark: #997548;
+      --gold-light: #f5f0e6;
+      --accent: #dfcaa4;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border: #e2e8f0;
+      --border-dark: #334155;
+      --text: #334155;
+      --text-muted: #64748b;
+      --text-heading: #0f172a;
+      --sidebar-w: 300px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Raleway', sans-serif;
+      color: var(--text);
+      background-color: var(--bg-page);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    /* Layout */
+    .app-wrapper { display: flex; min-height: 100vh; }
+    
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: #0b111e;
+      color: #cbd5e1;
+      position: fixed;
+      top: 0; bottom: 0; left: 0;
+      overflow-y: auto;
+      border-right: 1px solid #1e293b;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-header {
+      padding: 24px 20px 16px;
+      border-bottom: 1px solid #1e293b;
+      background: #080d1a;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .logo-text {
+      font-family: 'Raleway', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+    .logo-text span { color: var(--gold); }
+    .doc-version { 
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      background: rgba(197, 168, 128, 0.15);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      border: 1px solid rgba(197, 168, 128, 0.25);
+    }
+
+    .search-box {
+      margin-top: 14px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: #131c2e;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: #f1f5f9;
+      outline: none;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.2);
+    }
+    .search-input::placeholder { color: #64748b; }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 16px 12px 32px;
+      overflow-y: auto;
+    }
+    .nav-group-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #64748b;
+      font-weight: 700;
+      padding: 14px 10px 6px;
+    }
+    .nav-item {
+      display: block;
+      padding: 7px 12px;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 7px;
+      transition: all 0.15s ease;
+      margin-bottom: 2px;
+      line-height: 1.4;
+    }
+    .nav-item:hover, .nav-item.active {
+      color: #ffffff;
+      background: rgba(197, 168, 128, 0.16);
+      color: var(--accent);
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: var(--sidebar-w);
+      flex: 1;
+      max-width: 1080px;
+      padding: 48px 60px 100px;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      color: var(--text-heading);
+      font-weight: 700;
+      font-family: 'Raleway', sans-serif;
+    }
+    h1 {
+      font-size: 38px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: 26px;
+      margin-top: 60px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    h2::before {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0;
+      width: 48px; height: 2px;
+      background: var(--gold);
+    }
+    h3 {
+      font-size: 18px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    h4 {
+      font-size: 15px;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 16px; color: var(--text); }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #080d1a 0%, #0f172a 50%, #1e293b 100%);
+      color: #ffffff;
+      padding: 40px 44px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      border: 1px solid rgba(197, 168, 128, 0.35);
+      box-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(197, 168, 128, 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-banner h1 { color: #ffffff; margin-bottom: 10px; }
+    .hero-banner p { color: #cbd5e1; font-size: 16px; margin-bottom: 0; max-width: 780px; }
+
+    /* Code Blocks */
+    .code-wrapper {
+      position: relative;
+      margin: 16px 0 24px;
+    }
+    pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 18px 22px;
+      border-radius: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      overflow-x: auto;
+      border: 1px solid #334155;
+      line-height: 1.6;
+    }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: #f1f5f9;
+      color: #997548;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-size: 13px;
+    }
+    pre code {
+      background: transparent;
+      color: #e2e8f0;
+      padding: 0;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #cbd5e1;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      background: var(--gold);
+      color: #0f172a;
+      border-color: var(--gold);
+    }
+
+    /* Cards & Grids */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 20px 0 28px;
+    }
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .info-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+    }
+    .info-card h4 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .info-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Alerts */
+    .alert {
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin: 22px 0;
+      font-size: 14px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      line-height: 1.6;
+    }
+    .alert-tip {
+      background: #fbf9f4;
+      border: 1px solid #dfcaa4;
+      color: #7c5e3c;
+    }
+    .alert-info {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1e40af;
+    }
+    .alert-warning {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-gold { background: rgba(197, 168, 128, 0.2); color: #997548; }
+    .badge-blue { background: #dbeafe; color: #1e40af; }
+    .badge-green { background: #dcfce7; color: #15803d; }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 28px;
+      background: var(--bg-card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      font-size: 13.5px;
+    }
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: var(--text-heading);
+      text-transform: uppercase;
+      font-size: 11.5px;
+      letter-spacing: 0.5px;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background-color: #fafbfd; }
+
+    /* Steps */
+    .step-list {
+      counter-reset: step-counter;
+      list-style: none;
+      margin: 20px 0;
+    }
+    .step-item {
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 24px;
+    }
+    .step-item::before {
+      content: counter(step-counter);
+      counter-increment: step-counter;
+      position: absolute;
+      top: 0; left: 0;
+      width: 32px; height: 32px;
+      background: var(--primary);
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* Print & PDF styling */
+    @media print {
+      .sidebar { display: none; }
+      .main-content { margin-left: 0; padding: 20px; max-width: 100%; }
+      pre { border: 1px solid #ccc; background: #f8fafc; color: #111; }
+      h2 { page-break-before: auto; }
+      .copy-btn { display: none; }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 960px) {
+      .sidebar { position: fixed; width: 280px; transform: translateX(-100%); transition: transform 0.3s ease; }
+      .sidebar.open { transform: translateX(0); }
+      .main-content { margin-left: 0; padding: 24px 20px; }
+      .mobile-menu-bar { display: flex; }
+    }
+    .mobile-menu-bar {
+      display: none;
+      background: #080d1a;
+      color: white;
+      padding: 12px 20px;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      border-bottom: 1px solid #1e293b;
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Navigation Bar -->
+  <div class="mobile-menu-bar">
+    <span class="logo-text">Lux<span>Stay</span> Doc</span>
+    <button onclick="document.querySelector('.sidebar').classList.toggle('open')" style="background:none; border:none; color:white; font-size:20px; cursor:pointer;">☰ Menu</button>
+  </div>
+
+  <div class="app-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="#" class="logo-badge">
+          <span class="logo-text">Lux<span>Stay</span></span>
+        </a>
+        <div><span class="doc-version">v1.0.0 • React 19 & Vite 8</span></div>
+        <div class="search-box">
+          <input type="text" id="navSearch" class="search-input" placeholder="Quick search topics..." onkeyup="filterNav()" />
+        </div>
+      </div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <div class="nav-group-title">Getting Started</div>
+        <a href="#intro" class="nav-item active">1. Introduction & Overview</a>
+        <a href="#requirements" class="nav-item">2. System Requirements</a>
+        <a href="#installation" class="nav-item">3. Quick Installation</a>
+        <a href="#commands" class="nav-item">4. NPM Commands</a>
+        <a href="#structure" class="nav-item">5. Project Structure</a>
+        <a href="#routing" class="nav-item">6. Centralized Routing (Router v7)</a>
+        <a href="#pages-inventory" class="nav-item">7. Full 45+ Route & Page Map</a>
+
+        <div class="nav-group-title">State & Architecture</div>
+        <a href="#contexts" class="nav-item">8. Global Context Architecture</a>
+        <a href="#hooks" class="nav-item">9. Custom Hooks Reference</a>
+        <a href="#theme-studio" class="nav-item">10. Interactive Theme Studio</a>
+        <a href="#headers-footers" class="nav-item">11. Header & Footer Variants</a>
+        <a href="#wishlist" class="nav-item">12. Wishlist & Saved Drawer</a>
+        <a href="#popups" class="nav-item">13. Promotional Popups System</a>
+
+        <div class="nav-group-title">Styling & Design System</div>
+        <a href="#tailwind" class="nav-item">14. Tailwind CSS v4 Setup</a>
+        <a href="#colors" class="nav-item">15. Color Palette & @theme</a>
+        <a href="#fonts" class="nav-item">16. Typography & Dynamic Fonts</a>
+        <a href="#icons" class="nav-item">17. Icons System (React Icons)</a>
+        <a href="#components" class="nav-item">18. Reusable UI Components</a>
+
+        <div class="nav-group-title">Interactive Modules</div>
+        <a href="#maps" class="nav-item">19. Leaflet Interactive Maps</a>
+        <a href="#calendar" class="nav-item">20. React Calendar Luxury Skin</a>
+        <a href="#carousels" class="nav-item">21. Swiper Carousels & Sliders</a>
+
+        <div class="nav-group-title">Data Customization</div>
+        <a href="#data-layer" class="nav-item">22. Centralized Mock Data</a>
+        <a href="#cms-integration" class="nav-item">23. Headless CMS & API Guide</a>
+        <a href="#images" class="nav-item">24. Replacing Images & Media</a>
+
+        <div class="nav-group-title">Production & Release</div>
+        <a href="#deployment" class="nav-item">25. Production Deployment</a>
+        <a href="#troubleshooting" class="nav-item">26. Troubleshooting & FAQs</a>
+        <a href="#dependencies" class="nav-item">27. Dependencies Stack</a>
+        <a href="#credits" class="nav-item">28. Asset Credits & Licenses</a>
+        <a href="#limitations" class="nav-item">29. Demo Limitations & APIs</a>
+      </nav>
+    </aside>
+
+    <!-- Main Documentation Body -->
+    <main class="main-content">
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <h1>LuxStay Master Documentation</h1>
+        <p>Comprehensive developer reference and customization guide for the commercial-grade <strong>LuxStay</strong> luxury hotel, resort, villa, and bespoke travel React 19 template.</p>
+      </div>
+
+      <!-- Section 1: Introduction -->
+      <section id="intro">
+        <h2>1. Introduction & Overview</h2>
+        <p>
+          <strong>LuxStay</strong> is an ultra-premium, commercial-grade frontend web template crafted using <strong>React 19</strong>, <strong>Vite 8</strong>, <strong>Tailwind CSS v4</strong>, and <strong>React Router v7</strong>.
+        </p>
+        <p>
+          Engineered to satisfy the highest standards of luxury hospitality websites, LuxStay provides <strong>9 concept homepages</strong>, over <strong>38 inner page variations</strong>, centralized state management across 6 React contexts, interactive Leaflet maps, touch-enabled Swiper carousels, and a decoupled ES-module data layer.
+        </p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <h4>🏨 9 Concept Homepages</h4>
+            <p>Beach Sanctuary, Flagship Luxury Hotel, Resort & Spa, Travel Agency, Boutique Art Hotel, Luxury Villa & Chalet, Modern City Skyline, Dark Luxury Heritage, and Demos Hub.</p>
+          </div>
+          <div class="info-card">
+            <h4>🗺️ 38+ Inner Variations</h4>
+            <p>Multiple listing and detail layouts for Accommodations, Destinations, Expeditions, Michelin Dining, Resort Facilities, Lightboxes, Blogs, Contact, and VIP Auth.</p>
+          </div>
+          <div class="info-card">
+            <h4>🎨 Interactive Theme Studio</h4>
+            <p>Floating customizer to live-switch Light/Dark modes, active font families, 4 Header styles, Sticky toggle, and 3 Footer variations on any page.</p>
+          </div>
+          <div class="info-card">
+            <h4>⚡ React 19 + Tailwind v4</h4>
+            <p>State-of-the-art tech stack utilizing React 19 concurrent features, zero-config Tailwind v4 CSS `@theme` tokens, and lightning-fast Vite 8 HMR.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Requirements -->
+      <section id="requirements">
+        <h2>2. System Requirements</h2>
+        <p>Ensure your local development environment meets the following specifications before installing:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>Recommended Version</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Node.js</strong></td>
+              <td><code>v18.18+</code> or <code>v20.x+ LTS</code></td>
+              <td>Download from <a href="https://nodejs.org/" target="_blank">nodejs.org</a></td>
+            </tr>
+            <tr>
+              <td><strong>NPM</strong></td>
+              <td><code>v9+</code> or <code>v10+</code></td>
+              <td>Bundled with Node.js runtime</td>
+            </tr>
+            <tr>
+              <td><strong>Code Editor</strong></td>
+              <td>VS Code (Recommended)</td>
+              <td>Extensions: Tailwind CSS IntelliSense, ES7+ React Snippets</td>
+            </tr>
+            <tr>
+              <td><strong>Modern Browser</strong></td>
+              <td>Chrome, Firefox, Safari, Edge</td>
+              <td>Evergreen browsers with native ES module support</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 3: Installation -->
+      <section id="installation">
+        <h2>3. Quick Installation</h2>
+        <ol class="step-list">
+          <li class="step-item">
+            <strong>Unpack the Package</strong>
+            <p>Extract <code>luxstay-theme.zip</code> to your desired local workspace folder.</p>
+          </li>
+          <li class="step-item">
+            <strong>Navigate to Directory</strong>
+            <p>Open your terminal / command prompt and change directory:</p>
+            <div class="code-wrapper">
+              <pre><code>cd luxstay-theme</code></pre>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+          </li>
+          <li class="step-item">
+            <strong>Install Dependencies</strong>
+            <p>Install all required node packages:</p>
+            <div class="code-wrapper">
+              <pre><code>npm install</code></pre>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+          </li>
+          <li class="step-item">
+            <strong>Launch Development Server</strong>
+            <p>Start the Vite development server with instant Hot Module Replacement (HMR):</p>
+            <div class="code-wrapper">
+              <pre><code>npm run dev</code></pre>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <p>Open <a href="http://localhost:5173" target="_blank"><code>http://localhost:5173</code></a> in your browser to view the application.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Section 4: NPM Commands -->
+      <section id="commands">
+        <h2>4. NPM Commands</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>Action</th>
+              <th>Output / Port</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>npm run dev</code></td>
+              <td>Starts Vite local development server with instant HMR.</td>
+              <td><code>http://localhost:5173/</code></td>
+            </tr>
+            <tr>
+              <td><code>npm run build</code></td>
+              <td>Bundles, minifies, and optimizes production code into <code>/dist</code>.</td>
+              <td>Generated in <code>/dist</code></td>
+            </tr>
+            <tr>
+              <td><code>npm run preview</code></td>
+              <td>Serves local preview of the production build in <code>/dist</code>.</td>
+              <td><code>http://localhost:4173/</code></td>
+            </tr>
+            <tr>
+              <td><code>npm run lint</code></td>
+              <td>Runs ESLint across all JSX and JS files to verify code quality.</td>
+              <td>Terminal diagnostic report</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 5: Project Structure -->
+      <section id="structure">
+        <h2>5. Complete Project Directory Structure</h2>
+        <div class="code-wrapper">
+          <pre><code>luxstay-theme/
+├── public/                 # Static public assets (favicons, robots.txt)
+│   ├── favicon.svg         # Luxury gold monogram brand favicon
+│   └── images/             # Local photography & illustration assets
+├── src/
+│   ├── assets/             # Brand logos, vectors, SVG icons
+│   ├── components/         # Reusable React components & modules
+│   │   ├── blog/           # BlogCard, BlogSidebar, AuthorBio
+│   │   ├── booking/        # Search widget, checkout modal, guest popover, quick drawer
+│   │   ├── common/         # Button, Badge, Modal, Rating, DatePicker, SavedDrawer, etc.
+│   │   ├── destinations/   # DestinationCard, DestinationFilters, MapExplorer
+│   │   ├── footer/         # Standard 5-Col, Minimal 1-Col, Newsletter Spotlight Footers
+│   │   ├── gallery/        # Lightbox modal, video player modal
+│   │   ├── header/         # Standard, Transparent, Dark, Minimal Headers & MobileNav
+│   │   ├── home/           # Homepage hero banners, experience drawers, special sections
+│   │   ├── rooms/          # RoomCard, RoomFilters, GalleryMosaic, RoomBookingCard
+│   │   ├── services/       # ServiceCard, FacilityCard, DiningCard, OfferCard
+│   │   └── tours/          # TourCard, TourFilters, TourBookingModal, ItineraryTimeline
+│   ├── constants/          # Site config, NAV_LINKS, filter configs, theme options
+│   ├── context/            # 6 React Contexts (Theme, Auth, Booking, Favorites, Toast, PagePopup)
+│   ├── data/               # 17 Centralized mock datasets (rooms, tours, blog, destinations)
+│   ├── hooks/              # Custom React hooks (useTheme, useAuth, useBooking, useFavorites, etc.)
+│   ├── layouts/            # MainLayout shell with header, footer, customizer & popup slots
+│   ├── pages/              # 9 Homepages & 38+ Inner page variations
+│   ├── routes/             # Centralized React Router v7 routes (AppRoutes.jsx)
+│   ├── index.css           # Tailwind CSS v4 setup, theme tokens & calendar styles
+│   ├── main.jsx            # Application entry point
+│   └── App.jsx             # Top-level context providers & router wrapper
+├── documentation/          # Offline standalone HTML Documentation
+├── package.json            # Dependencies and npm scripts
+├── vite.config.js          # Vite build tool configuration
+├── LICENSE.md              # Commercial licensing & credits
+└── README.md               # Quick-start developer guide</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+      </section>
+
+      <!-- Section 6: Routing -->
+      <section id="routing">
+        <h2>6. Centralized Routing (React Router v7)</h2>
+        <p>
+          Routing is managed via <strong>React Router DOM v7</strong> in <code>src/routes/AppRoutes.jsx</code> using the modern <code>createBrowserRouter</code> API.
+        </p>
+        <p>
+          All pages render within <code>MainLayout</code>, which automatically injects the active Header, Footer, ScrollToTop, ThemeCustomizer, PagePopups, and SavedDrawer.
+        </p>
+
+        <h3>How to Add a New Page Route:</h3>
+        <ol class="step-list">
+          <li class="step-item">
+            <strong>Create your page component:</strong> Place it in <code>src/pages/your-section/YourNewPage.jsx</code>.
+          </li>
+          <li class="step-item">
+            <strong>Register in <code>src/routes/AppRoutes.jsx</code>:</strong>
+            <div class="code-wrapper">
+              <pre><code>import YourNewPage from "../pages/your-section/YourNewPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: &lt;MainLayout /&gt;,
+    children: [
+      // ... existing routes
+      { path: "your-new-page", element: &lt;YourNewPage /&gt; },
+    ],
+  },
+]);</code></pre>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+          </li>
+          <li class="step-item">
+            <strong>Add to Navigation:</strong> Add your new route item to <code>NAV_LINKS</code> inside <code>src/constants/navigation.js</code> to expose it in the header dropdowns and mobile slideout menu.
+          </li>
+        </ol>
+      </section>
+
+      <!-- Section 7: Full 45+ Page Route Inventory -->
+      <section id="pages-inventory">
+        <h2>7. Full 45+ Route & Page Map</h2>
+        <p>Every page variation is pre-configured with dedicated route paths and dynamic mock data:</p>
+
+        <h3>A. 9 Concept Homepages</h3>
+        <table>
+          <thead>
+            <tr><th>Homepage Concept</th><th>Route Path</th><th>Target Hospitality Focus</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Home 01: Beach & Tropical Resort</strong></td><td><code>/</code> or <code>/home-beach</code></td><td>Overwater bungalows, marine safaris, private beach coves, reef dining.</td></tr>
+            <tr><td><strong>Home 02: Luxury Hotel</strong></td><td><code>/home-hotel</code></td><td>Flagship grand luxury editorial stay with hero booking widget.</td></tr>
+            <tr><td><strong>Home 03: Resort & Spa</strong></td><td><code>/home-resort</code></td><td>Geothermal hydro spa, wellness retreats, daily yoga schedule.</td></tr>
+            <tr><td><strong>Home 04: Travel Agency</strong></td><td><code>/home-travel</code></td><td>Worldwide expeditions, private jet & yacht charter discovery.</td></tr>
+            <tr><td><strong>Home 05: Boutique Hotel</strong></td><td><code>/home-boutique</code></td><td>Chic art sanctuary, designer suites, rooftop cocktail speakeasy.</td></tr>
+            <tr><td><strong>Home 06: Luxury Villa & Chalet</strong></td><td><code>/home-villa</code></td><td>Private estates, dedicated executive chef, 24/7 butler, buyout inquiries.</td></tr>
+            <tr><td><strong>Home 07: Modern City Hotel</strong></td><td><code>/home-modern</code></td><td>Metropolitan skyline, executive club lounge, 50th-floor sky pool.</td></tr>
+            <tr><td><strong>Home 08: Dark Luxury & Heritage</strong></td><td><code>/home-dark</code></td><td>Noir palatial aesthetic, royal heritage suites, 130-year wine vault.</td></tr>
+            <tr><td><strong>Home Demos Showcase Hub</strong></td><td><code>/home-demos</code></td><td>Interactive switcher previewing all 8 concept homepages.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>B. Accommodations & Suites</h3>
+        <table>
+          <thead>
+            <tr><th>Layout</th><th>Route Path</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Rooms Grid View</td><td><code>/rooms</code></td><td>Filter sidebar, price range slider, category chips, 3-column cards.</td></tr>
+            <tr><td>Rooms List View</td><td><code>/rooms-list</code></td><td>Full-width horizontal cards with spec badges & instant reservation.</td></tr>
+            <tr><td>Rooms Modern Cards</td><td><code>/rooms-modern</code></td><td>Contemporary 2-column wide cards with quick specs bar.</td></tr>
+            <tr><td>Rooms Luxury Editorial</td><td><code>/rooms-editorial</code></td><td>Alternating asymmetrical editorial layout with high-res photography.</td></tr>
+            <tr><td>Room Details — Gallery View</td><td><code>/room/:slug</code></td><td>Mosaic gallery hero, specs bar, categorized amenities, sticky booking.</td></tr>
+            <tr><td>Room Details — Blueprint & Specs</td><td><code>/room-details-v2/:slug</code></td><td>Architectural specs, room schematics, categorized amenity suites.</td></tr>
+            <tr><td>Room Details — Split Screen</td><td><code>/room-details-v3/:slug</code></td><td>50/50 split layout, scrollable photo stack & price calculator.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>C. Destinations, Expeditions & Activities</h3>
+        <table>
+          <thead>
+            <tr><th>Layout</th><th>Route Path</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Destinations Grid</td><td><code>/destinations</code></td><td>Filterable continent/country grid with weather stats & stay counts.</td></tr>
+            <tr><td>Destinations List</td><td><code>/destinations-list</code></td><td>Horizontal region guides with seasonal highlights & featured tours.</td></tr>
+            <tr><td>Destinations Map Explorer</td><td><code>/destinations-map</code></td><td>Interactive Leaflet map with custom gold pins & telemetry cards.</td></tr>
+            <tr><td>Destination Details Guide</td><td><code>/destination/:slug</code></td><td>Comprehensive guide with climate chart, highlights & linked stays.</td></tr>
+            <tr><td>Tours Catalog</td><td><code>/tours</code></td><td>Filterable expeditions by category, duration, difficulty & group size.</td></tr>
+            <tr><td>Tours Modern Cards</td><td><code>/tours-modern</code></td><td>Modern 2-column cards with instant reservation trigger.</td></tr>
+            <tr><td>Tour Details & Itinerary</td><td><code>/tour/:slug</code></td><td>Day-by-day accordion timeline, inclusions/exclusions & booking card.</td></tr>
+            <tr><td>Curated Activities</td><td><code>/activities</code></td><td>Active alpine & marine sports, skill levels, safety checklists.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>D. Services, Dining, Facilities & Offers</h3>
+        <table>
+          <thead>
+            <tr><th>Layout</th><th>Route Path</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Hotel Services & Spa</td><td><code>/services</code></td><td>Holistic spa treatments, private aviation, yacht charters, butlers.</td></tr>
+            <tr><td>Dining & Grand Cru Vaults</td><td><code>/services-dining</code></td><td>3 Michelin-starred dining, cliffside raw bar, 1890 sommelier cellar.</td></tr>
+            <tr><td>Resort Facilities</td><td><code>/facilities</code></td><td>Deepwater marina, helipad, horizon pools, thermal spa, tennis club.</td></tr>
+            <tr><td>Exclusive Offers & Packages</td><td><code>/offers</code></td><td>Seasonal romance, wellness retreats with copyable promo codes.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>E. Galleries, Journal, Contact & Auth</h3>
+        <table>
+          <thead>
+            <tr><th>Layout</th><th>Route Path</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Filterable Lightbox Gallery</td><td><code>/gallery</code></td><td>Categorized tabs with fullscreen keyboard-navigated lightbox.</td></tr>
+            <tr><td>Masonry Photo Wall</td><td><code>/gallery-masonry</code></td><td>Editorial staggered multi-aspect dynamic photo feed.</td></tr>
+            <tr><td>Cinematic Film Showcase</td><td><code>/gallery-video</code></td><td>Documentary short films with runtime badges & video modal.</td></tr>
+            <tr><td>Blog Grid</td><td><code>/blog</code></td><td>3-column editorial journal with reading times, tags & pagination.</td></tr>
+            <tr><td>Blog List with Sidebar</td><td><code>/blog-list</code></td><td>Horizontal articles with search sidebar, recent posts & tags.</td></tr>
+            <tr><td>Blog Modern Cards</td><td><code>/blog-modern</code></td><td>Hero spotlight post + 2-column contemporary article cards.</td></tr>
+            <tr><td>Blog Single Article</td><td><code>/blog/:slug</code></td><td>Full editorial typography, blockquotes, author bio & social share.</td></tr>
+            <tr><td>About — Story & Heritage</td><td><code>/about</code></td><td>Historical legacy from 1928, archival timeline, global metrics.</td></tr>
+            <tr><td>About — Modern Overview</td><td><code>/about-v2</code></td><td>Sustainability charter, carbon-neutral commitment & vision.</td></tr>
+            <tr><td>About — Master Team</td><td><code>/about-v3</code></td><td>Executive leadership bios, master sommeliers & chefs.</td></tr>
+            <tr><td>Guest Reviews & Press</td><td><code>/testimonials</code></td><td>Verified reviews, luxury score breakdown & review submission dialog.</td></tr>
+            <tr><td>Contact — Standard Concierge</td><td><code>/contact</code></td><td>Department emails, direct phone cards, inquiry form & FAQ.</td></tr>
+            <tr><td>Contact — Map & Gateways</td><td><code>/contact-v2</code></td><td>Helipad, yacht berth & private chauffeur arrival directions.</td></tr>
+            <tr><td>Contact — Dedicated Event Buyout</td><td><code>/contact-v3</code></td><td>Dedicated form for weddings, buyout inquiries & celebrations.</td></tr>
+            <tr><td>Member Sign In</td><td><code>/login</code></td><td>Split-screen login with hospitality photo & remember me.</td></tr>
+            <tr><td>VIP Loyalty Registration</td><td><code>/register</code></td><td>VIP tier loyalty privileges registration form.</td></tr>
+            <tr><td>Password Recovery</td><td><code>/forgot-password</code></td><td>Step-by-step password recovery flow.</td></tr>
+            <tr><td>Universal Search Results</td><td><code>/search</code></td><td>Live multi-category search across rooms, tours & destinations.</td></tr>
+            <tr><td>Design System Styleguide</td><td><code>/design-system</code></td><td>Living UI styleguide with all buttons, badges, inputs & modals.</td></tr>
+            <tr><td>Terms of Service</td><td><code>/terms</code></td><td>Formal hotel reservation & cancellation policies.</td></tr>
+            <tr><td>Privacy & Cookie Policy</td><td><code>/privacy</code></td><td>GDPR-compliant hospitality privacy charter.</td></tr>
+            <tr><td>404 Error Page</td><td><code>/404</code></td><td>Luxury 404 error screen with search and navigation suggestions.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 8: Context Architecture -->
+      <section id="contexts">
+        <h2>8. Global Context Architecture</h2>
+        <p>
+          LuxStay wraps the entire application tree in <strong>6 React Context Providers</strong> in <code>src/App.jsx</code> and <code>src/layouts/MainLayout.jsx</code>:
+        </p>
+
+        <div class="card-grid">
+          <div class="info-card">
+            <h4>1. ThemeContext</h4>
+            <p>Manages Light/Dark color mode, font family switching, 4 Header styles, Sticky toggle, and 3 Footer variants. Persists in <code>localStorage</code>.</p>
+          </div>
+          <div class="info-card">
+            <h4>2. AuthContext</h4>
+            <p>Simulates user sessions, member sign-in/registration, and 3 VIP Loyalty tiers (Silver, Gold, Black Card) with automatic member discounts.</p>
+          </div>
+          <div class="info-card">
+            <h4>3. BookingContext</h4>
+            <p>Maintains global reservation state, selected room/tour, check-in/out dates, guest count, price calculation, and confirmation voucher generation.</p>
+          </div>
+          <div class="info-card">
+            <h4>4. FavoritesContext</h4>
+            <p>Powers the luxury Wishlist system. Toggles suite/tour saves, updates header count badge, and renders the slideout <code>SavedDrawer</code>.</p>
+          </div>
+          <div class="info-card">
+            <h4>5. ToastContext</h4>
+            <p>Delivers sleek, animated notifications for actions like copying promo codes, saving suites, submitting reviews, and booking confirmations.</p>
+          </div>
+          <div class="info-card">
+            <h4>6. PagePopupContext</h4>
+            <p>Orchestrates contextual luxury popups per homepage (seasonal discounts, newsletters, private jet concierge) with customizable delays.</p>
+          </div>
+        </div>
+
+        <p>Provider nesting in <code>src/App.jsx</code>:</p>
+        <div class="code-wrapper">
+          <pre><code>// src/App.jsx
+export default function App() {
+  return (
+    &lt;ThemeProvider&gt;
+      &lt;ToastProvider&gt;
+        &lt;AuthProvider&gt;
+          &lt;FavoritesProvider&gt;
+            &lt;BookingProvider&gt;
+              &lt;AppRoutes /&gt;
+            &lt;/BookingProvider&gt;
+          &lt;/FavoritesProvider&gt;
+        &lt;/AuthProvider&gt;
+      &lt;/ToastProvider&gt;
+    &lt;/ThemeProvider&gt;
+  );
+}</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+      </section>
+
+      <!-- Section 9: Custom Hooks Reference -->
+      <section id="hooks">
+        <h2>9. Custom Hooks Reference</h2>
+        <p>Each context is accompanied by an ergonomic custom hook located in <code>src/hooks/</code>:</p>
+
+        <table>
+          <thead>
+            <tr><th>Hook</th><th>File</th><th>Key Return Values & Functions</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>useTheme()</code></td>
+              <td><code>src/hooks/useTheme.js</code></td>
+              <td><code>theme, toggleTheme, fontFamily, setFontFamily, headerVariant, setHeaderVariant, footerVariant, setFooterVariant, resetTheme</code></td>
+            </tr>
+            <tr>
+              <td><code>useAuth()</code></td>
+              <td><code>src/hooks/useAuth.js</code></td>
+              <td><code>user, isAuthenticated, login, register, logout, vipDiscountPercent</code></td>
+            </tr>
+            <tr>
+              <td><code>useBooking()</code></td>
+              <td><code>src/hooks/useBooking.js</code></td>
+              <td><code>bookingData, updateBooking, openBookingModal, closeBookingModal, isBookingModalOpen</code></td>
+            </tr>
+            <tr>
+              <td><code>useFavorites()</code></td>
+              <td><code>src/hooks/useFavorites.js</code></td>
+              <td><code>favorites, toggleFavorite, isFavorite, favoritesCount, clearFavorites</code></td>
+            </tr>
+            <tr>
+              <td><code>useToast()</code></td>
+              <td><code>src/hooks/useToast.js</code></td>
+              <td><code>addToast({ title, message, type: 'success' | 'info' | 'error' }), removeToast</code></td>
+            </tr>
+            <tr>
+              <td><code>usePagePopup()</code></td>
+              <td><code>src/hooks/usePagePopup.js</code></td>
+              <td><code>activePopup, openPopup, closePopup, isPopupOpen, isAutoPopupEnabled</code></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Example: Adding an item to favorites and displaying a luxury toast</h3>
+        <div class="code-wrapper">
+          <pre><code>import { useFavorites } from "../hooks/useFavorites";
+import { useToast } from "../hooks/useToast";
+
+function SaveSuiteButton({ room }) {
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const { addToast } = useToast();
+  const saved = isFavorite(room.id);
+
+  const handleSave = () => {
+    toggleFavorite(room);
+    addToast({
+      title: saved ? "Removed from Wishlist" : "Saved to Wishlist",
+      message: `${room.title} has been ${saved ? "removed from" : "added to"} your private collection.`,
+      type: "success",
+    });
+  };
+
+  return (
+    &lt;button onClick={handleSave}&gt;
+      {saved ? "❤️ Saved" : "🤍 Save Suite"}
+    &lt;/button&gt;
+  );
+}</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+      </section>
+
+      <!-- Section 10: Theme Studio -->
+      <section id="theme-studio">
+        <h2>10. Interactive Theme Studio Drawer</h2>
+        <p>
+          LuxStay includes a live floating customizer (<code>src/components/common/ThemeCustomizer.jsx</code>) rendered globally in <code>MainLayout</code>.
+        </p>
+        <p>The Theme Studio allows visitors, clients, or evaluators to test:</p>
+        <ul>
+          <li><strong>Color Modes:</strong> Toggle between Warm Luxury Light and Palatial Noir Dark mode with smooth transitions.</li>
+          <li><strong>Typography Switcher:</strong> Switch between <strong>Raleway</strong> (architectural high-editorial) and <strong>Noto Sans</strong> (contemporary clean).</li>
+          <li><strong>Header Variants:</strong> Test Standard 2-Tier, Transparent Glass, Dark Noir, and Minimalist single-tier layouts.</li>
+          <li><strong>Sticky Header:</strong> Toggle fixed floating navigation on page scroll.</li>
+          <li><strong>Footer Variants:</strong> Test Standard 5-Column, Minimalist 1-Column, and Newsletter VIP Spotlight footers.</li>
+          <li><strong>Contextual Popups:</strong> Instantly trigger test promotional modals (40% Beach Discount, VIP Gazette, Private Jet Concierge).</li>
+        </ul>
+      </section>
+
+      <!-- Section 11: Header & Footer Variants -->
+      <section id="headers-footers">
+        <h2>11. Header & Footer Layout Variations</h2>
+        
+        <h3>Header Variations (<code>src/components/header/Header.jsx</code>):</h3>
+        <table>
+          <thead>
+            <tr><th>Variant Name</th><th>Prop / State Value</th><th>Visual Characteristics</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Standard Luxury</strong></td>
+              <td><code>variant="standard"</code></td>
+              <td>2-tier luxury header with top utility row (phone, currency selector, member sign-in) and main navigation bar with gold accents.</td>
+            </tr>
+            <tr>
+              <td><strong>Transparent Glass</strong></td>
+              <td><code>variant="transparent"</code></td>
+              <td>Overlaid transparent bar designed for full-bleed hero photography; smoothly transitions to frosted glassmorphism on scroll.</td>
+            </tr>
+            <tr>
+              <td><strong>Noir Dark</strong></td>
+              <td><code>variant="dark"</code></td>
+              <td>Deep slate-950 bar with illuminated gold accents and dark illuminated dropdowns.</td>
+            </tr>
+            <tr>
+              <td><strong>Minimalist</strong></td>
+              <td><code>variant="minimal"</code></td>
+              <td>Single-tier centered brand monogram with clean inline links and compact booking CTA.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Footer Variations (<code>src/components/footer/Footer.jsx</code>):</h3>
+        <ul>
+          <li><code>variant="standard"</code>: 5-column comprehensive footer with brand legacy, Forbes 5-star badges, navigation pillars, and newsletter subscription.</li>
+          <li><code>variant="minimal"</code>: Clean single-tier footer with monogram, horizontal links, copyright, and social icons.</li>
+          <li><code>variant="newsletter"</code>: High-impact VIP subscription card with welcome credit perks, concierge direct line, and legal links.</li>
+        </ul>
+      </section>
+
+      <!-- Section 12: Wishlist System -->
+      <section id="wishlist">
+        <h2>12. Wishlist & Saved Drawer System</h2>
+        <p>
+          The template features a complete, interactive client-side <strong>Wishlist System</strong>.
+        </p>
+        <p>Key highlights:</p>
+        <ul>
+          <li>Any suite or tour card includes a heart button wired to <code>useFavorites()</code>.</li>
+          <li>State is automatically synced and persisted across page reloads in <code>localStorage</code>.</li>
+          <li>The active count badge appears in the Header navigation bar next to the heart icon.</li>
+          <li>Clicking the heart icon opens the off-canvas <code>SavedDrawer.jsx</code>, allowing users to review their saved residences and initiate reservations directly.</li>
+        </ul>
+      </section>
+
+      <!-- Section 13: Promotional Popups -->
+      <section id="popups">
+        <h2>13. Promotional Popups System</h2>
+        <p>
+          Promotional modals are configured in <code>src/data/pagePopups.js</code> and managed by <code>PagePopupContext.jsx</code>.
+        </p>
+        <p>Features include:</p>
+        <ul>
+          <li>Contextual detection: Displays tailored promotions depending on the active homepage (e.g. 40% Off Beach Sanctuary for <code>/home-beach</code>, Palace Privilege Credit for <code>/home-hotel</code>).</li>
+          <li>Auto-trigger timer: Opens automatically after a polite delay (default 6 seconds).</li>
+          <li>Dismissal tracking: Remembers dismissed popups so visitors aren't repeatedly interrupted.</li>
+          <li>Floating Trigger Badge: Discreet bottom-left badge (<code>PagePopupFloatingTrigger.jsx</code>) allows visitors to reopen the promotion at any time.</li>
+          <li>Direct booking integration: Clicking "Book Now" opens the centralized <code>BookingModal</code> with the promo code pre-applied!</li>
+        </ul>
+      </section>
+
+      <!-- Section 14: Tailwind CSS v4 Setup -->
+      <section id="tailwind">
+        <h2>14. Tailwind CSS v4 Setup</h2>
+        <p>
+          LuxStay uses the modern <strong>Tailwind CSS v4</strong> engine which eliminates bulky <code>tailwind.config.js</code> files in favor of standard CSS <code>@theme</code> tokens and zero-config compilation via <code>@tailwindcss/vite</code>.
+        </p>
+        <p>
+          Dark mode is enabled via the custom directive in <code>src/index.css</code>:
+        </p>
+        <div class="code-wrapper">
+          <pre><code>@custom-variant dark (&:where(.dark, .dark *));</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+      </section>
+
+      <!-- Section 15: Color Palette -->
+      <section id="colors">
+        <h2>15. Color Palette & Luxury @theme Tokens</h2>
+        <p>
+          Color scales are declared in <code>src/index.css</code> under <code>@theme</code>:
+        </p>
+        <div class="code-wrapper">
+          <pre><code>/* src/index.css */
+@theme {
+  /* Luxury Gold Accent Scale */
+  --color-gold-50: #fbf9f4;
+  --color-gold-100: #f5f0e6;
+  --color-gold-200: #ecdfc9;
+  --color-gold-300: #dfcaa4;
+  --color-gold-400: #d1b17e;
+  --color-gold-500: #c5a880; /* Primary Brand Gold */
+  --color-gold-600: #b59367;
+  --color-gold-700: #997548;
+  --color-gold-800: #7c5e3c;
+  --color-gold-900: #654d33;
+
+  /* Deep Slate & Navy Scale */
+  --color-primary-50: #f8fafc;
+  --color-primary-100: #f1f5f9;
+  --color-primary-800: #1e293b;
+  --color-primary-900: #0f172a;
+  --color-primary-950: #080d1a;
+}</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+      </section>
+
+      <!-- Section 16: Typography -->
+      <section id="fonts">
+        <h2>16. Typography & Dynamic Font Switching</h2>
+        <p>The template is preloaded with Google Fonts in <code>index.html</code>:</p>
+        <ul>
+          <li><strong>Raleway:</strong> Elegant geometric sans-serif with architectural luxury proportions.</li>
+          <li><strong>Noto Sans:</strong> Clean, legible modern sans-serif.</li>
+          <li><strong>Playfair Display:</strong> Classical high-contrast editorial serif used for numerals and titles.</li>
+          <li><strong>Alex Brush:</strong> Flowing calligraphic signature script for promotional badges.</li>
+        </ul>
+        <p>
+          Dynamic font switching is achieved by updating <code>data-font</code> on the <code>&lt;html&gt;</code> element via <code>useTheme()</code>, mapped to CSS variable <code>--font-active</code>.
+        </p>
+      </section>
+
+      <!-- Section 17: Icons System -->
+      <section id="icons">
+        <h2>17. Icons System (React Icons)</h2>
+        <p>
+          Icons are powered by <strong>React Icons</strong> (<code>react-icons</code>), providing tree-shakeable, lightweight SVG components:
+        </p>
+        <div class="code-wrapper">
+          <pre><code>// Importing Lucide icons through React Icons
+import { LuCompass as Compass, LuHeart as Heart, LuStar as Star } from "react-icons/lu";
+
+// Importing FontAwesome 6 icons through React Icons
+import { FaAngleRight, FaCheck } from "react-icons/fa6";</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+      </section>
+
+      <!-- Section 18: Reusable Components -->
+      <section id="components">
+        <h2>18. Reusable UI Components Catalog</h2>
+        <p>Found inside <code>src/components/common/</code>:</p>
+        <table>
+          <thead>
+            <tr><th>Component</th><th>Purpose</th><th>Props / Features</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>Button.jsx</code></td><td>Luxury button primitive</td><td><code>variant: 'primary' | 'outline' | 'ghost' | 'dark', size, icon, loading</code></td></tr>
+            <tr><td><code>Badge.jsx</code></td><td>Status & category tag</td><td><code>variant: 'gold' | 'blue' | 'dark' | 'outline', size</code></td></tr>
+            <tr><td><code>Rating.jsx</code></td><td>Star rating & review counter</td><td><code>score, reviewsCount, showScore, size</code></td></tr>
+            <tr><td><code>DatePicker.jsx</code></td><td>Custom luxury single date picker</td><td>Custom calendar dropdown with min/max date validation.</td></tr>
+            <tr><td><code>DateRangePicker.jsx</code></td><td>Check-in / Check-out picker</td><td>Dual-date range selection with luxury calendar styling.</td></tr>
+            <tr><td><code>Modal.jsx</code></td><td>Accessible modal dialog</td><td>Esc key dismiss, backdrop blur, body overflow lock.</td></tr>
+            <tr><td><code>CountUp.jsx</code></td><td>Animated numerical metrics</td><td>Animates numerical values smoothly on viewport entry.</td></tr>
+            <tr><td><code>ImageWithFallback.jsx</code></td><td>Graceful image error handling</td><td>Renders fallback placeholders if external CDN images fail.</td></tr>
+            <tr><td><code>SectionHeading.jsx</code></td><td>Consistent section headers</td><td><code>subtitle, title, description, align: 'center' | 'left'</code></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 19: Leaflet Maps -->
+      <section id="maps">
+        <h2>19. Leaflet Interactive Maps Integration</h2>
+        <p>
+          Interactive destination exploration is powered by <strong>Leaflet</strong> in <code>src/pages/destinations/DestinationsMapPage.jsx</code>.
+        </p>
+        <p>Features include:</p>
+        <ul>
+          <li><strong>Custom Gold SVG Markers:</strong> Branded pins that animate and highlight when selected.</li>
+          <li><strong>Tile Layer Switcher:</strong> Toggle between OpenStreetMap, CartoDB Positron (Light), and Dark Luxury cartography.</li>
+          <li><strong>Interactive Telemetry Cards:</strong> Click any pin to view weather climate, airport codes, linked suites, and direct tour links.</li>
+          <li><strong>Filter synchronization:</strong> Filter markers dynamically by continent/region.</li>
+        </ul>
+      </section>
+
+      <!-- Section 20: React Calendar -->
+      <section id="calendar">
+        <h2>20. React Calendar Luxury Skin</h2>
+        <p>
+          Date selection is powered by <code>react-calendar</code>, styled with a comprehensive custom luxury skin in <code>src/index.css</code>.
+        </p>
+        <p>Key customizations:</p>
+        <ul>
+          <li>Active range start and range end tiles in Brand Gold (<code>#c5a880</code>).</li>
+          <li>Soft gold glow on hovered and in-between dates.</li>
+          <li>Custom chevron navigation controls with light and dark mode awareness.</li>
+          <li>Disabled past dates with clean strike-through styling.</li>
+        </ul>
+      </section>
+
+      <!-- Section 21: Swiper Carousels -->
+      <section id="carousels">
+        <h2>21. Swiper Carousels & Sliders</h2>
+        <p>
+          Touch-responsive sliders in <code>ReviewsSlider.jsx</code> and promotional cards are powered by <strong>Swiper</strong>.
+        </p>
+        <p>
+          Pagination bullets are customized in <code>src/index.css</code> into luxury elongated active pills with smooth transitions.
+        </p>
+      </section>
+
+      <!-- Section 22: Centralized Mock Data -->
+      <section id="data-layer">
+        <h2>22. Centralized Mock Data (`src/data/`)</h2>
+        <p>
+          All mock data resides cleanly in <code>src/data/</code> across 17 standalone ES modules, aggregated by <code>src/data/index.js</code>.
+        </p>
+        <table>
+          <thead>
+            <tr><th>File</th><th>Exports</th><th>Content Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>rooms.js</code></td><td><code>ROOMS_DATA</code></td><td>8 suites/villas with sizes, bed types, prices, and amenities.</td></tr>
+            <tr><td><code>destinations.js</code></td><td><code>DESTINATIONS_DATA</code></td><td>21 global destinations with climate, landmarks, and coordinates.</td></tr>
+            <tr><td><code>tours.js</code></td><td><code>TOURS_DATA</code></td><td>19 expeditions with itineraries, inclusions, and exclusions.</td></tr>
+            <tr><td><code>activities.js</code></td><td><code>ACTIVITIES_DATA</code></td><td>Specialized marine & alpine adventures with safety specs.</td></tr>
+            <tr><td><code>services.js</code></td><td><code>SERVICES_DATA</code></td><td>Spa treatments, private chauffeurs, cabana rentals.</td></tr>
+            <tr><td><code>dining.js</code></td><td><code>RESTAURANTS_DATA, SIGNATURE_COCKTAILS_DATA</code></td><td>Michelin restaurants and sommelier cellar flights.</td></tr>
+            <tr><td><code>facilities.js</code></td><td><code>FACILITIES_DATA</code></td><td>Marina, helipad, sommelier vault, horizon pools.</td></tr>
+            <tr><td><code>offers.js</code></td><td><code>OFFERS_DATA</code></td><td>Seasonal promotional packages with copyable voucher codes.</td></tr>
+            <tr><td><code>about.js</code></td><td><code>TIMELINE_EVENTS_DATA, CORE_VALUES_DATA</code></td><td>Historical milestones from 1928 and sustainability pillars.</td></tr>
+            <tr><td><code>team.js</code></td><td><code>TEAM_DATA</code></td><td>Executive chefs, sommeliers, wellness masters.</td></tr>
+            <tr><td><code>testimonials.js</code></td><td><code>TESTIMONIALS_DATA, PRESS_ACCOLADES_DATA</code></td><td>Verified guest reviews and international press accolades.</td></tr>
+            <tr><td><code>gallery.js</code></td><td><code>GALLERY_DATA, VIDEO_STORIES_DATA</code></td><td>High-resolution photo library and documentary films.</td></tr>
+            <tr><td><code>blog.js</code></td><td><code>BLOG_DATA</code></td><td>Editorial journal articles with author bios and tags.</td></tr>
+            <tr><td><code>contact.js</code></td><td><code>ARRIVAL_POINTS_DATA, DEPARTMENTS_CONTACT_DATA</code></td><td>Aviation/helipad gateways, marina berths, concierge lines.</td></tr>
+            <tr><td><code>membership.js</code></td><td><code>VIP_TIERS_DATA, CLUB_BENEFITS_DATA</code></td><td>Silver, Gold, and Black Card Royal Patron tiers.</td></tr>
+            <tr><td><code>experiences.js</code></td><td><code>WELLNESS_SCHEDULE_DATA, SPA_PACKAGES_DATA</code></td><td>Specialized retreat schedules and estate compound perks.</td></tr>
+            <tr><td><code>pagePopups.js</code></td><td><code>PAGE_POPUPS_CONFIG</code></td><td>Promotional popups, discounts, and modal triggers per homepage.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 23: CMS Integration -->
+      <section id="cms-integration">
+        <h2>23. Headless CMS & Backend API Guide</h2>
+        <p>
+          Connecting LuxStay to a live backend (Strapi, Contentful, Sanity, Supabase, or REST API) is simple because all components consume clean JavaScript objects.
+        </p>
+
+        <h3>Example: Using TanStack Query with an external API</h3>
+        <div class="code-wrapper">
+          <pre><code>import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { ROOMS_DATA } from "../data/rooms";
+
+export function useRooms() {
+  return useQuery({
+    queryKey: ["rooms"],
+    queryFn: async () => {
+      try {
+        const { data } = await axios.get("https://api.yourhotel.com/v1/rooms");
+        return data;
+      } catch (err) {
+        console.warn("API unavailable, falling back to local dataset", err);
+        return ROOMS_DATA;
+      }
+    },
+    initialData: ROOMS_DATA,
+  });
+}</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+      </section>
+
+      <!-- Section 24: Replacing Images -->
+      <section id="images">
+        <h2>24. Replacing Images & Media Guidelines</h2>
+        <p>
+          All image URLs are centralized in <code>src/data/</code> files. You can replace them with your own URLs or local paths:
+        </p>
+        <ul>
+          <li><strong>External Images (CDN):</strong> Paste your image URL into the <code>image: "https://..."</code> field in any dataset file.</li>
+          <li><strong>Local Images:</strong> Place image files in <code>public/images/</code> and reference them as <code>image: "/images/your-photo.jpg"</code>.</li>
+        </ul>
+
+        <div class="alert alert-info">
+          <div>
+            <strong>Recommended Image Dimensions & Aspect Ratios:</strong><br>
+            • Hero Banners: <code>1920x1080px (16:9)</code><br>
+            • Room & Tour Cards: <code>800x530px (16:10)</code><br>
+            • Destination Cards: <code>600x800px (3:4 portrait)</code><br>
+            • Blog Article Feature: <code>1200x675px (16:9)</code>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 25: Deployment -->
+      <section id="deployment">
+        <h2>25. Production Deployment</h2>
+        <p>Compile and minify the project for production:</p>
+        <div class="code-wrapper">
+          <pre><code>npm run build</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <p>Assets will be generated in the <code>/dist</code> directory.</p>
+
+        <h3>Deploying to Vercel or Netlify:</h3>
+        <ul>
+          <li><strong>Build Command:</strong> <code>npm run build</code></li>
+          <li><strong>Publish Directory:</strong> <code>dist</code></li>
+        </ul>
+
+        <h3>Apache Web Server (Client-Side Routing <code>.htaccess</code>):</h3>
+        <p>Place this <code>.htaccess</code> file inside your server root so React Router sub-routes resolve cleanly on page refresh:</p>
+        <div class="code-wrapper">
+          <pre><code>&lt;IfModule mod_rewrite.c&gt;
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+&lt;/IfModule&gt;</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+
+        <h3>Nginx Web Server Configuration:</h3>
+        <div class="code-wrapper">
+          <pre><code>server {
+    listen 80;
+    server_name yourdomain.com;
+    root /var/www/luxstay/dist;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}</code></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+      </section>
+
+      <!-- Section 26: Troubleshooting -->
+      <section id="troubleshooting">
+        <h2>26. Troubleshooting & FAQs</h2>
+        
+        <div class="info-card" style="margin-bottom: 16px;">
+          <h4>Q: Page refresh causes a 404 error on my production server?</h4>
+          <p>This is standard behavior for single-page applications (SPAs). Configure URL rewriting on your web server to redirect all requests to <code>/index.html</code> (see Section 25 above).</p>
+        </div>
+
+        <div class="info-card" style="margin-bottom: 16px;">
+          <h4>Q: Dependency installation fails during <code>npm install</code>?</h4>
+          <p>Ensure you are using Node.js v18.18+ or v20+. Delete your local <code>node_modules/</code> folder and <code>package-lock.json</code>, then run <code>npm install</code> cleanly.</p>
+        </div>
+
+        <div class="info-card" style="margin-bottom: 16px;">
+          <h4>Q: How do I change the default currency symbol?</h4>
+          <p>Open <code>src/constants/theme.js</code> and update <code>SITE_CONFIG.currency</code> (e.g., <code>"$"</code>, <code>"€"</code>, or <code>"£"</code>).</p>
+        </div>
+      </section>
+
+      <!-- Section 27: Dependencies Stack -->
+      <section id="dependencies">
+        <h2>27. Dependencies Stack & License Audit</h2>
+        <table>
+          <thead>
+            <tr><th>Package</th><th>Version</th><th>License</th><th>Justification</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>react</code> & <code>react-dom</code></td><td>^19.2.8</td><td>MIT</td><td>Core UI library with modern Concurrent rendering.</td></tr>
+            <tr><td><code>react-router-dom</code></td><td>^7.18.4</td><td>MIT</td><td>Industry standard client-side routing & nested layouts.</td></tr>
+            <tr><td><code>tailwindcss</code> & <code>@tailwindcss/vite</code></td><td>^4.3.3</td><td>MIT</td><td>Zero-config modern CSS utility engine with `@theme`.</td></tr>
+            <tr><td><code>react-icons</code></td><td>^5.7.0</td><td>MIT</td><td>Tree-shakeable icons (Lucide, FontAwesome, etc.).</td></tr>
+            <tr><td><code>leaflet</code></td><td>^1.9.4</td><td>BSD-2-Clause</td><td>Interactive map explorer for global destinations.</td></tr>
+            <tr><td><code>swiper</code></td><td>^14.3.0</td><td>MIT</td><td>Touch-friendly carousels and reviews sliders.</td></tr>
+            <tr><td><code>react-calendar</code></td><td>^6.0.1</td><td>MIT</td><td>Reservation date picker with custom luxury theme skin.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 28: Asset Credits -->
+      <section id="credits">
+        <h2>28. Asset Credits & Licensing</h2>
+        <ul>
+          <li><strong>Fonts:</strong> Google Fonts (<a href="https://fonts.google.com/specimen/Raleway" target="_blank">Raleway</a>, <a href="https://fonts.google.com/specimen/Noto+Sans" target="_blank">Noto Sans</a>, <a href="https://fonts.google.com/specimen/Playfair+Display" target="_blank">Playfair Display</a>, <a href="https://fonts.google.com/specimen/Alex+Brush" target="_blank">Alex Brush</a>) — SIL Open Font License (OFL).</li>
+          <li><strong>Icons:</strong> <a href="https://react-icons.github.io/react-icons/" target="_blank">React Icons</a> — MIT / Commercial Friendly.</li>
+          <li><strong>Photography:</strong> Curated high-resolution editorial photography from <a href="https://unsplash.com" target="_blank">Unsplash</a> and <a href="https://pexels.com" target="_blank">Pexels</a>. Demo images are used for demonstration purposes only.</li>
+        </ul>
+      </section>
+
+      <!-- Section 29: Demo Limitations -->
+      <section id="limitations">
+        <h2>29. Demo Limitations & APIs</h2>
+        <div class="alert alert-warning">
+          <div>
+            <strong>Frontend Simulation Notice:</strong><br>
+            LuxStay is a 100% frontend React template. Reservation widgets, search queries, booking modals, and confirmation vouchers provide a frontend client-side simulation. No backend database or live payment gateway (e.g. Stripe, PayPal) is included by default. To process live payments, connect the modal submit handlers to your preferred booking or payment gateway API.
+          </div>
+        </div>
+
+        <p style="margin-top: 40px; text-align: center; color: var(--text-muted); font-size: 13px;">
+          Thank you for choosing <strong>LuxStay</strong>! For assistance, please visit our ThemeForest item support page.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Live Search Filter for Navigation Links
+    function filterNav() {
+      const query = document.getElementById("navSearch").value.toLowerCase();
+      const items = document.querySelectorAll("#sidebarNav .nav-item");
+      items.forEach((item) => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? "block" : "none";
+      });
+    }
+
+    // Copy Code Helper
+    function copyCode(btn) {
+      const code = btn.previousElementSibling.innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const originalText = btn.innerText;
+        btn.innerText = "Copied!";
+        setTimeout(() => { btn.innerText = originalText; }, 2000);
+      });
+    }
+
+    // ScrollSpy Active Link Tracking
+    window.addEventListener("scroll", () => {
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".sidebar-nav .nav-item");
+      let currentSection = "";
+      
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.pageYOffset >= sectionTop) {
+          currentSection = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${currentSection}`) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
