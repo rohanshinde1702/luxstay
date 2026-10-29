@@ -25,7 +25,7 @@ luxstay-package.zip/
 │   │   ├── data/                      # 17 structured JSON/ESM datasets
 │   │   ├── hooks/                     # Custom React hooks (useTheme, useAuth, etc.)
 │   │   ├── layouts/                   # MainLayout shell
-│   │   ├── pages/                     # 45+ Page views (9 homes, suites, tours)
+│   │   ├── pages/                     # 46+ Page views (8 homes, master landing, suites, tours)
 │   │   ├── routes/                    # AppRoutes router configuration
 │   │   ├── utils/                     # Helper utilities (classes, currency, formatting)
 │   │   ├── App.jsx                    # Root application component
@@ -91,10 +91,11 @@ npm run preview
 
 LuxStay includes **45+ interactive page variations** ready for demonstration:
 
-### A. 9 Curated Homepage Concepts
+### A. 8 Curated Homepage Concepts & Master Landing
 | Homepage Concept | Live Route Path | Layout Focus |
 | :--- | :--- | :--- |
-| **Home 01: Beach & Tropical Resort** | `/` or `/home-beach` | Overwater bungalows, turquoise lagoon, reef safaris, private beach coves |
+| **Master Landing & Showcase (Default)** | `/` or `/landing` | Full commercial presentation showcasing all 8 homepages & 38+ inner pages |
+| **Home 01: Beach & Tropical Resort** | `/home-beach` | Overwater bungalows, turquoise lagoon, reef safaris, private beach coves |
 | **Home 02: Luxury Hotel** | `/home-hotel` | Flagship editorial hero, booking widget, suites, dining & press |
 | **Home 03: Resort & Spa** | `/home-resort` | Wellness retreat, daily yoga schedule, thermal suites, spa packages |
 | **Home 04: Travel Agency** | `/home-travel` | Charter tabs, worldwide destination spotlights, bespoke expeditions |
@@ -102,7 +103,6 @@ LuxStay includes **45+ interactive page variations** ready for demonstration:
 | **Home 06: Villa & Chalet** | `/home-villa` | Secluded private estates, household staff pillars, buyout inquiries |
 | **Home 07: Modern City Hotel** | `/home-modern` | Skyline view, fiber connectivity, 50th-floor sky pool, transit map |
 | **Home 08: Dark Luxury & Heritage** | `/home-dark` | Palatial noir aesthetic, royal heritage suites, 130-year wine vault |
-| **Home Demos Showcase Hub** | `/home-demos` | Interactive visual grid switcher previewing all 8 concepts |
 
 ### B. Accommodation & Suite Variations
 | Page Variation | Route Path | Description |

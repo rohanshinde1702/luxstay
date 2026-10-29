@@ -90,7 +90,7 @@
   - [x] **Home 06: Modern City Hotel** — `/home-modern` (Metropolitan skyline, executive club lounge, fiber connectivity, 50th-floor sky pool, transit connectivity) *(2026-10-02)*
   - [x] **Home 07: Beach & Tropical Resort** — `/home-beach` (Turquoise lagoon, overwater bungalows, marine safaris, private beachfront cabanas, honeymoon privileges) *(2026-10-02)*
   - [x] **Home 08: Dark Luxury & Heritage** — `/home-dark` (Noir palatial aesthetic, royal heritage suites, 130-year subterranean wine vault, black card privileges) *(2026-10-02)*
-  - [x] **Home Demos Showcase Hub** — `/home-demos` (Interactive visual switcher previewing all 8 concept homepages) *(2026-10-02)*
+  - [x] **Master Landing & All Demos Showcase** — `/landing`, `/demos`, `/home-demos` (Interactive commercial landing presentation showcasing all 8 concept homepages, 38+ inner pages with real-time search & category filters, live Theme Studio testing, architecture matrix, and developer FAQ) *(2026-10-28)*
 - [x] **3 About Pages**:
   - [x] **About 01: Story & Heritage** — `/about` (Historical legacy from 1928, archival photo timeline, 4 pillars of hospitality, global metrics) *(2026-10-02)*
   - [x] **About 02: Modern Overview** — `/about-v2` (Sustainability charter, carbon-neutral commitment, farm-to-table initiatives, architectural vision) *(2026-10-02)*
@@ -171,7 +171,7 @@
 - [x] **Master Barrel Export `src/data/index.js`** — Unified single-point import for all 17 datasets with clean autocomplete *(Updated 2026-10-27)*
 - [x] **Data Customization Guide `src/data/DATA_DICTIONARY.md`** — Comprehensive documentation explaining data schemas, field types, customization procedures, and headless CMS / API migration instructions for all 17 datasets *(Updated 2026-10-27)*
 - [x] **Elimination of Hardcoded Page Content** — Refactored all homepage concepts and inner page variations to consume dynamic data models without searching through large JSX files *(2026-10-02)*
-- [x] **Comprehensive Root `README.md`** — Master developer guide covering quick start, 6-Context architecture, 9 homepages, 38+ inner pages, tech stack, customization guides, and deployment recipes *(Updated 2026-10-27)*
+- [x] **Comprehensive Root `README.md`** — Master developer guide covering quick start, 6-Context architecture, 8 homepages, 38+ inner pages, tech stack, customization guides, and deployment recipes *(Updated 2026-10-27)*
 - [x] **Beginner & Developer HTML Documentation `documentation/index.html`** — Standalone, offline-ready HTML documentation suite with interactive search filter, responsive sidebar, copyable code blocks, alert boxes, and print/PDF styling covering 29 comprehensive topics *(Updated 2026-10-27)*
 - [x] **Customization Guides** — Step-by-step instructions for logos, color palettes, Tailwind CSS v4 `@theme` tokens, Google Fonts (Raleway, Noto Sans, Playfair Display, Alex Brush), and image replacements *(Updated 2026-10-27)*
 - [x] **Asset Credits & License Documentation** — Commercial license attribution notes in `LICENSE.md` for Google Fonts (OFL), React Icons, Leaflet (BSD), Swiper (MIT), React Calendar (MIT), and Unsplash/Pexels photography *(Updated 2026-10-27)*

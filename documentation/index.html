@@ -493,13 +493,13 @@
           <strong>LuxStay</strong> is an ultra-premium, commercial-grade frontend web template crafted using <strong>React 19</strong>, <strong>Vite 8</strong>, <strong>Tailwind CSS v4</strong>, and <strong>React Router v7</strong>.
         </p>
         <p>
-          Engineered to satisfy the highest standards of luxury hospitality websites, LuxStay provides <strong>9 concept homepages</strong>, over <strong>38 inner page variations</strong>, centralized state management across 6 React contexts, interactive Leaflet maps, touch-enabled Swiper carousels, and a decoupled ES-module data layer.
+          Engineered to satisfy the highest standards of luxury hospitality websites, LuxStay provides <strong>8 curated concept homepages</strong>, a dedicated <strong>Master Landing showcase</strong>, over <strong>38 inner page variations</strong>, centralized state management across 6 React contexts, interactive Leaflet maps, touch-enabled Swiper carousels, and a decoupled ES-module data layer.
         </p>
 
         <div class="card-grid">
           <div class="info-card">
-            <h4>🏨 9 Concept Homepages</h4>
-            <p>Beach Sanctuary, Flagship Luxury Hotel, Resort & Spa, Travel Agency, Boutique Art Hotel, Luxury Villa & Chalet, Modern City Skyline, Dark Luxury Heritage, and Demos Hub.</p>
+            <h4>🏨 8 Concept Homepages</h4>
+            <p>Beach Sanctuary, Flagship Luxury Hotel, Resort & Spa, Travel Agency, Boutique Art Hotel, Luxury Villa & Chalet, Modern City Skyline, and Dark Luxury Heritage.</p>
           </div>
           <div class="info-card">
             <h4>🗺️ 38+ Inner Variations</h4>
@@ -652,7 +652,7 @@
 │   ├── data/               # 17 Centralized mock datasets (rooms, tours, blog, destinations)
 │   ├── hooks/              # Custom React hooks (useTheme, useAuth, useBooking, useFavorites, etc.)
 │   ├── layouts/            # MainLayout shell with header, footer, customizer & popup slots
-│   ├── pages/              # 9 Homepages & 38+ Inner page variations
+│   ├── pages/              # 8 Homepages, Master Landing & 38+ Inner page variations
 │   ├── routes/             # Centralized React Router v7 routes (AppRoutes.jsx)
 │   ├── index.css           # Tailwind CSS v4 setup, theme tokens & calendar styles
 │   ├── main.jsx            # Application entry point
@@ -710,13 +710,14 @@ const router = createBrowserRouter([
         <h2>7. Full 45+ Route & Page Map</h2>
         <p>Every page variation is pre-configured with dedicated route paths and dynamic mock data:</p>
 
-        <h3>A. 9 Concept Homepages</h3>
+        <h3>A. 8 Curated Concept Homepages & Master Landing</h3>
         <table>
           <thead>
             <tr><th>Homepage Concept</th><th>Route Path</th><th>Target Hospitality Focus</th></tr>
           </thead>
           <tbody>
-            <tr><td><strong>Home 01: Beach & Tropical Resort</strong></td><td><code>/</code> or <code>/home-beach</code></td><td>Overwater bungalows, marine safaris, private beach coves, reef dining.</td></tr>
+            <tr><td><strong>Master Landing & Showcase (Default)</strong></td><td><code>/</code> or <code>/landing</code></td><td>Full commercial presentation showcasing all 8 concept homepages & 38+ inner pages.</td></tr>
+            <tr><td><strong>Home 01: Beach & Tropical Resort</strong></td><td><code>/home-beach</code></td><td>Overwater bungalows, marine safaris, private beach coves, reef dining.</td></tr>
             <tr><td><strong>Home 02: Luxury Hotel</strong></td><td><code>/home-hotel</code></td><td>Flagship grand luxury editorial stay with hero booking widget.</td></tr>
             <tr><td><strong>Home 03: Resort & Spa</strong></td><td><code>/home-resort</code></td><td>Geothermal hydro spa, wellness retreats, daily yoga schedule.</td></tr>
             <tr><td><strong>Home 04: Travel Agency</strong></td><td><code>/home-travel</code></td><td>Worldwide expeditions, private jet & yacht charter discovery.</td></tr>
@@ -724,7 +725,6 @@ const router = createBrowserRouter([
             <tr><td><strong>Home 06: Luxury Villa & Chalet</strong></td><td><code>/home-villa</code></td><td>Private estates, dedicated executive chef, 24/7 butler, buyout inquiries.</td></tr>
             <tr><td><strong>Home 07: Modern City Hotel</strong></td><td><code>/home-modern</code></td><td>Metropolitan skyline, executive club lounge, 50th-floor sky pool.</td></tr>
             <tr><td><strong>Home 08: Dark Luxury & Heritage</strong></td><td><code>/home-dark</code></td><td>Noir palatial aesthetic, royal heritage suites, 130-year wine vault.</td></tr>
-            <tr><td><strong>Home Demos Showcase Hub</strong></td><td><code>/home-demos</code></td><td>Interactive switcher previewing all 8 concept homepages.</td></tr>
           </tbody>
         </table>
 

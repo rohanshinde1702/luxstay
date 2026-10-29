@@ -11,6 +11,7 @@ import HomeModern from "../pages/home/HomeModern";
 import HomeBeach from "../pages/home/HomeBeach";
 import HomeDark from "../pages/home/HomeDark";
 import HomeDemo from "../pages/home/HomeDemo";
+import LandingPage from "../pages/landing/LandingPage";
 
 // About variations
 import AboutPage from "../pages/about/AboutPage";
@@ -77,8 +78,10 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <NotFoundPage />,
     children: [
-      // 8 Home Variations
-      { index: true, element: <HomeBeach /> },
+      // 8 Home Variations & Master Landing
+      { index: true, element: <LandingPage /> },
+      { path: "/", element: <LandingPage /> },
+      { path: "demos", element: <LandingPage /> },
       { path: "home-beach", element: <HomeBeach /> },
       { path: "home-hotel", element: <HomeHotel /> },
       { path: "home-resort", element: <HomeResort /> },
@@ -87,7 +90,7 @@ const router = createBrowserRouter([
       { path: "home-villa", element: <HomeVilla /> },
       { path: "home-modern", element: <HomeModern /> },
       { path: "home-dark", element: <HomeDark /> },
-      { path: "home-demos", element: <HomeDemo /> },
+      { path: "home-demos", element: <LandingPage /> },
 
       // About Variations
       { path: "about", element: <AboutPage /> },

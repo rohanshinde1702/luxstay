@@ -5,8 +5,14 @@ export const NAV_LINKS = [
     isMega: true,
     children: [
       {
-        title: "Home 01 — Beach & Tropical Resort",
+        title: "Master Landing — All Demos & Inner Pages",
         path: "/",
+        description: "Comprehensive showcase with all 8 concept homes & 38+ inner pages",
+        badge: "Showcase",
+      },
+      {
+        title: "Home 01 — Beach & Tropical Resort",
+        path: "/home-beach",
         description: "Overwater bungalows, private beach coves & sunset yachts",
         badge: "Popular",
       },

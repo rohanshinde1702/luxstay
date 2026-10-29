@@ -187,6 +187,15 @@ export default function Header({
                 <Sparkles className="h-3.5 w-3.5 text-[#C5A880] shrink-0" />
                 <span className="whitespace-nowrap">Direct Booking Privileges • ₹25,000 Welcome Credit</span>
               </div>
+
+              {/* Master Landing Page Shortcut */}
+              <Link
+                to="/"
+                className="hidden 2xl:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#C5A880]/20 hover:bg-[#C5A880]/30 text-[#dfcaa4] hover:text-white transition-colors text-[11px] font-bold shrink-0"
+              >
+                <Sparkles className="h-3 w-3 text-[#C5A880]" />
+                <span>All Demos & Pages (Landing)</span>
+              </Link>
             </div>
 
             {/* Right Utility Items */}
@@ -312,11 +321,16 @@ export default function Header({
                   {isMega && hasChildren && (
                     <div className="absolute left-1/2 -translate-x-1/2 top-full hidden w-[720px] rounded-lg bg-white dark:bg-slate-900 p-6 shadow-2xl ring-1 ring-slate-900/5 dark:ring-white/10 group-hover:block transition-all duration-200 z-50">
                       <div className="mb-3 border-b border-slate-100 dark:border-slate-800 pb-2 flex items-center justify-between">
-                        <span className="text-[11px] font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
-                          8 Curated Concept Homepages
-                        </span>
-                        <Link to="/home-demos" className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 hover:text-[#C5A880]">
-                          View Showcase Hub →
+                        <div className="flex items-center gap-2">
+                          <span className="text-[11px] font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
+                            8 Curated Concept Homepages & 38+ Inner Pages
+                          </span>
+                          <span className="px-1.5 py-0.2 rounded-full bg-[#C5A880]/20 text-[9px] font-bold text-[#997548] dark:text-[#dfcaa4]">
+                            All Demos
+                          </span>
+                        </div>
+                        <Link to="/" className="text-[11px] font-bold text-[#997548] dark:text-[#dfcaa4] hover:text-[#C5A880] transition-colors">
+                          View Master Landing →
                         </Link>
                       </div>
                       <div className="grid grid-cols-2 gap-3">

@@ -117,6 +117,22 @@ body[data-font="noto"],
 }
 
 /* Luxury Dark Mode Utility Accents */
+.font-serif-luxury {
+  font-family: 'Playfair Display', Georgia, serif !important;
+}
+
+.font-script {
+  font-family: 'Alex Brush', cursive !important;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-1200 {
+  perspective: 1200px;
+}
+
 .dark-card-luxury {
   background: #0d1424;
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -266,6 +282,140 @@ body[data-font="noto"],
 
 .animate-fade-in-scale {
   animation: fadeInScale 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes gentleFloatCenter {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px) scale(1.008);
+  }
+}
+
+@keyframes gentleFloatLeft {
+  0%, 100% {
+    transform: rotate(-7deg) translateY(12px) scale(0.92);
+  }
+  50% {
+    transform: rotate(-5.8deg) translateY(4px) scale(0.925);
+  }
+}
+
+@keyframes gentleFloatRight {
+  0%, 100% {
+    transform: rotate(6deg) translateY(16px) scale(0.92);
+  }
+  50% {
+    transform: rotate(5deg) translateY(8px) scale(0.925);
+  }
+}
+
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.08);
+  }
+}
+
+.animate-float-center {
+  animation: gentleFloatCenter 6s ease-in-out infinite;
+}
+
+.animate-float-left {
+  animation: gentleFloatLeft 7s ease-in-out infinite 0.5s;
+}
+
+.animate-float-right {
+  animation: gentleFloatRight 6.5s ease-in-out infinite 1s;
+}
+
+.animate-float-subtle {
+  animation: floatSubtle 4.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+.realistic-browser-glare {
+  background: linear-gradient(125deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.04) 38%, rgba(255,255,255,0) 65%);
+  pointer-events: none;
+}
+
+/* Luxury Interactive Shimmer & Radar Keyframes */
+@keyframes buttonShimmer {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.animate-shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: buttonShimmer 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes lightBeam {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.95) rotate(0deg);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(1.1) rotate(8deg);
+  }
+}
+
+.animate-light-beam {
+  animation: lightBeam 8s ease-in-out infinite;
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70%, 100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-radar-ping {
+  animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 /* Reduced motion preference */

@@ -58,3 +58,7 @@ export * from "./experiences";
 // 17. Contextual Home Page Promotional Popups
 export * from "./pagePopups";
 
+// 18. Theme Landing & Showcase Master Catalog
+export * from "./landingData";
+
+

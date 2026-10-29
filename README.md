@@ -6,8 +6,11 @@
 
 ## 🌟 Key Highlights & Features
 
-- **9 Concept Homepages:**
-  - `Home 01: Beach & Tropical Resort` (`/` & `/home-beach`) — Overwater bungalows, turquoise lagoons, marine safaris, private beach coves, and sunset yacht cruises.
+- **Master Landing & Showcase Page (Default `/`):**
+  - `Master Landing & Demos Showcase` (`/`, `/landing`, `/demos`, `/home-demos`) — Full-featured commercial presentation landing page showcasing all 8 concept homepages, 38+ inner pages with live search and category filtering, live Theme Studio testing, component specs, and developer FAQ.
+
+- **8 Curated Concept Homepages:**
+  - `Home 01: Beach & Tropical Resort` (`/home-beach`) — Overwater bungalows, turquoise lagoons, marine safaris, private beach coves, and sunset yacht cruises.
   - `Home 02: Luxury Hotel` (`/home-hotel`) — Grand flagship luxury stay with hero booking search widget, legacy story, and signature suites.
   - `Home 03: Resort & Spa` (`/home-resort`) — Tropical wellness sanctuary with geothermal hydrotherapy spa, daily yoga schedules, and wellness retreat packages.
   - `Home 04: Travel Agency` (`/home-travel`) — Curated worldwide expeditions, private jet & yacht charter discovery, and regional spotlights.
@@ -15,7 +18,6 @@
   - `Home 06: Luxury Villa & Chalet` (`/home-villa`) — Secluded private estates with dedicated executive chef, 24/7 butler, and exclusive buyout inquiries.
   - `Home 07: Modern City Hotel` (`/home-modern`) — Metropolitan skyline, executive club lounge, fiber connectivity, and 50th-floor panoramic sky pool.
   - `Home 08: Dark Luxury & Heritage` (`/home-dark`) — Noir palatial aesthetic, candlelit Michelin dining, royal heritage suites, and 130-year subterranean wine vault.
-  - `Home Demos Showcase Hub` (`/home-demos`) — Interactive visual switcher previewing all 8 concept homepages with instant links.
 
 - **38+ Inner Page Variations:**
   - **Rooms & Suites (6 variations):** Rooms Grid (`/rooms`), Rooms List (`/rooms-list`), Rooms Modern (`/rooms-modern`), Rooms Luxury Editorial (`/rooms-editorial`), Room Details Gallery (`/room/:slug`), Room Details Blueprint & Amenities (`/room-details-v2/:slug`), Room Details Split Screen (`/room-details-v3/:slug`).
@@ -100,7 +102,7 @@ luxstay-theme/
 │   ├── data/               # 17 Centralized mock datasets (rooms, tours, blog, destinations)
 │   ├── hooks/              # Custom React hooks (useTheme, useAuth, useBooking, useFavorites, useToast, usePagePopup)
 │   ├── layouts/            # MainLayout shell with header, footer, customizer & popup slots
-│   ├── pages/              # 9 Homepages & 38+ Inner page variations
+│   ├── pages/              # 8 Homepages, Master Landing & 38+ Inner page variations
 │   │   ├── about/          # 3 About variations & Testimonials
 │   │   ├── auth/           # Login, Register, Forgot Password
 │   │   ├── blog/           # 3 Blog layouts & Article detail
@@ -109,7 +111,8 @@ luxstay-theme/
 │   │   ├── destinations/   # Grid, List, Interactive Map & Details
 │   │   ├── error/          # Luxury 404 Not Found Page
 │   │   ├── gallery/        # Lightbox, Masonry & Video galleries
-│   │   ├── home/           # 9 Curated Concept Homepages & Showcase Hub
+│   │   ├── home/           # 8 Curated Concept Homepages
+│   │   ├── landing/        # Master Landing & Showcase Page
 │   │   ├── rooms/          # 4 Room listings & 3 Room details
 │   │   ├── services/       # Spa, Michelin Dining, Facilities, Offers
 │   │   ├── tours/          # Catalog, Modern Cards, Details & Activities
