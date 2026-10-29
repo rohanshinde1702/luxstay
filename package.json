@@ -1,7 +1,9 @@
 {
   "name": "luxstay-theme",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "LuxStay — Luxury Hotel, Resort, Travel & Gastronomy React 19 Template",
+  "author": "Elite Author Hospitality Themes",
+  "license": "Envato Regular / Extended License",
   "type": "module",
   "scripts": {
     "dev": "vite",
