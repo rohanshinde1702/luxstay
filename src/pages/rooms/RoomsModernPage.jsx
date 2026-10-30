@@ -21,12 +21,12 @@ export default function RoomsModernPage() {
   }, [activeCategory]);
 
   return (
-    <div className="bg-slate-50 min-h-screen">
+    <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-950 py-16 sm:py-24 text-white">
         <div className="absolute inset-0 z-0 opacity-25">
           <img
-            src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=2000&q=80"
+            src="/images/placeholders/1905x680.svg"
             alt="Modern Suites"
             className="h-full w-full object-cover"
           />
@@ -59,16 +59,17 @@ export default function RoomsModernPage() {
       {/* Main Modern Grid */}
       <Container className="py-12 lg:py-16">
         {/* Category Filter Chips */}
-        <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-6">
+        <div className="mb-10 flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6">
           <div className="flex flex-wrap items-center gap-2">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat}
+                type="button"
                 onClick={() => setActiveCategory(cat)}
                 className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
                   activeCategory === cat
-                    ? "bg-slate-900 text-white shadow-xs"
-                    : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
+                    ? "bg-slate-900 dark:bg-[#C5A059] text-white dark:text-slate-950 shadow-xs"
+                    : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800"
                 }`}
               >
                 {cat}
@@ -76,8 +77,8 @@ export default function RoomsModernPage() {
             ))}
           </div>
 
-          <span className="text-xs text-slate-500">
-            Showing <strong className="text-slate-900">{filteredRooms.length}</strong> modern residences
+          <span className="text-xs text-slate-500 dark:text-slate-400">
+            Showing <strong className="text-slate-900 dark:text-white">{filteredRooms.length}</strong> modern residences
           </span>
         </div>
 
@@ -86,7 +87,7 @@ export default function RoomsModernPage() {
           {filteredRooms.map((room) => (
             <div
               key={room.id}
-              className="group flex flex-col overflow-hidden rounded-lg border border-slate-200/80 bg-white shadow-xs hover:border-[#C5A880]/50 transition-all duration-300"
+              className="group flex flex-col overflow-hidden rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs hover:border-[#C5A880]/50 transition-all duration-300"
             >
               {/* Photo Frame */}
               <Link to={`/room/${room.slug}`} className="relative aspect-16/10 overflow-hidden block">
@@ -102,7 +103,7 @@ export default function RoomsModernPage() {
                 </div>
                 <div className="absolute bottom-4 right-4 z-10 rounded-md bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 text-white shadow-lg pointer-events-none">
                   <span className="font-serif text-lg font-bold text-[#dfcaa4]">
-                    ₹{typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
+                    ${typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
                   </span>
                   <span className="text-[10px] text-slate-300"> / night</span>
                 </div>
@@ -112,42 +113,42 @@ export default function RoomsModernPage() {
               <div className="p-6 sm:p-7 space-y-4 flex-1 flex flex-col justify-between">
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#997548]">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#997548] dark:text-[#dfcaa4]">
                       {room.category}
                     </span>
                     <Rating value={room.rating} reviewsCount={room.reviewsCount} size="xs" />
                   </div>
 
-                  <h3 className="font-serif text-2xl font-bold text-slate-900 group-hover:text-[#997548] transition-colors">
+                  <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white group-hover:text-[#997548] dark:group-hover:text-[#dfcaa4] transition-colors">
                     <Link to={`/room/${room.slug}`}>{room.title}</Link>
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
                     {room.description}
                   </p>
 
                   {/* Modern Specs Pill Bar */}
-                  <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 text-center">
-                    <div className="rounded-md bg-slate-50 p-2 text-xs">
-                      <span className="block text-[10px] uppercase text-slate-400 font-bold">Space</span>
-                      <strong className="text-slate-800">{room.size}</strong>
+                  <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-center">
+                    <div className="rounded-md bg-slate-50 dark:bg-slate-800/60 p-2 text-xs">
+                      <span className="block text-[10px] uppercase text-slate-400 dark:text-slate-500 font-bold">Space</span>
+                      <strong className="text-slate-800 dark:text-slate-200">{room.size}</strong>
                     </div>
-                    <div className="rounded-md bg-slate-50 p-2 text-xs">
-                      <span className="block text-[10px] uppercase text-slate-400 font-bold">Capacity</span>
-                      <strong className="text-slate-800">{room.capacity}</strong>
+                    <div className="rounded-md bg-slate-50 dark:bg-slate-800/60 p-2 text-xs">
+                      <span className="block text-[10px] uppercase text-slate-400 dark:text-slate-500 font-bold">Capacity</span>
+                      <strong className="text-slate-800 dark:text-slate-200">{room.capacity}</strong>
                     </div>
-                    <div className="rounded-md bg-slate-50 p-2 text-xs">
-                      <span className="block text-[10px] uppercase text-slate-400 font-bold">Bed Type</span>
-                      <strong className="text-slate-800 line-clamp-1">{room.bedType}</strong>
+                    <div className="rounded-md bg-slate-50 dark:bg-slate-800/60 p-2 text-xs">
+                      <span className="block text-[10px] uppercase text-slate-400 dark:text-slate-500 font-bold">Bed Type</span>
+                      <strong className="text-slate-800 dark:text-slate-200 line-clamp-1">{room.bedType}</strong>
                     </div>
                   </div>
                 </div>
 
                 {/* Actions */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                   <Link
                     to={`/room/${room.slug}`}
-                    className="text-xs font-bold text-slate-900 hover:text-[#997548] uppercase tracking-wider"
+                    className="text-xs font-bold text-slate-900 dark:text-slate-200 hover:text-[#997548] dark:hover:text-[#dfcaa4] uppercase tracking-wider"
                   >
                     View Specs →
                   </Link>

@@ -17,12 +17,12 @@ export default function RoomsEditorialPage() {
   const [selectedRoomForBooking, setSelectedRoomForBooking] = useState(null);
 
   return (
-    <div className="bg-[#faf9f6] min-h-screen">
+    <div className="bg-[#faf9f6] dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Editorial Cover */}
       <section className="relative overflow-hidden bg-slate-950 py-20 lg:py-28 text-white">
         <div className="absolute inset-0 z-0 opacity-25">
           <img
-            src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=2000&q=80"
+            src="/images/placeholders/1905x680.svg"
             alt="Editorial Rooms"
             className="h-full w-full object-cover"
           />
@@ -90,7 +90,7 @@ export default function RoomsEditorialPage() {
                       Tariff
                     </span>
                     <p className="font-serif text-xl sm:text-2xl font-bold text-white">
-                      ₹{typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
+                      ${typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
                       <span className="text-xs text-slate-400 font-sans font-normal"> / night</span>
                     </p>
                   </div>
@@ -115,33 +115,33 @@ export default function RoomsEditorialPage() {
                     <span className="text-[11px] font-bold font-mono text-slate-400">
                       FOLIO NO. 0{idx + 1}
                     </span>
-                    <span className="text-slate-300">•</span>
+                    <span className="text-slate-300 dark:text-slate-700">•</span>
                     <Rating value={room.rating} reviewsCount={room.reviewsCount} size="xs" />
                   </div>
 
-                  <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 leading-tight">
+                  <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
                     <Link
                       to={`/room/${room.slug}`}
-                      className="hover:text-[#997548] transition-colors"
+                      className="hover:text-[#997548] dark:hover:text-[#dfcaa4] transition-colors"
                     >
                       {room.title}
                     </Link>
                   </h2>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-light">
                   {room.description}
                 </p>
 
                 {/* Key Amenities */}
                 {room.amenities && (
-                  <div className="space-y-2 pt-2 border-t border-slate-200">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                  <div className="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                       Signature Privileges
                     </span>
                     <div className="grid grid-cols-2 gap-2">
                       {room.amenities.slice(0, 4).map((am, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs text-slate-700">
+                        <div key={i} className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
                           <CheckCircle2 className="h-3.5 w-3.5 text-[#C5A880] shrink-0" />
                           <span className="line-clamp-1">{am}</span>
                         </div>

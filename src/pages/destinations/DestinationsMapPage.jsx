@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import {
@@ -107,6 +107,7 @@ const MAP_LAYERS = {
 };
 
 export default function DestinationsMapPage() {
+  const navigate = useNavigate();
   const { theme, setTheme } = useTheme();
   const isDark = theme === "dark";
 
@@ -119,6 +120,27 @@ export default function DestinationsMapPage() {
   const mapInstanceRef = useRef(null);
   const tileLayerRef = useRef(null);
   const markersRef = useRef({});
+
+  // Delegate Leaflet popup clicks to client-side React Router navigation
+  useEffect(() => {
+    const handlePopupClick = (e) => {
+      const target = e.target.closest(".lux-popup-btn");
+      if (target && target.getAttribute("href")) {
+        e.preventDefault();
+        const href = target.getAttribute("href");
+        navigate(href);
+      }
+    };
+    const mapContainer = mapRef.current;
+    if (mapContainer) {
+      mapContainer.addEventListener("click", handlePopupClick);
+    }
+    return () => {
+      if (mapContainer) {
+        mapContainer.removeEventListener("click", handlePopupClick);
+      }
+    };
+  }, [navigate]);
 
   // Synchronize default map layer with theme when theme changes
   useEffect(() => {

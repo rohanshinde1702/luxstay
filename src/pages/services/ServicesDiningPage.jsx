@@ -13,12 +13,12 @@ import { RESTAURANTS_DATA } from "../../data/dining";
 export default function ServicesDiningPage() {
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-24">
+    <div className="bg-slate-50 dark:bg-slate-950 min-h-screen pb-24 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-950 py-20 lg:py-28 text-white">
         <div className="absolute inset-0 z-0 opacity-30">
           <img
-            src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=2000&q=80"
+            src="/images/placeholders/1905x680.svg"
             alt="Fine Dining"
             className="h-full w-full object-cover"
           />
@@ -53,7 +53,7 @@ export default function ServicesDiningPage() {
         {RESTAURANTS_DATA.map((rest, idx) => (
           <div
             key={idx}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center rounded-lg border border-slate-200/80 bg-white p-6 sm:p-10 shadow-xs transition-all"
+            className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-xs transition-all"
           >
             <div className="lg:col-span-6 relative rounded-lg overflow-hidden aspect-16/10 shadow-md">
               <ImageWithFallback
@@ -70,20 +70,20 @@ export default function ServicesDiningPage() {
 
             <div className="lg:col-span-6 space-y-4">
               <div className="space-y-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#997548]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#997548] dark:text-[#dfcaa4]">
                   {rest.chef}
                 </span>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900">
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
                   {rest.name}
                 </h2>
-                <p className="text-xs text-slate-500 font-semibold">{rest.cuisine}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold">{rest.cuisine}</p>
               </div>
 
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-light">
                 {rest.desc}
               </p>
 
-              <div className="space-y-2 pt-2 border-t border-slate-100 text-xs text-slate-600">
+              <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400">
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-[#C5A880]" />
                   <span>{rest.hours}</span>

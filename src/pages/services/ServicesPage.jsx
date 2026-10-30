@@ -51,7 +51,7 @@ export default function ServicesPage() {
   };
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-16 pb-24 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Hero Header */}
       <section className="relative bg-slate-950 py-16 sm:py-24 text-white overflow-hidden">
         <div className="absolute top-0 right-1/4 h-80 w-80 rounded-full bg-[#C5A880]/10 blur-3xl pointer-events-none" />
@@ -92,7 +92,7 @@ export default function ServicesPage() {
                 id={service.id}
                 className={`flex flex-col ${
                   isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
-                } gap-8 lg:gap-12 items-center rounded-lg border border-slate-200/80 bg-white p-6 sm:p-10 shadow-xs transition-all duration-300`}
+                } gap-8 lg:gap-12 items-center rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-xs transition-all duration-300`}
               >
                 {/* Photo */}
                 <div className="w-full lg:w-1/2 overflow-hidden rounded-lg relative group">
@@ -112,26 +112,26 @@ export default function ServicesPage() {
                 {/* Content */}
                 <div className="w-full lg:w-1/2 space-y-5">
                   <div className="space-y-2">
-                    <span className="text-xs font-bold uppercase tracking-widest text-[#997548]">
+                    <span className="text-xs font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
                       Service 0{idx + 1}
                     </span>
-                    <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight">
+                    <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
                       {service.title}
                     </h2>
-                    <p className="text-sm sm:text-base text-slate-600 font-light leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 font-light leading-relaxed">
                       {service.tagline}
                     </p>
                   </div>
 
                   {/* Features list */}
-                  <div className="space-y-2.5 pt-2 border-t border-slate-100">
-                    <p className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                  <div className="space-y-2.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+                    <p className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">
                       Signature Highlights
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-600 dark:text-slate-300">
                       {service.features.map((feat, i) => (
                         <div key={i} className="flex items-start gap-2">
-                          <div className="flex h-4 w-4 items-center justify-center rounded-full bg-[#C5A880]/20 text-[#997548] shrink-0 mt-0.5">
+                          <div className="flex h-4 w-4 items-center justify-center rounded-full bg-[#C5A880]/20 text-[#997548] dark:text-[#dfcaa4] shrink-0 mt-0.5">
                             <Check className="h-2.5 w-2.5" />
                           </div>
                           <span>{feat}</span>
@@ -141,9 +141,9 @@ export default function ServicesPage() {
                   </div>
 
                   {/* Hours & Booking CTA */}
-                  <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                  <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
                     {service.hours && (
-                      <div className="flex items-center gap-2 text-xs text-slate-500">
+                      <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
                         <Clock className="h-4 w-4 text-[#C5A880]" />
                         <span>{service.hours}</span>
                       </div>

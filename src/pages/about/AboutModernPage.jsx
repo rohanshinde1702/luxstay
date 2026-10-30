@@ -18,12 +18,12 @@ const ECO_ICONS = [Sun, Recycle, Building, Leaf];
 
 export default function AboutModernPage() {
   return (
-    <div className="bg-slate-50 min-h-screen">
+    <div className="bg-slate-50 dark:bg-slate-950 min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Modern Hero */}
       <section className="relative overflow-hidden bg-slate-950 py-20 lg:py-28 text-white">
         <div className="absolute inset-0 z-0 opacity-25">
           <img
-            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2000&q=80"
+            src="/images/placeholders/1905x680.svg"
             alt="Modern Architecture"
             className="h-full w-full object-cover"
           />
@@ -57,36 +57,36 @@ export default function AboutModernPage() {
       {/* Stats Counter Ribbon */}
       <section className="relative z-20 -mt-8 sm:-mt-10">
         <Container>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 rounded-lg border border-slate-200/80 bg-white p-6 sm:p-8 shadow-xl text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-xl text-center">
             <div className="space-y-1">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900">
+              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
                 <CountUp value="0%" />
               </span>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Single-Use Plastics
               </p>
             </div>
             <div className="space-y-1">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900">
+              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
                 <CountUp value="100%" />
               </span>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Renewable Energy
               </p>
             </div>
             <div className="space-y-1">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900">
+              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
                 <CountUp value="2,400+" />
               </span>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Coral Heads Planted
               </p>
             </div>
             <div className="space-y-1">
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900">
+              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
                 <CountUp value="12,000" />
               </span>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Alpine Pines Restored
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function AboutModernPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="rounded-lg overflow-hidden shadow-2xl aspect-4/3">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
+                src="/images/placeholders/750x1000.svg"
                 alt="Sustainable Estate"
                 className="h-full w-full object-cover"
               />
@@ -114,23 +114,23 @@ export default function AboutModernPage() {
                 alignment="left"
               />
 
-              <div className="space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+              <div className="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                 <p>
                   Every villa and suite is engineered with passive thermal massing, natural cross-ventilation, and rainwater harvesting systems. We partner with world-renowned eco-architects to ensure our sanctuaries enhance their native habitats.
                 </p>
               </div>
 
               <div className="space-y-2.5 pt-2">
-                <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-200 font-medium">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                   <span>LEED Platinum and EarthCheck Gold Certified Facilities</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-200 font-medium">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                   <span>Subterranean Geothermal Heat Exchange Systems</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                <div className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-200 font-medium">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
                   <span>On-Site Farm-to-Table Organic Permaculture Gardens</span>
                 </div>
               </div>

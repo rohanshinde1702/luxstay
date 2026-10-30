@@ -25,7 +25,7 @@ export const HOME_DEMOS_DATA = [
     badgeColor: "gold",
     tagline: "Overwater bungalows, private beach coves & sunset catamaran charters",
     description: "Designed for world-renowned island sanctuaries in the Maldives and Bora Bora. Features video hero experience, floating booking bar, and curated ocean excursions.",
-    image: "/images/beach-sunset-hero-4k.jpg",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85",
     specs: {
       heroType: "4K Drone Video Reel",
       bookingStyle: "Horizontal Floating Bar",
@@ -145,7 +145,7 @@ export const HOME_DEMOS_DATA = [
     badgeColor: "cyan",
     tagline: "Secluded cliffside private estates, infinity pools & alpine ski chalets",
     description: "Tailored for ultra-high-net-worth estate rentals, ski chalets in Zermatt, and oceanfront sanctuaries in Bali. Features full estate buyouts and private helipad specs.",
-    image: "/images/villas/villa-bali-ocean.jpg",
+    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=85",
     specs: {
       heroType: "Full-width Secluded Drone Vista",
       bookingStyle: "Estate Buyout Request",
@@ -169,7 +169,7 @@ export const HOME_DEMOS_DATA = [
     badgeColor: "indigo",
     tagline: "Urban executive lifestyle, rooftop infinity pool & business boardroom suites",
     description: "Built for Tokyo, New York, and Dubai luxury skyline hotels. Highlighted by glass-edge rooftop infinity pools, executive business suites, and sunset cocktail lounges.",
-    image: "/images/skyline/hero-rooftop-pool.jpg",
+    image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=85",
     specs: {
       heroType: "Skyline Glass Pool Hero",
       bookingStyle: "Corporate Executive Checkout",
@@ -193,7 +193,7 @@ export const HOME_DEMOS_DATA = [
     badgeColor: "gold",
     tagline: "Moody, opulent royal palace aesthetic with candlelit fine dining & historic suites",
     description: "An homage to imperial Indian lake palaces and Parisian historic châteaux. Features deep noir tones, brushed gold borders, Jharokha balconies, and candlelit courtyard dining.",
-    image: "/images/heritage/hero-palace.jpg",
+    image: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=85",
     specs: {
       heroType: "Night Illuminated Palace Grounds",
       bookingStyle: "Royal Chamber Reservation",
@@ -389,7 +389,7 @@ export const INNER_PAGES_DATA = [
     title: "Michelin Dining & Grand Cru Cellar",
     path: "/services-dining",
     badge: "3-Michelin Gastronomy",
-    image: "/images/skyline/dining-restaurant.jpg",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     description: "Seasonal tasting menus, sommelier wine pairing notes, chef philosophy, private dining reservations, and cocktail lounge.",
     features: ["Seasonal Menu", "Sommelier Notes", "Table Booking"]
   },
@@ -400,7 +400,7 @@ export const INNER_PAGES_DATA = [
     title: "Hotel Services & Holistic Spa",
     path: "/services",
     badge: "Wellness Rituals",
-    image: "/images/heritage/heritage-spa.jpg",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80",
     description: "Ayurvedic body treatments, hydrotherapy pools, restorative massages, sound healing chambers, and concierge hotline.",
     features: ["Treatment Cards", "Thermal Passes", "Wellness Concierge"]
   },
@@ -411,7 +411,7 @@ export const INNER_PAGES_DATA = [
     title: "Resort Facilities & Amenities",
     path: "/facilities",
     badge: "Resort Amenities",
-    image: "/images/skyline/offer-city-explorer.jpg",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
     description: "Helipad access, championship grass tennis courts, private marina, heated infinity pools, and luxury vehicle fleet.",
     features: ["Helipad Specs", "Marina Slips", "Championship Courts"]
   },
@@ -422,7 +422,7 @@ export const INNER_PAGES_DATA = [
     title: "Exclusive Offers & Packages",
     path: "/offers",
     badge: "Limited Promotions",
-    image: "/images/skyline/offer-romantic-escape.jpg",
+    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
     description: "Honeymoon escapes, seasonal extended stay discounts, golf packages, and direct booking complimentary credits.",
     features: ["Promo Codes", "Welcome Credit", "Package Inclusions"]
   },
@@ -457,7 +457,7 @@ export const INNER_PAGES_DATA = [
     title: "Cinematic Film Gallery",
     path: "/gallery-video",
     badge: "4K Film Showcase",
-    image: "/images/luxury-beach-sunset-hero.jpg",
+    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80",
     description: "Immersive 4K drone cinematography showcase with modal video playback, ambient audio tracks, and behind-the-scenes reels.",
     features: ["Modal Playback", "Drone Reels", "Curated Soundtracks"]
   },
@@ -580,7 +580,7 @@ export const INNER_PAGES_DATA = [
     title: "Dedicated Event & Buyout Inquiry",
     path: "/contact-v3",
     badge: "Estate Buyouts",
-    image: "/images/heritage/imperial-pool-villa.jpg",
+    image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
     description: "Specialized lead-capture application for full estate private buyouts, luxury weddings, and executive board retreats.",
     features: ["Full Estate Buyout", "Wedding Planner", "Capacity Calculator"]
   },

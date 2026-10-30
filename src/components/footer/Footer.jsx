@@ -23,30 +23,9 @@ import { InstagramIcon, FacebookIcon, TwitterIcon, YoutubeIcon } from "../common
 import { useTheme } from "../../hooks/useTheme";
 import { useToast } from "../../hooks/useToast";
 
-export default function Footer({ variant: propVariant }) {
-  const { footerVariant: contextVariant } = useTheme();
-  const { addToast } = useToast();
-  const activeVariant = propVariant || contextVariant || "standard";
-
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      addToast({
-        title: "VIP Gazette Subscribed",
-        message: `Thank you for subscribing (${email}). Private retreat invitations will be delivered directly to your inbox.`,
-        type: "success",
-      });
-      setEmail("");
-      setTimeout(() => setSubscribed(false), 6000);
-    }
-  };
-
-  // Reusable Sub-Components
-  const SocialLinks = () => (
+// Reusable Sub-Components hoisted outside parent render to avoid remounting
+function SocialLinks() {
+  return (
     <div className="flex items-center gap-3 text-slate-400">
       <a 
         href="https://instagram.com" 
@@ -86,8 +65,10 @@ export default function Footer({ variant: propVariant }) {
       </a>
     </div>
   );
+}
 
-  const AwardsRibbon = () => (
+function AwardsRibbon() {
+  return (
     <div className="py-6 border-y border-slate-900 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-xs text-slate-400">
       <div className="flex items-center justify-center gap-2.5">
         <Award className="h-4 w-4 text-[#C5A059]" />
@@ -107,8 +88,10 @@ export default function Footer({ variant: propVariant }) {
       </div>
     </div>
   );
+}
 
-  const ThemeFastSwitcher = () => (
+function ThemeFastSwitcher() {
+  return (
     <div className="py-4 px-5 rounded-lg bg-slate-900/60 border border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
       <div className="flex items-center gap-2 text-slate-300">
         <Compass className="h-4 w-4 text-[#C5A059]" />
@@ -138,8 +121,10 @@ export default function Footer({ variant: propVariant }) {
       </div>
     </div>
   );
+}
 
-  const BottomLegalBar = () => (
+function BottomLegalBar() {
+  return (
     <div className="pt-2 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
       <div className="flex items-center gap-2">
         <p>© {new Date().getFullYear()} LuxStay Sanctuaries & Resorts International. All rights reserved.</p>
@@ -163,6 +148,29 @@ export default function Footer({ variant: propVariant }) {
       </div>
     </div>
   );
+}
+
+export default function Footer({ variant: propVariant }) {
+  const { footerVariant: contextVariant } = useTheme();
+  const { addToast } = useToast();
+  const activeVariant = propVariant || contextVariant || "standard";
+
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubscribed(true);
+      addToast({
+        title: "VIP Gazette Subscribed",
+        message: `Thank you for subscribing (${email}). Private retreat invitations will be delivered directly to your inbox.`,
+        type: "success",
+      });
+      setEmail("");
+      setTimeout(() => setSubscribed(false), 6000);
+    }
+  };
 
   // =========================================================================
   // 1. MINIMALIST CLEAN FOOTER VARIATION

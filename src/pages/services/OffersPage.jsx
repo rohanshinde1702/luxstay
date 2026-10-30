@@ -47,7 +47,7 @@ export default function OffersPage() {
   };
 
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-16 pb-24 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Hero Header */}
       <section className="relative bg-slate-950 py-16 sm:py-24 text-white overflow-hidden">
         <div className="absolute top-0 right-1/4 h-80 w-80 rounded-full bg-[#C5A880]/10 blur-3xl pointer-events-none" />
@@ -82,7 +82,7 @@ export default function OffersPage() {
           {OFFERS_DATA.map((offer) => (
             <div
               key={offer.id}
-              className="group flex flex-col justify-between overflow-hidden rounded-lg border border-slate-200/80 bg-white shadow-xs hover:border-[#C5A880]/50 transition-all duration-300"
+              className="group flex flex-col justify-between overflow-hidden rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs hover:border-[#C5A880]/50 transition-all duration-300"
             >
               {/* Photo & Badge */}
               <div className="relative overflow-hidden">
@@ -109,30 +109,30 @@ export default function OffersPage() {
               {/* Body */}
               <div className="flex-1 flex flex-col justify-between p-6 sm:p-7 space-y-5">
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-[11px] text-slate-500">
+                  <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-slate-400">
                     <Calendar className="h-3.5 w-3.5 text-[#C5A880]" />
                     <span>Valid until: {offer.validUntil}</span>
                     <span>•</span>
                     <span>{offer.minStay}</span>
                   </div>
 
-                  <h3 className="font-serif text-2xl font-bold text-slate-900 group-hover:text-[#997548] transition-colors leading-tight">
+                  <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white group-hover:text-[#997548] dark:group-hover:text-[#dfcaa4] transition-colors leading-tight">
                     {offer.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-light">
                     {offer.tagline}
                   </p>
 
                   {/* Inclusions */}
-                  <div className="pt-2 border-t border-slate-100 space-y-2">
-                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-700">
+                  <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-2">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">
                       Package Inclusions
                     </p>
                     <ul className="space-y-1.5">
                       {offer.inclusions.map((inc, i) => (
-                        <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
-                          <div className="flex h-4 w-4 items-center justify-center rounded-full bg-[#C5A880]/20 text-[#997548] shrink-0 mt-0.5">
+                        <li key={i} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-300">
+                          <div className="flex h-4 w-4 items-center justify-center rounded-full bg-[#C5A880]/20 text-[#997548] dark:text-[#dfcaa4] shrink-0 mt-0.5">
                             <Check className="h-2.5 w-2.5" />
                           </div>
                           <span>{inc}</span>
@@ -143,11 +143,11 @@ export default function OffersPage() {
                 </div>
 
                 {/* Promo Code & Action */}
-                <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   {/* Copy code pill */}
-                  <div className="flex items-center gap-2 rounded-xl bg-slate-50 border border-slate-200 px-3 py-1.5">
-                    <span className="text-[10px] uppercase font-bold text-slate-400">Code:</span>
-                    <span className="font-mono text-xs font-bold text-slate-900">{offer.promoCode}</span>
+                  <div className="flex items-center gap-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-3 py-1.5">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 dark:text-slate-500">Code:</span>
+                    <span className="font-mono text-xs font-bold text-slate-900 dark:text-white">{offer.promoCode}</span>
                     <button
                       type="button"
                       onClick={() => handleCopyCode(offer.promoCode)}

@@ -47,7 +47,7 @@ export default function TestimonialsSection({
       author,
       role: "Verified Guest",
       location: location || "Global Traveler",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+      avatar: "/images/placeholders/100x100.svg",
       rating: ratingVal,
       suiteStayed,
       date: "Just now",
@@ -77,7 +77,7 @@ export default function TestimonialsSection({
   ];
 
   return (
-    <section className={`py-16 sm:py-24 bg-slate-50/70 border-y border-slate-200/60 ${className}`}>
+    <section className={`py-16 sm:py-24 bg-slate-50/70 dark:bg-slate-950/70 border-y border-slate-200/60 dark:border-slate-800 transition-colors duration-300 ${className}`}>
       <Container>
         <SectionHeading
           eyebrow={subtitle}
@@ -97,15 +97,15 @@ export default function TestimonialsSection({
         />
 
         {/* Rating Score Banner */}
-        <div className="rounded-lg border border-slate-200/80 bg-white p-6 sm:p-8 shadow-xs mb-12">
+        <div className="rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 shadow-xs mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             {/* Left overall rating */}
-            <div className="text-center lg:text-left space-y-2 border-b lg:border-b-0 lg:border-r border-slate-100 pb-6 lg:pb-0 lg:pr-8">
-              <span className="text-[11px] font-bold uppercase tracking-widest text-[#997548]">
+            <div className="text-center lg:text-left space-y-2 border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-slate-800 pb-6 lg:pb-0 lg:pr-8">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
                 World Luxury Score
               </span>
               <div className="flex items-center justify-center lg:justify-start gap-3">
-                <span className="font-serif text-5xl sm:text-6xl font-bold text-slate-900">
+                <span className="font-serif text-5xl sm:text-6xl font-bold text-slate-900 dark:text-white">
                   4.98
                 </span>
                 <div>
@@ -114,7 +114,7 @@ export default function TestimonialsSection({
                       <Star key={i} className="h-4 w-4 fill-[#C5A880]" />
                     ))}
                   </div>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">
                     Based on 480+ Verified Stays
                   </p>
                 </div>
@@ -125,19 +125,19 @@ export default function TestimonialsSection({
             <div className="space-y-2.5">
               {reviewBreakdown.map((item) => (
                 <div key={item.label} className="flex items-center justify-between text-xs">
-                  <span className="text-slate-600">{item.label}</span>
+                  <span className="text-slate-600 dark:text-slate-300">{item.label}</span>
                   <div className="flex items-center gap-2">
-                    <div className="w-24 bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                    <div className="w-24 bg-slate-100 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
                       <div className="bg-[#C5A880] h-full rounded-full" style={{ width: `${(parseFloat(item.score) / 5) * 100}%` }} />
                     </div>
-                    <span className="font-bold text-slate-900 w-6 text-right">{item.score}</span>
+                    <span className="font-bold text-slate-900 dark:text-white w-6 text-right">{item.score}</span>
                   </div>
                 </div>
               ))}
             </div>
 
             {/* Right Pillars */}
-            <div className="grid grid-cols-2 gap-3 border-t lg:border-t-0 lg:border-l border-slate-100 pt-6 lg:pt-0 lg:pl-8 text-xs text-slate-600">
+            <div className="grid grid-cols-2 gap-3 border-t lg:border-t-0 lg:border-l border-slate-100 dark:border-slate-800 pt-6 lg:pt-0 lg:pl-8 text-xs text-slate-600 dark:text-slate-300">
               <div className="flex items-start gap-2">
                 <Award className="h-4 w-4 text-[#C5A880] shrink-0 mt-0.5" />
                 <span>TripAdvisor Best of the Best 2025</span>

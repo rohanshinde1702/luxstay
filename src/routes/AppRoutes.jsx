@@ -10,7 +10,6 @@ import HomeVilla from "../pages/home/HomeVilla";
 import HomeModern from "../pages/home/HomeModern";
 import HomeBeach from "../pages/home/HomeBeach";
 import HomeDark from "../pages/home/HomeDark";
-import HomeDemo from "../pages/home/HomeDemo";
 import LandingPage from "../pages/landing/LandingPage";
 
 // About variations

@@ -10,7 +10,7 @@ import { FACILITIES_DATA } from "../../data/facilities";
 
 export default function FacilitiesPage() {
   return (
-    <div className="space-y-16 pb-24">
+    <div className="space-y-16 pb-24 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Hero Header */}
       <section className="relative bg-slate-950 py-16 sm:py-24 text-white overflow-hidden">
         <div className="absolute top-0 right-1/4 h-80 w-80 rounded-full bg-[#C5A880]/10 blur-3xl pointer-events-none" />
@@ -45,7 +45,7 @@ export default function FacilitiesPage() {
           {FACILITIES_DATA.map((fac) => (
             <div
               key={fac.id}
-              className="group flex flex-col justify-between overflow-hidden rounded-lg border border-slate-200/80 bg-white shadow-xs hover:border-[#C5A880]/50 transition-all duration-300"
+              className="group flex flex-col justify-between overflow-hidden rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs hover:border-[#C5A880]/50 transition-all duration-300"
             >
               {/* Photo */}
               <div className="relative overflow-hidden">
@@ -65,19 +65,19 @@ export default function FacilitiesPage() {
               {/* Body */}
               <div className="flex-1 flex flex-col justify-between p-6 space-y-4">
                 <div className="space-y-3">
-                  <h3 className="font-serif text-xl font-bold text-slate-900 group-hover:text-[#997548] transition-colors leading-snug">
+                  <h3 className="font-serif text-xl font-bold text-slate-900 dark:text-white group-hover:text-[#997548] dark:group-hover:text-[#dfcaa4] transition-colors leading-snug">
                     {fac.name}
                   </h3>
 
-                  <p className="text-xs text-slate-600 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                     {fac.description}
                   </p>
 
                   {/* Specs */}
-                  <div className="pt-2 border-t border-slate-100 space-y-1.5">
+                  <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-1.5">
                     {fac.specs.map((spec, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700">
-                        <Check className="h-3.5 w-3.5 text-[#997548] shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
+                        <Check className="h-3.5 w-3.5 text-[#997548] dark:text-[#dfcaa4] shrink-0 mt-0.5" />
                         <span>{spec}</span>
                       </div>
                     ))}

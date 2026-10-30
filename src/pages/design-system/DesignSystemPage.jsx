@@ -68,7 +68,7 @@ export default function DesignSystemPage() {
         {/* Breadcrumbs */}
         <Breadcrumbs
           items={[
-            { label: "Developer Guide", path: "#" },
+            { label: "Overview", path: "/about" },
             { label: "Design System Showcase" },
           ]}
           className="mb-8"
@@ -76,7 +76,7 @@ export default function DesignSystemPage() {
 
         {/* Header */}
         <SectionHeading
-          eyebrow="Phase 2 Verified Design System"
+          eyebrow="Living Component Library"
           title="LuxStay Reusable"
           highlight="Component Foundation"
           description="Explore the unified design tokens, accessible UI primitives, and hospitality card templates built with Tailwind CSS v4 and React 19."

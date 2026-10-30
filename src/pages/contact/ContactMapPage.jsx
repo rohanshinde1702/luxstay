@@ -19,9 +19,9 @@ const ICON_MAP = {
 
 export default function ContactMapPage() {
   return (
-    <div className="bg-slate-50 min-h-screen pb-24">
+    <div className="bg-slate-50 dark:bg-slate-950 min-h-screen pb-24 text-slate-800 dark:text-slate-100 transition-colors duration-300">
       {/* Top Header */}
-      <div className="border-b border-slate-200 bg-white">
+      <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
         <Container className="py-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <Breadcrumbs
@@ -55,8 +55,14 @@ export default function ContactMapPage() {
               {SITE_CONFIG.address}
             </p>
             <div className="pt-2 flex justify-center gap-3">
-              <Button to="/contact" variant="primary" size="sm">
-                Open in GPS Navigator
+              <Button
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE_CONFIG.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="primary"
+                size="sm"
+              >
+                Open in Google Maps &rarr;
               </Button>
             </div>
           </div>
@@ -66,13 +72,13 @@ export default function ContactMapPage() {
       {/* Arrival Protocols Matrix */}
       <Container className="py-12 lg:py-16">
         <div className="max-w-3xl mx-auto text-center space-y-3 mb-12">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#997548]">
+          <span className="text-xs font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
             Arrival Guidance
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
             Arrival Protocols & Gateway Points
           </h2>
-          <p className="text-xs sm:text-sm text-slate-600 font-light">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-light">
             Seamless access whether arriving by private aviation, superyacht tender, or limousine.
           </p>
         </div>
@@ -83,15 +89,15 @@ export default function ContactMapPage() {
             return (
               <div
                 key={idx}
-                className="rounded-lg border border-slate-200/80 bg-white p-7 shadow-xs hover:shadow-sm transition-all space-y-4"
+                className="rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-7 shadow-xs hover:shadow-sm transition-all space-y-4"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#C5A880]/15 text-[#997548]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#C5A880]/15 text-[#997548] dark:text-[#dfcaa4]">
                   <Icon className="h-6 w-6" />
                 </div>
-                <h4 className="font-serif text-xl font-bold text-slate-900">
+                <h4 className="font-serif text-xl font-bold text-slate-900 dark:text-white">
                   {pt.mode}
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-light">
                   {pt.desc}
                 </p>
               </div>
