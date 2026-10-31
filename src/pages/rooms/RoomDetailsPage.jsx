@@ -170,11 +170,11 @@ export default function RoomDetailsPage() {
             <div className="flex items-baseline gap-1.5 mt-1">
               {room.oldPrice && (
                 <span className="text-sm text-slate-400 line-through">
-                  ₹{typeof room.oldPrice === 'number' ? room.oldPrice.toLocaleString() : room.oldPrice}
+                  ${typeof room.oldPrice === 'number' ? room.oldPrice.toLocaleString() : room.oldPrice}
                 </span>
               )}
-              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900">
-                ₹{typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
+              <span className="font-serif text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">
+                ${typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
               </span>
               <span className="text-xs text-slate-500 font-medium">/ night</span>
             </div>
@@ -379,7 +379,7 @@ export default function RoomDetailsPage() {
               <div className="flex items-baseline justify-between border-b border-slate-100 dark:border-slate-800/80 pb-4">
                 <div>
                   <span className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
-                    ₹{typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
+                    ${typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
                   </span>
                   <span className="text-xs text-slate-500 dark:text-slate-400 font-medium"> / night</span>
                 </div>
@@ -417,12 +417,12 @@ export default function RoomDetailsPage() {
               {/* Price Calculation Box */}
               <div className="rounded-lg bg-slate-50 dark:bg-[#070b14] border border-slate-200/60 dark:border-slate-800 p-4 space-y-2 text-xs">
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                  <span>₹{typeof room.price === 'number' ? room.price.toLocaleString() : room.price} x {nights} Nights</span>
-                  <span className="font-semibold text-slate-900 dark:text-white">₹{subtotal.toLocaleString()}</span>
+                  <span>${typeof room.price === 'number' ? room.price.toLocaleString() : room.price} x {nights} Nights</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">${subtotal.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
                   <span>Resort Fees & Taxes (12%)</span>
-                  <span className="font-semibold text-slate-900 dark:text-white">₹{taxes.toLocaleString()}</span>
+                  <span className="font-semibold text-slate-900 dark:text-white">${taxes.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between text-emerald-700 dark:text-emerald-400">
                   <span>Complimentary Butler & Champagne</span>
@@ -431,7 +431,7 @@ export default function RoomDetailsPage() {
                 <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex justify-between items-center text-sm font-bold text-slate-900 dark:text-white">
                   <span>Total Due:</span>
                   <span className="font-serif text-xl text-[#997548] dark:text-[#dfcaa4]">
-                    ₹{total.toLocaleString()}
+                    ${total.toLocaleString()}
                   </span>
                 </div>
               </div>

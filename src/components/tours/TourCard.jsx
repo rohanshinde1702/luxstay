@@ -94,11 +94,11 @@ export default function TourCard({
               <div className="text-right">
                 {oldPrice && (
                   <span className="text-xs text-slate-400 line-through mr-1.5">
-                    ₹{typeof oldPrice === 'number' ? oldPrice.toLocaleString() : oldPrice}
+                    ${typeof oldPrice === 'number' ? oldPrice.toLocaleString() : oldPrice}
                   </span>
                 )}
                 <span className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-                  ₹{typeof price === 'number' ? price.toLocaleString() : price}
+                  ${typeof price === 'number' ? price.toLocaleString() : price}
                 </span>
                 <span className="text-xs text-slate-500 dark:text-slate-400 font-medium"> / person</span>
               </div>
@@ -201,11 +201,11 @@ export default function TourCard({
         <div className="absolute bottom-3.5 right-3.5 z-10 rounded-xl bg-slate-950/80 backdrop-blur-md px-3 py-1.5 text-white shadow-lg pointer-events-none">
           {oldPrice && (
             <span className="text-[11px] text-slate-400 line-through mr-1.5">
-              ₹{typeof oldPrice === 'number' ? oldPrice.toLocaleString() : oldPrice}
+              ${typeof oldPrice === 'number' ? oldPrice.toLocaleString() : oldPrice}
             </span>
           )}
           <span className="font-serif text-base font-bold text-[#dfcaa4]">
-            ₹{typeof price === 'number' ? price.toLocaleString() : price}
+            ${typeof price === 'number' ? price.toLocaleString() : price}
           </span>
           <span className="text-[10px] text-slate-300"> / guest</span>
         </div>

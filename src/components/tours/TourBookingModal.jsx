@@ -289,7 +289,7 @@ export default function TourBookingModal({
                 />
                 <div className="flex items-center gap-1.5 w-full">
                   <span className="font-semibold text-slate-800 dark:text-white">Private Master Guide</span>
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold ml-auto">+₹1,500</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold ml-auto">+$1,500</span>
                 </div>
               </label>
             </div>
@@ -298,23 +298,23 @@ export default function TourBookingModal({
           {/* Price Breakdown */}
           <div className="rounded-lg bg-slate-900 dark:bg-slate-950 dark:border dark:border-slate-800 text-white p-4 space-y-2 text-xs">
             <div className="flex justify-between text-slate-300">
-              <span>₹{typeof tour.price === 'number' ? tour.price.toLocaleString() : tour.price} x {participants} Travelers</span>
-              <span>₹{basePrice.toLocaleString()}</span>
+              <span>${typeof tour.price === 'number' ? tour.price.toLocaleString() : tour.price} x {participants} Travelers</span>
+              <span>${basePrice.toLocaleString()}</span>
             </div>
             {privateGuideAddon && (
               <div className="flex justify-between text-slate-300">
                 <span>Dedicated Private Guide</span>
-                <span>+₹1,500</span>
+                <span>+$1,500</span>
               </div>
             )}
             <div className="flex justify-between text-slate-300">
               <span>Estimated Marine & Park Permits (10%)</span>
-              <span>₹{taxes.toLocaleString()}</span>
+              <span>${taxes.toLocaleString()}</span>
             </div>
             <div className="pt-2 border-t border-slate-800 flex justify-between items-center text-sm font-bold">
               <span>Total Estimated:</span>
               <span className="font-serif text-lg text-[#dfcaa4]">
-                ₹{totalAmount.toLocaleString()}
+                ${totalAmount.toLocaleString()}
               </span>
             </div>
           </div>
@@ -504,7 +504,7 @@ export default function TourBookingModal({
               </button>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-300">
-              Date: {tourDate} • {participants} Guests • Total: ₹{totalAmount.toLocaleString()}
+              Date: {tourDate} • {participants} Guests • Total: ${totalAmount.toLocaleString()}
             </p>
           </div>
 

@@ -142,7 +142,7 @@ export default function SavedDrawer({ isOpen, onClose }) {
                     <div className="flex items-center justify-between pt-1 border-t border-slate-200/60 dark:border-slate-700/60 text-xs">
                       {item.price && (
                         <span className="font-bold text-slate-900 dark:text-white">
-                          ₹{typeof item.price === "number" ? item.price.toLocaleString() : item.price}
+                          ${typeof item.price === "number" ? item.price.toLocaleString() : item.price}
                           <span className="text-[10px] text-slate-500 font-normal"> / nt</span>
                         </span>
                       )}

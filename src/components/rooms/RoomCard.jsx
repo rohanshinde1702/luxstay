@@ -93,11 +93,11 @@ export default function RoomCard({
               <div className="text-right">
                 {oldPrice && (
                   <span className="text-xs text-slate-400 line-through mr-2">
-                    ₹{typeof oldPrice === 'number' ? oldPrice.toLocaleString() : oldPrice}
+                    ${typeof oldPrice === 'number' ? oldPrice.toLocaleString() : oldPrice}
                   </span>
                 )}
                 <span className="font-serif text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-                  ₹{typeof price === 'number' ? price.toLocaleString() : price}
+                  ${typeof price === 'number' ? price.toLocaleString() : price}
                 </span>
                 <span className="text-xs text-slate-500 dark:text-slate-400 font-medium"> / night</span>
               </div>
@@ -202,7 +202,7 @@ export default function RoomCard({
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-1">
             <Rating value={rating} size="xs" showValue={false} />
-            <span className="text-xs font-bold text-slate-900 dark:text-white">₹{typeof price === 'number' ? price.toLocaleString() : price}<span className="text-[10px] text-slate-500 dark:text-slate-400 font-normal">/nt</span></span>
+            <span className="text-xs font-bold text-slate-900 dark:text-white">${typeof price === 'number' ? price.toLocaleString() : price}<span className="text-[10px] text-slate-500 dark:text-slate-400 font-normal">/nt</span></span>
           </div>
           <h4 className="font-serif text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-[#997548] dark:group-hover:text-[#dfcaa4] transition-colors mt-0.5">
             <Link to={`/room/${slug}`}>{name}</Link>
@@ -254,11 +254,11 @@ export default function RoomCard({
         <div className="absolute bottom-3.5 right-3.5 z-10 rounded-xl bg-slate-950/80 backdrop-blur-md px-3 py-1.5 text-white shadow-lg pointer-events-none">
           {oldPrice && (
             <span className="text-[11px] text-slate-400 line-through mr-1.5">
-              ₹{typeof oldPrice === 'number' ? oldPrice.toLocaleString() : oldPrice}
+              ${typeof oldPrice === 'number' ? oldPrice.toLocaleString() : oldPrice}
             </span>
           )}
           <span className="font-serif text-base font-bold text-[#dfcaa4]">
-            ₹{typeof price === 'number' ? price.toLocaleString() : price}
+            ${typeof price === 'number' ? price.toLocaleString() : price}
           </span>
           <span className="text-[10px] text-slate-300"> / night</span>
         </div>

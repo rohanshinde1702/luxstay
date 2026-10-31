@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import {
   LuMapPin as MapPin,
@@ -120,6 +119,22 @@ export default function DestinationsMapPage() {
   const mapInstanceRef = useRef(null);
   const tileLayerRef = useRef(null);
   const markersRef = useRef({});
+  const leafletRef = useRef(null);
+  const [leafletLoaded, setLeafletLoaded] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    let isMounted = true;
+    import("leaflet").then((mod) => {
+      if (isMounted) {
+        leafletRef.current = mod.default || mod;
+        setLeafletLoaded(true);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Delegate Leaflet popup clicks to client-side React Router navigation
   useEffect(() => {
@@ -180,7 +195,9 @@ export default function DestinationsMapPage() {
 
   // Initialize Real Leaflet Map
   useEffect(() => {
-    if (!mapRef.current) return;
+    if (!leafletLoaded || !mapRef.current) return;
+    const L = leafletRef.current;
+    if (!L) return;
 
     if (!mapInstanceRef.current) {
       const map = L.map(mapRef.current, {
@@ -222,7 +239,7 @@ export default function DestinationsMapPage() {
             <div class="lux-pin-tag">
               <span class="lux-pin-dot"></span>
               <strong>${dest.title}</strong>
-              <span class="lux-pin-price">₹${priceText}</span>
+              <span class="lux-pin-price">$${priceText}</span>
             </div>
             <div class="lux-pin-arrow"></div>
           </div>
@@ -238,14 +255,14 @@ export default function DestinationsMapPage() {
       const popupHtml = `
         <div class="lux-map-popup">
           <div class="lux-popup-img-wrap">
-            <img src="${dest.image}" alt="${dest.title}" class="lux-popup-img" />
+            <img src="${dest.image}" alt="${dest.title}" class="lux-popup-img" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             <span class="lux-popup-badge">${dest.country}</span>
           </div>
           <div class="lux-popup-body">
             <h4 class="lux-popup-title">${dest.title}</h4>
             <p class="lux-popup-sub">${dest.tagline || dest.region}</p>
             <div class="lux-popup-footer">
-              <span class="lux-popup-price">From <strong>₹${priceText}</strong> / night</span>
+              <span class="lux-popup-price">From <strong>$${priceText}</strong> / night</span>
               <a href="/destination/${dest.slug}" class="lux-popup-btn">View Guide &rarr;</a>
             </div>
           </div>
@@ -267,13 +284,17 @@ export default function DestinationsMapPage() {
     });
 
     return () => {
-      // Cleanup
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
     };
-  }, []);
+  }, [leafletLoaded]);
 
   // Update Tile Layer when layer switcher is changed
   useEffect(() => {
-    if (!mapInstanceRef.current) return;
+    if (!mapInstanceRef.current || !leafletRef.current) return;
+    const L = leafletRef.current;
     const map = mapInstanceRef.current;
     if (tileLayerRef.current) {
       map.removeLayer(tileLayerRef.current);
@@ -284,11 +305,12 @@ export default function DestinationsMapPage() {
       subdomains: currentLayerConfig.subdomains,
       maxZoom: 19,
     }).addTo(map);
-  }, [activeLayer]);
+  }, [activeLayer, leafletLoaded]);
 
   // Update active marker visual state when selectedDestination changes
   useEffect(() => {
-    if (!mapInstanceRef.current) return;
+    if (!mapInstanceRef.current || !leafletRef.current) return;
+    const L = leafletRef.current;
     const map = mapInstanceRef.current;
 
     // Refresh icon classes
@@ -305,7 +327,7 @@ export default function DestinationsMapPage() {
               <div class="lux-pin-tag">
                 <span class="lux-pin-dot"></span>
                 <strong>${dest.title}</strong>
-                <span class="lux-pin-price">₹${priceText}</span>
+                <span class="lux-pin-price">$${priceText}</span>
               </div>
               <div class="lux-pin-arrow"></div>
             </div>
@@ -519,7 +541,7 @@ export default function DestinationsMapPage() {
                         <div className="overflow-hidden">
                           <span className="block text-xs font-semibold truncate text-slate-900 dark:text-white">{dest.title}</span>
                           <span className="block text-[10px] text-slate-500 dark:text-slate-400 truncate">
-                            {dest.country} • ₹{priceFormatted}
+                            {dest.country} • ${priceFormatted}
                           </span>
                         </div>
                       </button>
@@ -578,7 +600,7 @@ export default function DestinationsMapPage() {
                   <div className="text-right">
                     <span className="block text-[10px] uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold">Starting From</span>
                     <span className="text-base font-bold text-[#997548] dark:text-[#dfcaa4]">
-                      ₹{typeof selectedDestination.startingPrice === "number" ? selectedDestination.startingPrice.toLocaleString() : selectedDestination.startingPrice} <span className="text-xs text-slate-500 dark:text-slate-400 font-normal">/ night</span>
+                      ${typeof selectedDestination.startingPrice === "number" ? selectedDestination.startingPrice.toLocaleString() : selectedDestination.startingPrice} <span className="text-xs text-slate-500 dark:text-slate-400 font-normal">/ night</span>
                     </span>
                   </div>
                 </div>

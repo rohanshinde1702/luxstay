@@ -3,21 +3,26 @@ import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import {
   LuX as X,
-  LuChevronDown as ChevronDown,
   LuPhone as Phone,
   LuMail as Mail,
   LuMapPin as MapPin,
   LuSun as Sun,
-  LuMoon as Moon
+  LuMoon as Moon,
+  LuUser as User,
+  LuLogIn as LogIn,
+  LuUserPlus as UserPlus,
+  LuLogOut as LogOut
 } from "react-icons/lu";
 import { FaAngleRight } from "react-icons/fa6";
 import { NAV_LINKS } from "../../constants/navigation";
 import { SITE_CONFIG } from "../../constants/theme";
 import { useTheme } from "../../hooks/useTheme";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function MobileNav({ isOpen, onClose }) {
   const [expandedSection, setExpandedSection] = useState(null);
   const { theme, toggleTheme } = useTheme();
+  const { user, isAuthenticated, logout } = useAuth();
 
   // Esc key listener and body overflow lock
   useEffect(() => {
@@ -84,6 +89,75 @@ export default function MobileNav({ isOpen, onClose }) {
               <X className="h-5 w-5" />
             </button>
           </div>
+        </div>
+
+        {/* User Auth Card for Mobile */}
+        <div className="border-b border-slate-100 dark:border-slate-800 px-4 py-3.5 bg-slate-50/70 dark:bg-slate-800/40">
+          {isAuthenticated && user ? (
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#C5A880]/20 text-[#997548] dark:text-[#dfcaa4] font-serif font-bold text-xs">
+                  {user.name.charAt(0)}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-semibold text-xs text-slate-900 dark:text-white truncate">{user.name}</span>
+                    <span className="shrink-0 px-1.5 py-0.2 rounded-full bg-[#C5A880]/20 text-[9px] font-bold text-[#997548] dark:text-[#dfcaa4] uppercase">
+                      {user.tier}
+                    </span>
+                  </div>
+                  <span className="block text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
+                    Credit: ${user.welcomeCredit.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2 pt-0.5">
+                <Link
+                  to="/dashboard"
+                  onClick={onClose}
+                  className="flex-1 text-center py-1.5 px-2 rounded-md bg-[#C5A880] text-slate-950 text-[11px] font-bold transition-colors shadow-xs"
+                >
+                  My Dashboard
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    onClose();
+                  }}
+                  className="py-1.5 px-2.5 rounded-md hover:bg-rose-50 dark:hover:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-[11px] font-semibold transition-colors flex items-center gap-1 cursor-pointer"
+                >
+                  <LogOut className="h-3 w-3" />
+                  <span>Sign Out</span>
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-xs font-semibold text-slate-800 dark:text-slate-200">
+                <User className="h-4 w-4 text-[#C5A880]" />
+                <span>Guest Sanctuary</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <Link
+                  to="/login"
+                  onClick={onClose}
+                  className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-slate-900 dark:bg-[#C5A880] text-white dark:text-slate-950 text-xs font-semibold uppercase tracking-wider hover:bg-[#C5A880] hover:text-slate-950 transition-colors shadow-xs"
+                >
+                  <LogIn className="h-3.5 w-3.5" />
+                  <span>Sign In</span>
+                </Link>
+                <Link
+                  to="/register"
+                  onClick={onClose}
+                  className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold uppercase tracking-wider hover:border-[#C5A880] hover:text-[#997548] dark:hover:text-[#dfcaa4] transition-colors"
+                >
+                  <UserPlus className="h-3.5 w-3.5" />
+                  <span>Sign Up</span>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Links list */}

@@ -146,11 +146,11 @@ export default function RoomTable({ rooms = [], onBook, className = "" }) {
                     <div>
                       {oldPrice && (
                         <span className="text-[10px] text-slate-400 line-through block">
-                          ₹{typeof oldPrice === "number" ? oldPrice.toLocaleString() : oldPrice}
+                          ${typeof oldPrice === "number" ? oldPrice.toLocaleString() : oldPrice}
                         </span>
                       )}
                       <span className="font-serif text-sm font-bold text-slate-900 dark:text-[#dfcaa4] block">
-                        ₹{typeof price === "number" ? price.toLocaleString() : price}
+                        ${typeof price === "number" ? price.toLocaleString() : price}
                       </span>
                       <span className="text-[10px] text-slate-400 uppercase tracking-wider block">
                         per night

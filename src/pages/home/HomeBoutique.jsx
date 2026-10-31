@@ -128,25 +128,25 @@ const EXPERIENCES_DATA = [
   {
     id: "exp-1",
     title: "Sunset Cruise",
-    price: "From ₹ 9,500",
+    price: "From $ 9,500",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "exp-2",
     title: "Island Tour",
-    price: "From ₹ 7,500",
+    price: "From $ 7,500",
     image: "https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "exp-3",
     title: "Spa & Wellness",
-    price: "From ₹ 6,000",
+    price: "From $ 6,000",
     image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
   },
   {
     id: "exp-4",
     title: "Local Culture",
-    price: "From ₹ 4,500",
+    price: "From $ 4,500",
     image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
   },
 ];
@@ -308,11 +308,9 @@ export default function HomeBoutique() {
       <section className="relative min-h-[92vh] lg:min-h-[95vh] flex items-center justify-center py-24 sm:py-32">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <img
-            src={activeHero.image}
+          <img src={activeHero.image}
             alt="LuxStay Boutique Hotel"
-            className="w-full h-full object-cover object-center"
-          />
+            className="w-full h-full object-cover object-center" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-linear-to-r from-slate-950/85 via-slate-950/60 to-slate-950/35" />
           <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-slate-950/40" />
         </div>
@@ -534,11 +532,9 @@ export default function HomeBoutique() {
             {/* Right Photo with Botanical Aesthetic Art Frame */}
             <div className="lg:col-span-6 relative">
               <div className="rounded-lg overflow-hidden shadow-2xl border border-stone-200 dark:border-slate-800 aspect-4/3 relative z-10">
-                <img
-                  src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=85"
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=85"
                   alt="LuxStay Boutique Living Room"
-                  className="w-full h-full object-cover"
-                />
+                  className="w-full h-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               </div>
 
               {/* Botanical Line Art Accent Overlay */}
@@ -594,11 +590,9 @@ export default function HomeBoutique() {
                 <div>
                   {/* Image with Badge */}
                   <div className="relative h-52 overflow-hidden">
-                    <img
-                      src={room.image}
+                    <img src={room.image}
                       alt={room.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <span className="absolute bottom-3 left-3 bg-slate-950/80 backdrop-blur-md text-white font-medium text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-md">
                       {room.badge}
                     </span>
@@ -684,11 +678,9 @@ export default function HomeBoutique() {
                   onClick={() => showToast(`Selected Experience: ${exp.title}`)}
                   className="relative h-72 sm:h-80 rounded-lg overflow-hidden group cursor-pointer shadow-xl border border-white/10 flex flex-col justify-end p-4"
                 >
-                  <img
-                    src={exp.image}
+                  <img src={exp.image}
                     alt={exp.title}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                   <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
                   
                   <div className="relative z-10 space-y-1">
@@ -716,11 +708,9 @@ export default function HomeBoutique() {
             
             {/* Left Column: Dining Panoramic Photo */}
             <div className="lg:col-span-6 rounded-lg overflow-hidden shadow-2xl border border-stone-200 dark:border-slate-800 aspect-4/3">
-              <img
-                src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=85"
+              <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1200&q=85"
                 alt="Seaside Restaurant Dining"
-                className="w-full h-full object-cover"
-              />
+                className="w-full h-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             </div>
 
             {/* Right Column: Content & 3 Features */}
@@ -835,11 +825,9 @@ export default function HomeBoutique() {
                 onClick={() => setActiveLightboxImg(item)}
                 className="relative h-64 sm:h-72 rounded-lg overflow-hidden group cursor-pointer shadow-md border border-stone-200 dark:border-slate-800"
               >
-                <img
-                  src={item.image}
+                <img src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="text-xs font-medium text-white">{item.title}</span>
                 </div>
@@ -899,11 +887,9 @@ export default function HomeBoutique() {
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={t.avatar}
+                    <img src={t.avatar}
                       alt={t.name}
-                      className="h-11 w-11 rounded-full object-cover border border-[#4E5E4E]/30"
-                    />
+                      className="h-11 w-11 rounded-full object-cover border border-[#4E5E4E]/30" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div>
                       <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                         {t.name}
@@ -973,11 +959,9 @@ export default function HomeBoutique() {
                 >
                   <div>
                     <div className="relative h-48 overflow-hidden">
-                      <img
-                        src={post.image}
+                      <img src={post.image}
                         alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     </div>
 
                     <div className="p-5 space-y-2">
@@ -1042,11 +1026,9 @@ export default function HomeBoutique() {
             >
               <X className="h-5 w-5" />
             </button>
-            <img
-              src={activeLightboxImg.image}
+            <img src={activeLightboxImg.image}
               alt={activeLightboxImg.title}
-              className="w-full h-full object-contain max-h-[80vh]"
-            />
+              className="w-full h-full object-contain max-h-[80vh]" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             <div className="bg-slate-950/95 p-4 text-white text-center">
               <p className="text-sm font-light">{activeLightboxImg.title}</p>
             </div>

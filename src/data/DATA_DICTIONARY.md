@@ -143,7 +143,7 @@ export const PAGE_POPUPS_CONFIG = {
     eyebrow: "LIMITED TIME OFFER",
     title: "Get Up to 40% Off on Your Next Stay",
     subtitle: "Indulge in luxury, comfort and breathtaking views...",
-    image: "/images/luxury-beach-popup-villa.jpg",
+    image: "/images/placeholders/750x1000.svg",
     promoCode: "BEACH40",
     promoDiscount: "40% Discount",
     badge: "Special Offer",
@@ -217,6 +217,23 @@ useEffect(() => {
     .finally(() => setLoading(false));
 }, []);
 ```
+
+## 🖼️ Media & Video Placeholder Standards (ThemeForest Edition)
+
+In compliance with Envato marketplace policies, media assets in this edition use standardized neutral gray SVG dimension placeholders (`#D1D5DB`) matching exact aspect ratios:
+
+### Image Placeholders
+- **Hero & Wide Banners**: `/images/placeholders/1905x680.svg` (1905 × 680), `/images/placeholders/1920x1080.svg` (1920 × 1080), `/images/placeholders/1900x500.svg` (1900 × 500)
+- **Room & Tour Cards**: `/images/placeholders/800x600.svg` (4:3), `/images/placeholders/800x530.svg` (16:10), `/images/placeholders/1200x800.svg` (3:2)
+- **Split Sections & Portraits**: `/images/placeholders/750x1000.svg` (3:4), `/images/placeholders/600x800.svg` (3:4)
+- **Square & Avatars**: `/images/placeholders/600x600.svg` (1:1), `/images/placeholders/100x100.svg` (1:1)
+
+### Video Placeholders
+- **Hero Video Background**: `1905 × 680` (`/images/placeholders/1905x680.svg`) in `HomeBeach.jsx`
+- **CTA Video Background**: `1900 × 500` (`/images/placeholders/1900x500.svg`) in `HomeBeach.jsx`
+- **Tour Lightbox Modal**: `1920 × 1080` (`/images/placeholders/1920x1080.svg`) in `HomeBeach.jsx` & `HomeModern.jsx`
+- **Cinematic Film Stories**: `1200 × 800` (`/images/placeholders/1200x800.svg`) in `GalleryVideoPage.jsx` & `gallery.js`
+- **Ambient Stream Header**: `1920 × 1080` (`/images/placeholders/1920x1080.svg`) in `GalleryVideoPage.jsx`
 
 ---
 

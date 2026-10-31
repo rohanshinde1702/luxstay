@@ -66,7 +66,7 @@ export default function SearchResultsPage() {
     results.rooms.length + results.tours.length + results.destinations.length;
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-24">
+    <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen pb-24 transition-colors">
       {/* Search Header */}
       <section className="bg-slate-950 text-white py-16">
         <Container>
@@ -100,8 +100,8 @@ export default function SearchResultsPage() {
 
       {/* Results Container */}
       <Container className="py-12">
-        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-6 mb-10">
-          <div className="flex gap-2">
+        <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-6 mb-10">
+          <div className="flex flex-wrap gap-2">
             {[
               { id: "all", label: `All (${totalResults})` },
               { id: "rooms", label: `Suites & Villas (${results.rooms.length})` },
@@ -113,8 +113,8 @@ export default function SearchResultsPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`rounded-xl px-4 py-2 text-xs font-semibold transition-all cursor-pointer ${
                   activeTab === tab.id
-                    ? "bg-slate-900 text-white shadow-xs"
-                    : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100"
+                    ? "bg-slate-900 text-white shadow-xs dark:bg-amber-500 dark:text-slate-950"
+                    : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-100 dark:bg-slate-900 dark:text-slate-300 dark:border-slate-800 dark:hover:bg-slate-800"
                 }`}
               >
                 {tab.label}
@@ -122,54 +122,69 @@ export default function SearchResultsPage() {
             ))}
           </div>
 
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-slate-500 dark:text-slate-400">
             {query ? `Search results for "${query}"` : "Featured recommendations"}
           </span>
         </div>
 
-        <div className="space-y-16">
-          {/* Rooms Section */}
-          {(activeTab === "all" || activeTab === "rooms") && results.rooms.length > 0 && (
-            <div className="space-y-6">
-              <h2 className="font-serif text-2xl font-bold text-slate-900">
-                Suites & Villas ({results.rooms.length})
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {results.rooms.map((room) => (
-                  <RoomCard key={room.id} room={room} variant="grid" />
-                ))}
+        {totalResults === 0 ? (
+          <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8">
+            <h3 className="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">No results found</h3>
+            <p className="text-slate-600 dark:text-slate-400 max-w-md mx-auto text-sm">
+              We couldn&apos;t find any suites, expeditions or destinations matching &quot;{query}&quot;. Try adjusting your keywords or clearing the search filter.
+            </p>
+            <button
+              onClick={() => setQuery("")}
+              className="mt-6 px-6 py-2.5 rounded-full bg-slate-900 text-white dark:bg-amber-500 dark:text-slate-950 text-xs font-semibold hover:opacity-90 cursor-pointer"
+            >
+              Clear Search
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-16">
+            {/* Rooms Section */}
+            {(activeTab === "all" || activeTab === "rooms") && results.rooms.length > 0 && (
+              <div className="space-y-6">
+                <h2 className="font-serif text-2xl font-bold text-slate-900 dark:text-white">
+                  Suites & Villas ({results.rooms.length})
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {results.rooms.map((room) => (
+                    <RoomCard key={room.id} room={room} variant="grid" />
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Tours Section */}
-          {(activeTab === "all" || activeTab === "tours") && results.tours.length > 0 && (
-            <div className="space-y-6">
-              <h2 className="font-serif text-2xl font-bold text-slate-900">
-                Private Expeditions & Tours ({results.tours.length})
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {results.tours.map((tour) => (
-                  <TourCard key={tour.id} tour={tour} variant="list" />
-                ))}
+            {/* Tours Section */}
+            {(activeTab === "all" || activeTab === "tours") && results.tours.length > 0 && (
+              <div className="space-y-6">
+                <h2 className="font-serif text-2xl font-bold text-slate-900 dark:text-white">
+                  Private Expeditions & Tours ({results.tours.length})
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {results.tours.map((tour) => (
+                    <TourCard key={tour.id} tour={tour} variant="list" />
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Destinations Section */}
-          {(activeTab === "all" || activeTab === "destinations") && results.destinations.length > 0 && (
-            <div className="space-y-6">
-              <h2 className="font-serif text-2xl font-bold text-slate-900">
-                Destinations ({results.destinations.length})
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {results.destinations.map((dest) => (
-                  <DestinationCard key={dest.id} destination={dest} variant="overlay" />
-                ))}
+            {/* Destinations Section */}
+            {(activeTab === "all" || activeTab === "destinations") && results.destinations.length > 0 && (
+              <div className="space-y-6">
+                <h2 className="font-serif text-2xl font-bold text-slate-900 dark:text-white">
+                  Destinations ({results.destinations.length})
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {results.destinations.map((dest) => (
+                    <DestinationCard key={dest.id} destination={dest} variant="overlay" />
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
       </Container>
     </div>
   );

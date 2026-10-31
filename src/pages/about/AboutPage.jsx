@@ -26,11 +26,9 @@ export default function AboutPage() {
       {/* Hero Cover */}
       <section className="relative overflow-hidden bg-slate-950 py-20 lg:py-28 text-white">
         <div className="absolute inset-0 z-0 opacity-30 mix-blend-overlay">
-          <img
-            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=80"
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=80"
             alt="LuxStay Heritage Estate"
-            className="h-full w-full object-cover"
-          />
+            className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-linear-to-b from-slate-950/80 via-slate-950/90 to-slate-950 z-0" />
 
@@ -209,11 +207,9 @@ export default function AboutPage() {
                 className="overflow-hidden rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#0c1322] shadow-xs hover:shadow-lg transition-all"
               >
                 <div className="aspect-4/3 overflow-hidden">
-                  <img
-                    src={member.image}
+                  <img src={member.image}
                     alt={member.name}
-                    className="h-full w-full object-cover"
-                  />
+                    className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 </div>
                 <div className="p-6 space-y-2">
                   <h4 className="font-serif text-xl font-bold text-slate-900 dark:text-white">

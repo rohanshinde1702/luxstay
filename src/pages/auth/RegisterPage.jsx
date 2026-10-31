@@ -4,7 +4,8 @@ import {
   LuLock as Lock,
   LuMail as Mail,
   LuUser as User,
-  LuCircleCheck as CheckCircle2
+  LuCircleCheck as CheckCircle2,
+  LuCircleAlert as AlertCircle
 } from "react-icons/lu";
 import Button from "../../components/common/Button";
 import { VIP_TIERS_DATA } from "../../data/membership";
@@ -17,19 +18,29 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [selectedTier, setSelectedTier] = useState(VIP_TIERS_DATA[0].tier);
   const [registered, setRegistered] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
+
     const nameParts = name.trim().split(" ");
     const firstName = nameParts[0] || "Distinguished";
     const lastName = nameParts.slice(1).join(" ") || "Guest";
 
-    register({
+    const result = register({
       firstName,
       lastName,
       email,
+      password,
       tier: selectedTier,
     });
+
+    if (!result?.success) {
+      setError(result?.error || "Registration could not be completed.");
+      return;
+    }
+
     setRegistered(true);
   };
 
@@ -50,7 +61,7 @@ export default function RegisterPage() {
           </p>
         </div>
 
-        <div className="rounded-lg border border-slate-800 bg-slate-900/90 backdrop-blur-md p-8 sm:p-10 shadow-2xl space-y-6">
+        <div className="rounded-xl border border-slate-800 bg-slate-900/90 backdrop-blur-md p-8 sm:p-10 shadow-2xl space-y-6">
           {registered ? (
             <div className="text-center py-6 space-y-4">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
@@ -60,7 +71,7 @@ export default function RegisterPage() {
                 Account Created Successfully
               </h3>
               <p className="text-xs text-slate-300 leading-relaxed font-light">
-                Your member credentials and ₹25,000 welcome credit are now active. Welcome to the LuxStay society, {name}.
+                Your member credentials have been registered in LocalStorage with $2,500 welcome credit. Welcome to the LuxStay society, {name}.
               </p>
               <div className="pt-2 flex flex-col gap-2">
                 <Button to="/rooms" variant="primary" size="md" className="w-full justify-center">
@@ -73,6 +84,24 @@ export default function RegisterPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Error Message */}
+              {error && (
+                <div className="p-3.5 rounded-xl bg-rose-950/60 border border-rose-800/80 text-xs text-rose-300 flex items-start gap-2.5 animate-shake">
+                  <AlertCircle className="h-4 w-4 text-rose-400 shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <p className="font-semibold text-rose-200">Registration Failed</p>
+                    <p className="mt-0.5 text-[11px] leading-relaxed text-rose-300/90">{error}</p>
+                    <Link
+                      to="/login"
+                      className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#dfcaa4] hover:underline"
+                    >
+                      <span>Already have an account? Sign In</span>
+                      <span>→</span>
+                    </Link>
+                  </div>
+                </div>
+              )}
+
               <div className="space-y-1.5">
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
                   Full Legal Name *
@@ -83,7 +112,10 @@ export default function RegisterPage() {
                     required
                     placeholder="e.g. Lady Vivienne Montgomery"
                     value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                      if (error) setError("");
+                    }}
                     className="w-full rounded-xl border border-slate-800 bg-slate-950 p-2.5 pl-9 text-xs text-white placeholder-slate-500 focus:border-[#C5A880] focus:outline-hidden"
                   />
                   <User className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
@@ -100,7 +132,10 @@ export default function RegisterPage() {
                     required
                     placeholder="member@luxury.com"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (error) setError("");
+                    }}
                     className="w-full rounded-xl border border-slate-800 bg-slate-950 p-2.5 pl-9 text-xs text-white placeholder-slate-500 focus:border-[#C5A880] focus:outline-hidden"
                   />
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
@@ -115,9 +150,12 @@ export default function RegisterPage() {
                   <input
                     type="password"
                     required
-                    placeholder="At least 8 characters"
+                    placeholder="At least 6 characters"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      if (error) setError("");
+                    }}
                     className="w-full rounded-xl border border-slate-800 bg-slate-950 p-2.5 pl-9 text-xs text-white placeholder-slate-500 focus:border-[#C5A880] focus:outline-hidden"
                   />
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-slate-500" />
@@ -161,7 +199,7 @@ export default function RegisterPage() {
                 size="md"
                 className="w-full justify-center mt-4"
               >
-                Create Member Account
+                Create Member Account & Register
               </Button>
             </form>
           )}

@@ -128,11 +128,9 @@ export default function ToursPage() {
       {/* Hero Header */}
       <section className="relative overflow-hidden bg-slate-950 py-20 lg:py-24 text-white">
         <div className="absolute inset-0 z-0 opacity-25 mix-blend-overlay">
-          <img
-            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80"
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80"
             alt="Luxury Tours Background"
-            className="h-full w-full object-cover"
-          />
+            className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-linear-to-b from-slate-950/80 via-slate-950/90 to-slate-950 z-0" />
 

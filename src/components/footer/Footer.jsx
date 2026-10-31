@@ -90,38 +90,7 @@ function AwardsRibbon() {
   );
 }
 
-function ThemeFastSwitcher() {
-  return (
-    <div className="py-4 px-5 rounded-lg bg-slate-900/60 border border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-      <div className="flex items-center gap-2 text-slate-300">
-        <Compass className="h-4 w-4 text-[#C5A059]" />
-        <span className="font-semibold uppercase tracking-wider text-[11px] text-[#dfcaa4]">
-          Explore Signature Themes:
-        </span>
-      </div>
 
-      <div className="flex flex-wrap items-center justify-center gap-2">
-        {[
-          { label: "Grand Hotel Palace", path: "/home-hotel" },
-          { label: "Beachfront Resort", path: "/home-beach" },
-          { label: "Private Luxury Villa", path: "/home-villa" },
-          { label: "Dark Heritage Palace", path: "/home-dark" },
-          { label: "Thermal Alpine Resort", path: "/home-resort" },
-          { label: "Boutique Hideaway", path: "/home-boutique" },
-          { label: "Modern Travel", path: "/home-travel" },
-        ].map((theme, i) => (
-          <Link
-            key={i}
-            to={theme.path}
-            className="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-slate-300 hover:text-white hover:border-[#C5A059] transition-all text-[11px] font-medium"
-          >
-            {theme.label}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function BottomLegalBar() {
   return (
@@ -135,9 +104,9 @@ function BottomLegalBar() {
         <span>·</span>
         <Link to="/terms" className="hover:text-slate-300 transition-colors">Terms of Stay</Link>
         <span>·</span>
-        <Link to="/terms" className="hover:text-slate-300 transition-colors">Guest Safety</Link>
-        <span>·</span>
         <Link to="/search" className="hover:text-slate-300 transition-colors">Sitemap</Link>
+        <span>·</span>
+        <Link to="/404" className="hover:text-slate-300 transition-colors">404 Error</Link>
         <span>·</span>
         <Link to="/design-system" className="hover:text-slate-300 transition-colors">Design Tokens</Link>
       </div>
@@ -264,14 +233,14 @@ export default function Footer({ variant: propVariant }) {
                 </h3>
                 
                 <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-light max-w-2xl">
-                  Join our exclusive global community of discerning travelers. Receive private access to seasonal sanctuary previews, secret sommelier cellar dinners, and a <strong className="text-white font-medium">₹25,000 welcome credit</strong> toward your inaugural suite booking.
+                  Join our exclusive global community of discerning travelers. Receive private access to seasonal sanctuary previews, secret sommelier cellar dinners, and a <strong className="text-white font-medium">$2,500 welcome credit</strong> toward your inaugural suite booking.
                 </p>
 
                 {/* VIP Perks Row */}
                 <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-slate-300">
                   <div className="flex items-center gap-2 bg-slate-950/60 border border-slate-800/80 rounded-md px-3 py-2">
                     <Gift className="h-4 w-4 text-[#C5A059] shrink-0" />
-                    <span className="text-[11px] font-medium">₹25,000 Credit</span>
+                    <span className="text-[11px] font-medium">$2,500 Credit</span>
                   </div>
                   <div className="flex items-center gap-2 bg-slate-950/60 border border-slate-800/80 rounded-md px-3 py-2">
                     <ShieldCheck className="h-4 w-4 text-[#C5A059] shrink-0" />
@@ -322,7 +291,7 @@ export default function Footer({ variant: propVariant }) {
                 {subscribed && (
                   <div className="flex items-center gap-2 text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-800/60 p-2.5 rounded-xl">
                     <CheckCircle2 className="h-4 w-4 shrink-0" />
-                    <span>Welcome! Your ₹25,000 credit pass has been emailed to you.</span>
+                    <span>Welcome! Your $2,500 credit pass has been emailed to you.</span>
                   </div>
                 )}
 
@@ -454,7 +423,7 @@ export default function Footer({ variant: propVariant }) {
               </h4>
               <ul className="space-y-2.5 text-xs text-slate-400 font-light">
                 <li>
-                  <Link to="/destination/amalfi-coast" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
+                  <Link to="/destination/amalfi-coast-italy" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
                     <ChevronRight className="h-3 w-3 text-[#C5A059]/60" />
                     <span>Amalfi Coast, Italy</span>
                   </Link>
@@ -466,7 +435,7 @@ export default function Footer({ variant: propVariant }) {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/destination/swiss-alps" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
+                  <Link to="/destination/swiss-alps-zermatt" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
                     <ChevronRight className="h-3 w-3 text-[#C5A059]/60" />
                     <span>Zermatt & Swiss Alps</span>
                   </Link>
@@ -483,12 +452,15 @@ export default function Footer({ variant: propVariant }) {
                     <span>24/7 Butler Desk</span>
                   </Link>
                 </li>
+                <li>
+                  <Link to="/404" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
+                    <ChevronRight className="h-3 w-3 text-[#C5A059]/60" />
+                    <span>404 Error Page</span>
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
-
-          {/* THEME FAST SWITCHER */}
-          <ThemeFastSwitcher />
 
           {/* BOTTOM LEGAL BAR */}
           <BottomLegalBar />
@@ -661,7 +633,7 @@ export default function Footer({ variant: propVariant }) {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-400 font-light">
               <li>
-                <Link to="/destination/amalfi-coast" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
+                <Link to="/destination/amalfi-coast-italy" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
                   <ChevronRight className="h-3 w-3 text-[#C5A059]/60" />
                   <span>Amalfi Coast, Italy</span>
                 </Link>
@@ -673,7 +645,7 @@ export default function Footer({ variant: propVariant }) {
                 </Link>
               </li>
               <li>
-                <Link to="/destination/swiss-alps" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
+                <Link to="/destination/swiss-alps-zermatt" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
                   <ChevronRight className="h-3 w-3 text-[#C5A059]/60" />
                   <span>Zermatt & Swiss Alps</span>
                 </Link>
@@ -763,10 +735,7 @@ export default function Footer({ variant: propVariant }) {
 
         </div>
 
-        {/* 3. HOMEPAGE EXPERIENCE SHOWCASE FAST SWITCHER */}
-        <ThemeFastSwitcher />
-
-        {/* 4. BOTTOM BAR: COPYRIGHT, LEGAL & ENCRYPTION BADGES */}
+        {/* 3. BOTTOM BAR: COPYRIGHT, LEGAL & ENCRYPTION BADGES */}
         <BottomLegalBar />
 
       </div>

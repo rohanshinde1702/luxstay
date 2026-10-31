@@ -24,11 +24,9 @@ export default function AboutTeamPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-950 py-20 lg:py-28 text-white">
         <div className="absolute inset-0 z-0 opacity-25">
-          <img
-            src="/images/placeholders/1905x680.svg"
+          <img src="/images/placeholders/1905x680.svg"
             alt="LuxStay Team & Masters"
-            className="h-full w-full object-cover"
-          />
+            className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-linear-to-b from-slate-950/80 via-slate-950/90 to-slate-950 z-0" />
 
@@ -85,11 +83,9 @@ export default function AboutTeamPage() {
                 className="group flex flex-col justify-between overflow-hidden rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs hover:border-[#C5A880]/50 transition-all duration-300"
               >
                 <div className="relative aspect-4/3 overflow-hidden">
-                  <img
-                    src={member.image}
+                  <img src={member.image}
                     alt={member.name}
-                    className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                    className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                   <div className="absolute top-4 left-4 z-10">
                     <Badge variant="glass" size="xs">
                       {member.badge}

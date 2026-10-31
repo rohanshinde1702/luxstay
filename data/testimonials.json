@@ -1,0 +1,62 @@
+[
+  {
+    "id": "review-1",
+    "author": "Elena Rostova",
+    "role": "Architectural Digest Critic",
+    "location": "Zurich, Switzerland",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+    "rating": 5,
+    "suiteStayed": "Deluxe Ocean Panoramic Suite",
+    "date": "September 2026",
+    "verifiedStay": true,
+    "quote": "LuxStay sets a standard that few resorts globally can match. The transition between indoor luxury and outdoor coastal serenity is effortless. The concierge team anticipated every detail before we even asked."
+  },
+  {
+    "id": "review-2",
+    "author": "Marcus & Victoria Vance",
+    "role": "Private Equity Partners",
+    "location": "London, United Kingdom",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80",
+    "rating": 5,
+    "suiteStayed": "Royal Presidential Sanctuary Villa",
+    "date": "August 2026",
+    "verifiedStay": true,
+    "quote": "Our stay at the Royal Presidential Villa was nothing short of transcendent. Having our own dedicated chef prepare Michelin-grade dinners by our private heated infinity pool made our anniversary unforgettable."
+  },
+  {
+    "id": "review-3",
+    "author": "Jonathan Chen",
+    "role": "Tech Entrepreneur & Adventurer",
+    "location": "San Francisco, USA",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+    "rating": 5,
+    "suiteStayed": "Alpine Timber & Stone Chalet",
+    "date": "July 2026",
+    "verifiedStay": true,
+    "quote": "The ski-in / ski-out convenience combined with the private outdoor cedar hot tub overlooking the Matterhorn is truly unrivaled. The attention to detail in material selection and atmosphere is world-class."
+  },
+  {
+    "id": "review-4",
+    "author": "Aisha Rahman",
+    "role": "Luxury Travel Writer",
+    "location": "Dubai, UAE",
+    "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=80",
+    "rating": 5,
+    "suiteStayed": "Azure Lagoon Overwater Villa",
+    "date": "June 2026",
+    "verifiedStay": true,
+    "quote": "Floating above the turquoise lagoon with a glass floor beneath our bed was surreal. Sunrise breakfast delivered by canoe and the reef snorkelling right from our deck made it a dream."
+  },
+  {
+    "id": "review-5",
+    "author": "Henrik & Sofia Larsen",
+    "role": "Architects",
+    "location": "Copenhagen, Denmark",
+    "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=300&q=80",
+    "rating": 5,
+    "suiteStayed": "Metropolitan Skyline Penthouse",
+    "date": "May 2026",
+    "verifiedStay": true,
+    "quote": "As architects we notice everything — and the penthouse delivered. Floor-to-ceiling glass, warm natural materials and a skyline view that changed beautifully from dawn to midnight."
+  }
+]

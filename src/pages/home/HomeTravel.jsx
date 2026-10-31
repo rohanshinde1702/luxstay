@@ -39,7 +39,7 @@ const TOP_DESTINATIONS = [
     desc: "Best for: Romance & Views",
     image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=800&q=80",
     toursCount: 12,
-    startingPrice: "₹ 24,999",
+    startingPrice: "$ 24,999",
   },
   {
     id: "bali",
@@ -48,7 +48,7 @@ const TOP_DESTINATIONS = [
     desc: "Best for: Nature & Wellness",
     image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80",
     toursCount: 18,
-    startingPrice: "₹ 16,999",
+    startingPrice: "$ 16,999",
   },
   {
     id: "kyoto",
@@ -57,7 +57,7 @@ const TOP_DESTINATIONS = [
     desc: "Best for: Culture & History",
     image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80",
     toursCount: 15,
-    startingPrice: "₹ 21,999",
+    startingPrice: "$ 21,999",
   },
   {
     id: "dubai",
@@ -66,7 +66,7 @@ const TOP_DESTINATIONS = [
     desc: "Best for: Luxury & Shopping",
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80",
     toursCount: 22,
-    startingPrice: "₹ 31,999",
+    startingPrice: "$ 31,999",
   },
 ];
 
@@ -250,11 +250,9 @@ export default function HomeTravel() {
       <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center pt-24 pb-36">
         {/* Background Santorini Panoramic Sunset */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <img
-            src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=2400&q=85"
+          <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=2400&q=85"
             alt="Santorini Greece Sunset"
-            className="w-full h-full object-cover object-center"
-          />
+            className="w-full h-full object-cover object-center" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-linear-to-r from-slate-950/85 via-slate-950/55 to-slate-950/30" />
           <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-slate-950/40" />
         </div>
@@ -512,11 +510,9 @@ export default function HomeTravel() {
                 }}
                 className="group relative h-96 rounded-lg overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 flex flex-col justify-end p-6 border border-slate-200/60 dark:border-slate-800"
               >
-                <img
-                  src={dest.image}
+                <img src={dest.image}
                   alt={dest.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
 
                 {/* Country Tag */}
@@ -552,11 +548,9 @@ export default function HomeTravel() {
       <section className="relative py-28 overflow-hidden bg-slate-950 text-white">
         {/* Background Hiker & Emerald Alpine Lake Image */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2400&q=85"
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2400&q=85"
             alt="Alpine Emerald Lake"
-            className="w-full h-full object-cover opacity-45"
-          />
+            className="w-full h-full object-cover opacity-45" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-linear-to-r from-slate-950/95 via-slate-950/75 to-slate-950/60" />
         </div>
 
@@ -672,11 +666,9 @@ export default function HomeTravel() {
                 <div>
                   {/* Image with Badge and Heart button */}
                   <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={hotel.image}
+                    <img src={hotel.image}
                       alt={hotel.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400"
-                    />
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <span className="absolute top-3.5 left-3.5 bg-slate-950/80 backdrop-blur-md text-white font-medium text-[10px] uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
                       {hotel.badge}
                     </span>
@@ -719,7 +711,7 @@ export default function HomeTravel() {
                 <div className="p-5 pt-0 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                   <div>
                     <span className="text-lg font-bold text-slate-900 dark:text-white">
-                      ₹{hotel.price}
+                      ${hotel.price}
                     </span>
                     <span className="text-[11px] text-slate-400"> / night</span>
                   </div>
@@ -744,11 +736,9 @@ export default function HomeTravel() {
             
             {/* Left Photo with Cursive Annotation */}
             <div className="lg:col-span-4 relative rounded-lg overflow-hidden shadow-xl aspect-4/5">
-              <img
-                src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1000&q=80"
+              <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1000&q=80"
                 alt="Hiker Mountain Peak"
-                className="w-full h-full object-cover"
-              />
+                className="w-full h-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               <div className="absolute top-6 right-6 text-white text-right space-y-0.5">
                 <p className="font-serif italic text-2xl drop-shadow-md">Plan Better Travel ~</p>
               </div>
@@ -788,11 +778,9 @@ export default function HomeTravel() {
                   onClick={() => showToast(`Opened article: ${guide.title}`)}
                   className="flex items-center gap-4 p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:shadow-md transition-all cursor-pointer group"
                 >
-                  <img
-                    src={guide.image}
+                  <img src={guide.image}
                     alt={guide.title}
-                    className="h-16 w-16 rounded-md object-cover shrink-0 group-hover:scale-105 transition-transform"
-                  />
+                    className="h-16 w-16 rounded-md object-cover shrink-0 group-hover:scale-105 transition-transform" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                   <div className="space-y-1">
                     <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#997548] dark:group-hover:text-[#dfcaa4] transition-colors line-clamp-2 leading-snug">
                       {guide.title}
@@ -868,11 +856,9 @@ export default function HomeTravel() {
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={t.avatar}
+                    <img src={t.avatar}
                       alt={t.name}
-                      className="h-11 w-11 rounded-full object-cover border border-[#C5A880]/30"
-                    />
+                      className="h-11 w-11 rounded-full object-cover border border-[#C5A880]/30" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div>
                       <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                         {t.name}
@@ -906,11 +892,9 @@ export default function HomeTravel() {
       {/* -------------------------------------------------------------------------- */}
       <section className="relative py-20 overflow-hidden bg-slate-950 text-white">
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=85"
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=85"
             alt="Your Next Journey"
-            className="w-full h-full object-cover opacity-45"
-          />
+            className="w-full h-full object-cover opacity-45" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-linear-to-r from-slate-950/95 via-slate-950/80 to-slate-950/50" />
         </div>
 

@@ -12,7 +12,7 @@ import { isHomePage } from "../../data/pagePopups";
 
 const HOME_POPUP_PREVIEWS = [
   { id: "home-beach", label: "Beach Sanctuary (40% Off)", route: "/home-beach" },
-  { id: "home-hotel", label: "Grand Hotel (₹20K Credit)", route: "/home-hotel" },
+  { id: "home-hotel", label: "Grand Hotel ($2,000 Credit)", route: "/home-hotel" },
   { id: "home-resort", label: "Resort & Spa (Stay 5 Pay 4)", route: "/home-resort" },
   { id: "home-travel", label: "Travel & Expeditions (Free Heli)", route: "/home-travel" },
   { id: "home-boutique", label: "Heritage Boutique (15% Off)", route: "/home-boutique" },

@@ -177,11 +177,9 @@ export default function BlogDetailsPage() {
       {/* -------------------------------------------------------------------------- */}
       <section className="relative overflow-hidden bg-slate-950 text-white py-16 sm:py-24 border-b border-white/10">
         <div className="absolute inset-0 z-0 opacity-25">
-          <img
-            src={post.image}
+          <img src={post.image}
             alt={post.title}
-            className="h-full w-full object-cover"
-          />
+            className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-slate-950/60 z-0" />
 
@@ -224,11 +222,9 @@ export default function BlogDetailsPage() {
             {/* Author Byline */}
             {post.author && (
               <div className="flex items-center justify-center gap-3 pt-4 border-t border-white/10 max-w-md mx-auto">
-                <img
-                  src={post.author.avatar}
+                <img src={post.author.avatar}
                   alt={post.author.name}
-                  className="h-12 w-12 rounded-full object-cover ring-2 ring-[#C5A880]/50 shadow-lg"
-                />
+                  className="h-12 w-12 rounded-full object-cover ring-2 ring-[#C5A880]/50 shadow-lg" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 <div className="text-left">
                   <p className="text-sm font-bold text-white">{post.author.name}</p>
                   <p className="text-xs text-[#dfcaa4]">{post.author.role}</p>
@@ -327,11 +323,9 @@ export default function BlogDetailsPage() {
             {/* Author Bio Card */}
             {post.author && (
               <div className="rounded-2xl bg-slate-50 dark:bg-slate-900 p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800 flex flex-col sm:flex-row items-center sm:items-start gap-6">
-                <img
-                  src={post.author.avatar}
+                <img src={post.author.avatar}
                   alt={post.author.name}
-                  className="h-20 w-20 rounded-full object-cover ring-4 ring-[#C5A880]/30 shadow-md shrink-0"
-                />
+                  className="h-20 w-20 rounded-full object-cover ring-4 ring-[#C5A880]/30 shadow-md shrink-0" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 <div className="space-y-2 text-center sm:text-left">
                   <div>
                     <h3 className="font-serif text-lg font-bold text-slate-900 dark:text-white">
@@ -397,11 +391,9 @@ export default function BlogDetailsPage() {
                   <div key={comm.id} className="rounded-xl bg-slate-50/70 dark:bg-slate-900/40 p-5 border border-slate-200/60 dark:border-slate-800 space-y-2">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <img
-                          src={comm.avatar}
+                        <img src={comm.avatar}
                           alt={comm.author}
-                          className="h-8 w-8 rounded-full object-cover"
-                        />
+                          className="h-8 w-8 rounded-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                         <span className="text-xs font-bold text-slate-900 dark:text-white">
                           {comm.author}
                         </span>

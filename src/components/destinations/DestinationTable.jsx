@@ -142,7 +142,7 @@ export default function DestinationTable({ destinations = [], className = "" }) 
                   <td className="py-4 px-4 align-middle">
                     <div>
                       <span className="font-serif text-sm font-bold text-slate-900 dark:text-[#dfcaa4] block">
-                        ₹{typeof startingPrice === "number" ? startingPrice.toLocaleString() : startingPrice}
+                        ${typeof startingPrice === "number" ? startingPrice.toLocaleString() : startingPrice}
                       </span>
                       <span className="text-[10px] text-slate-400 uppercase tracking-wider block">
                         per night

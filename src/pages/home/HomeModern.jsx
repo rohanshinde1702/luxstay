@@ -133,7 +133,7 @@ const SPECIAL_OFFERS = [
     badge: "UP TO 20% OFF",
     title: "Weekend Getaway",
     subtitle: "Relax. Recharge. Repeat.",
-    price: "₹6,999",
+    price: "$6,999",
     priceNum: 6999,
     image: "/images/skyline/offer-weekend.jpg",
   },
@@ -142,7 +142,7 @@ const SPECIAL_OFFERS = [
     badge: "DISCOVER MORE",
     title: "City Explorer Package",
     subtitle: "Stay + Breakfast + City Tour",
-    price: "₹8,999",
+    price: "$8,999",
     priceNum: 8999,
     image: "/images/skyline/offer-city-explorer.jpg",
   },
@@ -151,7 +151,7 @@ const SPECIAL_OFFERS = [
     badge: "LIMITED TIME",
     title: "Romantic Escape",
     subtitle: "Special setup & candlelight dinner",
-    price: "₹9,999",
+    price: "$9,999",
     priceNum: 9999,
     image: "/images/skyline/offer-romantic-escape.jpg",
   },
@@ -294,11 +294,9 @@ export default function HomeModern() {
               className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${idx === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105 pointer-events-none"
                 }`}
             >
-              <img
-                src={slide.image}
+              <img src={slide.image}
                 alt={slide.titleMain}
-                className="w-full h-full object-cover object-center"
-              />
+                className="w-full h-full object-cover object-center" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               {/* Dark Gradient Vignettes for Clear Typography & Sunset Horizon */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#0B131B]/90 via-[#0B131B]/50 to-[#0B131B]/20" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0B131B]/90 via-transparent to-[#0B131B]/30" />
@@ -561,11 +559,9 @@ export default function HomeModern() {
                   <div>
                     {/* Image Thumbnail */}
                     <div className="relative h-56 overflow-hidden">
-                      <img
-                        src={room.image}
+                      <img src={room.image}
                         alt={room.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     </div>
 
                     {/* Room Info */}
@@ -615,11 +611,9 @@ export default function HomeModern() {
       <section className="relative py-28 overflow-hidden bg-[#0B131B] text-white">
         {/* Subtle Luxury Fitness / Lounge Backdrop */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/skyline/hero-rooftop-pool.jpg"
+          <img src="/images/skyline/hero-rooftop-pool.jpg"
             alt="Skyline Amenities"
-            className="w-full h-full object-cover opacity-15 filter blur-xs"
-          />
+            className="w-full h-full object-cover opacity-15 filter blur-xs" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-[#0B131B]/95" />
         </div>
 
@@ -722,11 +716,9 @@ export default function HomeModern() {
                   <div>
                     {/* Image with Top-Left Badge */}
                     <div className="relative h-52 overflow-hidden">
-                      <img
-                        src={pkg.image}
+                      <img src={pkg.image}
                         alt={pkg.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                       <span className="absolute top-3 left-3 bg-[#0B131B]/85 backdrop-blur-md text-[#D8B17A] font-bold text-[9px] uppercase tracking-wider px-2 py-0.5 rounded-sm border border-white/10">
                         {pkg.badge}
                       </span>
@@ -784,11 +776,9 @@ export default function HomeModern() {
 
             {/* Left: Large High-Floor Panoramic Restaurant Photo */}
             <div className="lg:col-span-4 rounded-lg overflow-hidden shadow-2xl h-80 sm:h-96 lg:h-[440px]">
-              <img
-                src="/images/skyline/dining-restaurant.jpg"
+              <img src="/images/skyline/dining-restaurant.jpg"
                 alt="Skyline Fine Dining Restaurant"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              />
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             </div>
 
             {/* Middle: Culinary Journey Text & CTA */}
@@ -808,7 +798,7 @@ export default function HomeModern() {
 
               <div className="pt-2">
                 <Link
-                  to="/dining"
+                  to="/services-dining"
                   className="inline-flex items-center gap-2 rounded-lg border border-white/40 hover:border-[#D4B68A] hover:bg-[#D4B68A] hover:text-slate-950 text-white px-6 py-3 text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer"
                 >
                   <span>EXPLORE DINING</span>
@@ -822,43 +812,33 @@ export default function HomeModern() {
               {/* Top Row: Steak (Left) + Rooftop Terrace (Right) */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-lg overflow-hidden shadow-md h-36 sm:h-44">
-                  <img
-                    src="/images/skyline/dining-steak.jpg"
+                  <img src="/images/skyline/dining-steak.jpg"
                     alt="Gourmet Steak"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md h-36 sm:h-44">
-                  <img
-                    src="/images/skyline/dining-terrace.jpg"
+                  <img src="/images/skyline/dining-terrace.jpg"
                     alt="Rooftop Dining Terrace"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 </div>
               </div>
 
               {/* Bottom Row: Coffee + Dessert + Fresh Salad (3 Columns) */}
               <div className="grid grid-cols-3 gap-4">
                 <div className="rounded-lg overflow-hidden shadow-md h-28 sm:h-32">
-                  <img
-                    src="/images/skyline/dining-coffee.jpg"
+                  <img src="/images/skyline/dining-coffee.jpg"
                     alt="Artisanal Coffee"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md h-28 sm:h-32">
-                  <img
-                    src="/images/skyline/dining-dessert.jpg"
+                  <img src="/images/skyline/dining-dessert.jpg"
                     alt="Gourmet Plated Dessert"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md h-28 sm:h-32">
-                  <img
-                    src="/images/skyline/dining-salad.jpg"
+                  <img src="/images/skyline/dining-salad.jpg"
                     alt="Fresh Artisan Salad"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 </div>
               </div>
             </div>
@@ -885,7 +865,7 @@ export default function HomeModern() {
             </div>
 
             <Link
-              to="/reviews"
+              to="/testimonials"
               className="inline-flex items-center gap-1 text-xs font-semibold text-[#997548] dark:text-[#D8B17A] hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               <span>View All Reviews</span>
@@ -903,11 +883,9 @@ export default function HomeModern() {
                 {/* Author Info & Rating */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={rev.avatar}
+                    <img src={rev.avatar}
                       alt={rev.name}
-                      className="h-10 w-10 rounded-full object-cover border border-[#D4B68A]/30"
-                    />
+                      className="h-10 w-10 rounded-full object-cover border border-[#D4B68A]/30" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div>
                       <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                         {rev.name}

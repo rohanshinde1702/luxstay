@@ -63,6 +63,7 @@ import ContactInquiryPage from "../pages/contact/ContactInquiryPage";
 import LoginPage from "../pages/auth/LoginPage";
 import RegisterPage from "../pages/auth/RegisterPage";
 import ForgotPasswordPage from "../pages/auth/ForgotPasswordPage";
+import UserDashboardPage from "../pages/dashboard/UserDashboardPage";
 
 // Utility pages
 import SearchResultsPage from "../pages/utility/SearchResultsPage";
@@ -70,6 +71,17 @@ import TermsPage from "../pages/utility/TermsPage";
 import PrivacyPage from "../pages/utility/PrivacyPage";
 import DesignSystemPage from "../pages/design-system/DesignSystemPage";
 import NotFoundPage from "../pages/error/NotFoundPage";
+
+// Admin Portal
+import {
+  AdminLayout,
+  AdminLoginPage,
+  AdminDashboard,
+  AdminHotelBookings,
+  AdminTravelBookings,
+  AdminUsers,
+  AdminInquiries,
+} from "../pages/admin";
 
 const router = createBrowserRouter([
   {
@@ -109,8 +121,13 @@ const router = createBrowserRouter([
       // Services & Facilities Variations
       { path: "services", element: <ServicesPage /> },
       { path: "services-dining", element: <ServicesDiningPage /> },
+      { path: "dining", element: <ServicesDiningPage /> },
+      { path: "spa", element: <ServicesPage /> },
       { path: "facilities", element: <FacilitiesPage /> },
       { path: "offers", element: <OffersPage /> },
+      { path: "membership", element: <OffersPage /> },
+      { path: "reviews", element: <TestimonialsPage /> },
+      { path: "villas", element: <RoomsPage initialView="grid" /> },
 
       // Destinations Variations
       { path: "destinations", element: <DestinationsPage initialView="grid" /> },
@@ -144,6 +161,8 @@ const router = createBrowserRouter([
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
       { path: "forgot-password", element: <ForgotPasswordPage /> },
+      { path: "dashboard", element: <UserDashboardPage /> },
+      { path: "my-account", element: <UserDashboardPage /> },
 
       // Utility Pages
       { path: "search", element: <SearchResultsPage /> },
@@ -152,6 +171,22 @@ const router = createBrowserRouter([
       { path: "design-system", element: <DesignSystemPage /> },
       { path: "404", element: <NotFoundPage /> },
       { path: "*", element: <NotFoundPage /> },
+    ],
+  },
+  // Dedicated Admin Portal (Outside MainLayout)
+  {
+    path: "/admin/login",
+    element: <AdminLoginPage />,
+  },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      { index: true, element: <AdminDashboard /> },
+      { path: "hotel-bookings", element: <AdminHotelBookings /> },
+      { path: "travel-bookings", element: <AdminTravelBookings /> },
+      { path: "users", element: <AdminUsers /> },
+      { path: "inquiries", element: <AdminInquiries /> },
     ],
   },
 ]);

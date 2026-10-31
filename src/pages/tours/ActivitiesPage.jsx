@@ -47,11 +47,9 @@ export default function ActivitiesPage() {
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-slate-950 py-20 lg:py-28 text-white">
         <div className="absolute inset-0 z-0 opacity-30 mix-blend-overlay">
-          <img
-            src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=2000&q=80"
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=2000&q=80"
             alt="LuxStay Activities Background"
-            className="h-full w-full object-cover"
-          />
+            className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-linear-to-b from-slate-950/80 via-slate-950/90 to-slate-950 z-0" />
 
@@ -123,7 +121,7 @@ export default function ActivitiesPage() {
                 </div>
                 <div className="absolute bottom-4 right-4 z-10 rounded-md bg-slate-950/80 backdrop-blur-md px-3 py-1.5 text-white shadow-lg">
                   <span className="font-serif text-lg font-bold text-[#dfcaa4]">
-                    ₹{typeof act.price === 'number' ? act.price.toLocaleString() : act.price}
+                    ${typeof act.price === 'number' ? act.price.toLocaleString() : act.price}
                   </span>
                   <span className="text-[10px] text-slate-300"> / guest</span>
                 </div>

@@ -155,11 +155,11 @@ export default function TourFilters({
       <div className="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-800">
         <div className="flex items-center justify-between">
           <label htmlFor="tour-price-range" className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-1">
-            <span className="text-[#C5A880] font-bold text-xs">₹</span>
+            <span className="text-[#C5A880] font-bold text-xs">$</span>
             <span>Max Price / Guest</span>
           </label>
           <span className="font-serif text-sm font-bold text-slate-900 dark:text-[#dfcaa4]">
-            ₹{priceRange[1].toLocaleString()}
+            ${priceRange[1].toLocaleString()}
           </span>
         </div>
         <input
@@ -174,8 +174,8 @@ export default function TourFilters({
           className="w-full accent-[#C5A880] cursor-pointer"
         />
         <div className="flex justify-between text-[10px] text-slate-400 dark:text-slate-500 font-medium">
-          <span>₹5,000</span>
-          <span>₹1,00,000+</span>
+          <span>$5,000</span>
+          <span>$100,000+</span>
         </div>
       </div>
 

@@ -1,47 +1,6 @@
-/**
- * LuxStay — Membership & Loyalty Privileges Mock Data
- * Edit this file to customize member tiers, loyalty points, perks, and rewards.
- */
+import membershipData from "./json/membership.json";
 
-export const VIP_TIERS_DATA = [
-  {
-    tier: "Silver Sanctuary",
-    spend: "Entry Tier (Complimentary Registration)",
-    benefits: [
-      "10% Direct Booking Credit on dining & spa",
-      "Complimentary high-speed satellite Wi-Fi",
-      "Early check-in priority (subject to availability)",
-      "Welcome bottle of sommelier-selected prosecco",
-    ],
-  },
-  {
-    tier: "Gold Sovereign",
-    spend: "₹ 12,00,000 / calendar year",
-    popular: true,
-    benefits: [
-      "15% Preferred Room & Suite Rates",
-      "Guaranteed 14:00 Late Checkout",
-      "Complimentary daily artisan breakfast for two",
-      "One 60-minute holistic spa treatment per stay",
-      "Dedicated concierge WhatsApp line",
-    ],
-  },
-  {
-    tier: "Black Card Royal Patron",
-    spend: "₹ 40,00,000+ / Invitation Only",
-    benefits: [
-      "25% Preferred Suite & Villa Rates",
-      "Guaranteed 1-tier room upgrade upon booking",
-      "Complimentary round-trip helicopter / chauffeur airport transfers",
-      "Private Sommelier Grand Cru cellar tasting",
-      "24/7 dedicated private butler wing assigned",
-    ],
-  },
-];
+export const CLUB_BENEFITS_DATA = membershipData.CLUB_BENEFITS_DATA;
+export const VIP_TIERS_DATA = membershipData.VIP_TIERS_DATA;
 
-export const CLUB_BENEFITS_DATA = [
-  { title: "Guaranteed Best Rate", desc: "Direct booking members always receive the lowest certified rate plus exclusive property credits." },
-  { title: "Complimentary Suite Upgrades", desc: "Automatic upgrade to the next tier of luxury upon check-in based on seasonal availability." },
-  { title: "Flexible Cancellation", desc: "Penalty-free cancellation up to 24 hours prior to arrival for all Member Circle tiers." },
-  { title: "Global Sanctuary Passport", desc: "Points earned across all 6 worldwide destinations redeemable for free nights, yacht charters, and spa days." },
-];
+export default membershipData;

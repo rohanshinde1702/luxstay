@@ -195,10 +195,10 @@ export default function RoomTopFilters({
                     : "border-slate-200 dark:border-slate-700/80 bg-slate-50/80 dark:bg-[#070b14] text-slate-700 dark:text-slate-200 hover:border-[#C5A880]"
                 } ${activeDropdown === "price" ? "ring-1 ring-[#C5A880] border-[#C5A880]" : ""}`}
               >
-                <span className="font-bold text-[#C5A880]">₹</span>
+                <span className="font-bold text-[#C5A880]">$</span>
                 <span>
                   {maxPrice < 80000
-                    ? `Up to ₹${(maxPrice / 1000).toFixed(0)}k`
+                    ? `Up to $${(maxPrice / 1000).toFixed(0)}k`
                     : "Price Range"}
                 </span>
                 <ChevronDown
@@ -216,7 +216,7 @@ export default function RoomTopFilters({
                       Max Nightly Rate
                     </span>
                     <span className="font-serif font-bold text-slate-900 dark:text-[#dfcaa4]">
-                      ₹{maxPrice.toLocaleString()}
+                      ${maxPrice.toLocaleString()}
                     </span>
                   </div>
                   <input
@@ -229,9 +229,9 @@ export default function RoomTopFilters({
                     className="w-full accent-[#C5A880] cursor-pointer"
                   />
                   <div className="flex justify-between text-[10px] text-slate-400 font-medium">
-                    <span>₹15k</span>
-                    <span>₹45k</span>
-                    <span>₹80k+</span>
+                    <span>$15k</span>
+                    <span>$45k</span>
+                    <span>$80k+</span>
                   </div>
                   <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-slate-800">
                     <button
@@ -462,7 +462,7 @@ export default function RoomTopFilters({
                 onClick={() => handlePriceChange(80000)}
                 className="inline-flex items-center gap-1 rounded-lg bg-[#C5A880]/15 dark:bg-[#C5A880]/25 px-2.5 py-1 text-[11px] font-semibold text-[#997548] dark:text-[#dfcaa4] cursor-pointer hover:bg-rose-50 hover:text-rose-600 transition-colors"
               >
-                <span>Max: ₹{maxPrice.toLocaleString()}</span>
+                <span>Max: ${maxPrice.toLocaleString()}</span>
                 <X className="h-3 w-3" />
               </span>
             )}

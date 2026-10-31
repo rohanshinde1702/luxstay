@@ -63,7 +63,7 @@ export default function DesignSystemPage() {
   ];
 
   return (
-    <div className="py-12 sm:py-16 space-y-16">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 py-12 sm:py-16 space-y-16 transition-colors">
       <Container>
         {/* Breadcrumbs */}
         <Breadcrumbs
@@ -94,7 +94,7 @@ export default function DesignSystemPage() {
         />
 
         {/* Interactive Filter Tabs */}
-        <div className="border-b border-slate-200 pb-4 mb-10">
+        <div className="border-b border-slate-200 dark:border-slate-800 pb-4 mb-10">
           <Tabs
             tabs={showcaseTabs}
             activeTab={activeTab}
@@ -105,12 +105,12 @@ export default function DesignSystemPage() {
 
         {/* SECTION 1: BUTTONS & BADGES */}
         {(activeTab === "all" || activeTab === "primitives") && (
-          <section className="space-y-8 rounded-lg border border-slate-200/80 bg-white p-6 sm:p-10 shadow-xs mb-12">
+          <section className="space-y-8 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-xs mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#997548]">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
                 UI Primitives
               </span>
-              <h3 className="font-serif text-2xl font-bold text-slate-900 mt-1">
+              <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white mt-1">
                 Buttons & Interactive Controls
               </h3>
             </div>
@@ -132,7 +132,7 @@ export default function DesignSystemPage() {
             </div>
 
             {/* Button Sizes & Icons */}
-            <div className="space-y-4 pt-4 border-t border-slate-100">
+            <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                 Button Sizes, Icons & Loading States
               </p>
@@ -146,7 +146,7 @@ export default function DesignSystemPage() {
             </div>
 
             {/* Badges */}
-            <div className="space-y-4 pt-4 border-t border-slate-100">
+            <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                 Status & Category Badges
               </p>
@@ -163,7 +163,7 @@ export default function DesignSystemPage() {
             </div>
 
             {/* Ratings */}
-            <div className="space-y-4 pt-4 border-t border-slate-100">
+            <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                 Ratings (Display & Interactive)
               </p>
@@ -190,12 +190,12 @@ export default function DesignSystemPage() {
 
         {/* SECTION 2: FORMS & CONTROLS */}
         {(activeTab === "all" || activeTab === "forms") && (
-          <section className="space-y-8 rounded-lg border border-slate-200/80 bg-white p-6 sm:p-10 shadow-xs mb-12">
+          <section className="space-y-8 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-xs mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#997548]">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
                 Form Controls
               </span>
-              <h3 className="font-serif text-2xl font-bold text-slate-900 mt-1">
+              <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white mt-1">
                 Inputs, Selects & Tab Navigation
               </h3>
             </div>
@@ -260,7 +260,7 @@ export default function DesignSystemPage() {
             </div>
 
             {/* Tab Styles Showcase */}
-            <div className="space-y-4 pt-4 border-t border-slate-100">
+            <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800">
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                 Tab Styles (Pills, Luxury, Underline, Contained)
               </p>
@@ -280,7 +280,7 @@ export default function DesignSystemPage() {
             </div>
 
             {/* Pagination Component */}
-            <div className="pt-4 border-t border-slate-100">
+            <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
                 Pagination Component
               </p>
@@ -300,10 +300,10 @@ export default function DesignSystemPage() {
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-xs font-bold uppercase tracking-widest text-[#997548]">
+                  <span className="text-xs font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
                     Room Card Foundations
                   </span>
-                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900">
+                  <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
                     Suites & Villas (Grid & List Views)
                   </h3>
                 </div>
@@ -328,10 +328,10 @@ export default function DesignSystemPage() {
             {/* Destinations & Tours */}
             <div className="space-y-6">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#997548]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
                   Travel Card Foundations
                 </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
                   Destinations & Curated Tours
                 </h3>
               </div>
@@ -352,10 +352,10 @@ export default function DesignSystemPage() {
             {/* Services & Testimonials */}
             <div className="space-y-6">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#997548]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
                   Experiences & Reviews
                 </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
                   Services & Guest Testimonials
                 </h3>
               </div>
@@ -379,10 +379,10 @@ export default function DesignSystemPage() {
             {/* Blog Cards */}
             <div className="space-y-6">
               <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-[#997548]">
+                <span className="text-xs font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
                   Editorial Journal
                 </span>
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900">
+                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
                   Travel & Hospitality Blog Cards
                 </h3>
               </div>
@@ -398,12 +398,12 @@ export default function DesignSystemPage() {
 
         {/* SECTION 4: FEEDBACK & APPLICATION STATES */}
         {(activeTab === "all" || activeTab === "feedback") && (
-          <section className="space-y-12 rounded-lg border border-slate-200/80 bg-white p-6 sm:p-10 shadow-xs mb-12">
+          <section className="space-y-12 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-10 shadow-xs mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#997548]">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#997548] dark:text-[#dfcaa4]">
                 Application States
               </span>
-              <h3 className="font-serif text-2xl font-bold text-slate-900 mt-1">
+              <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white mt-1">
                 Empty, Loading & Error Feedback States
               </h3>
             </div>
@@ -421,14 +421,14 @@ export default function DesignSystemPage() {
                 />
               </div>
 
-              <div className="pt-6 border-t border-slate-100">
+              <div className="pt-6 border-t border-slate-100 dark:border-slate-800">
                 <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
                   Loading Skeleton Grid
                 </p>
                 <LoadingState type="skeleton-grid" count={3} />
               </div>
 
-              <div className="pt-6 border-t border-slate-100">
+              <div className="pt-6 border-t border-slate-100 dark:border-slate-800">
                 <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
                   Error Recovery State
                 </p>
@@ -471,23 +471,23 @@ export default function DesignSystemPage() {
             </>
           }
         >
-          <div className="space-y-4 text-xs text-slate-600">
-            <div className="rounded-xl bg-slate-50 p-4 border border-slate-100 space-y-2">
+          <div className="space-y-4 text-xs text-slate-600 dark:text-slate-300">
+            <div className="rounded-xl bg-slate-50 dark:bg-slate-800 p-4 border border-slate-100 dark:border-slate-700 space-y-2">
               <div className="flex justify-between font-medium">
-                <span className="text-slate-500">Suite Rate:</span>
-                <span className="font-bold text-slate-900">₹24,500 / night</span>
+                <span className="text-slate-500 dark:text-slate-400">Suite Rate:</span>
+                <span className="font-bold text-slate-900 dark:text-white">$1,250 / night</span>
               </div>
               <div className="flex justify-between font-medium">
-                <span className="text-slate-500">Duration:</span>
-                <span className="font-bold text-slate-900">3 Nights (Oct 12 – Oct 15)</span>
+                <span className="text-slate-500 dark:text-slate-400">Duration:</span>
+                <span className="font-bold text-slate-900 dark:text-white">3 Nights (Oct 12 – Oct 15)</span>
               </div>
               <div className="flex justify-between font-medium">
-                <span className="text-slate-500">Concierge Fee:</span>
-                <span className="font-bold text-emerald-600">Complimentary (₹0.00)</span>
+                <span className="text-slate-500 dark:text-slate-400">Concierge Fee:</span>
+                <span className="font-bold text-emerald-600 dark:text-emerald-400">Complimentary ($0.00)</span>
               </div>
-              <div className="pt-2 border-t border-slate-200 flex justify-between text-sm font-bold text-slate-900">
+              <div className="pt-2 border-t border-slate-200 dark:border-slate-700 flex justify-between text-sm font-bold text-slate-900 dark:text-white">
                 <span>Total Estimated:</span>
-                <span className="text-[#997548] font-serif text-lg">₹73,500.00</span>
+                <span className="text-[#997548] dark:text-[#dfcaa4] font-serif text-lg">$3,750.00</span>
               </div>
             </div>
 

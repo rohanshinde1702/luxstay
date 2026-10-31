@@ -124,7 +124,7 @@ export default function PagePopupModal() {
         {/* ------------------------------------------------------------- */}
         <div className="relative w-full h-1/2 md:h-full md:w-1/2 md:min-h-[480px] shrink-0 overflow-hidden bg-slate-950 flex flex-col justify-end p-4 sm:p-6 md:p-8">
           <ImageWithFallback
-            src={activePopup.image || "/images/luxury-beach-popup-villa.jpg"}
+            src={activePopup.image || "/images/placeholders/750x1000.svg"}
             alt={activePopup.title || "LuxStay Resort Experience"}
             aspectRatio="h-full w-full"
             className="absolute inset-0 h-full w-full object-cover"

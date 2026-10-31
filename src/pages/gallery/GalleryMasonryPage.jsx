@@ -35,11 +35,9 @@ export default function GalleryMasonryPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-950 py-16 sm:py-24 text-white">
         <div className="absolute inset-0 z-0 opacity-25">
-          <img
-            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2000&q=80"
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=2000&q=80"
             alt="Gallery Masonry"
-            className="h-full w-full object-cover"
-          />
+            className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-linear-to-b from-slate-950/80 via-slate-950/90 to-slate-950 z-0" />
 
@@ -93,11 +91,9 @@ export default function GalleryMasonryPage() {
               onClick={() => openLightbox(idx)}
               className="group relative break-inside-avoid overflow-hidden rounded-lg border border-slate-200 bg-white shadow-xs hover:shadow-2xl transition-all cursor-pointer"
             >
-              <img
-                src={item.src}
+              <img src={item.src}
                 alt={item.title}
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
 
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
@@ -130,11 +126,9 @@ export default function GalleryMasonryPage() {
           </button>
 
           <div className="relative max-h-[85vh] max-w-5xl overflow-hidden rounded-lg">
-            <img
-              src={filteredItems[lightboxIndex].src}
+            <img src={filteredItems[lightboxIndex].src}
               alt={filteredItems[lightboxIndex].title}
-              className="max-h-[80vh] w-auto mx-auto object-contain rounded-lg shadow-2xl"
-            />
+              className="max-h-[80vh] w-auto mx-auto object-contain rounded-lg shadow-2xl" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             <div className="mt-3 text-center text-white">
               <h3 className="font-serif text-xl font-bold">
                 {filteredItems[lightboxIndex].title}

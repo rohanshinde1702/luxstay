@@ -124,6 +124,7 @@ export const NAV_LINKS = [
       { title: "Member Login", path: "/login" },
       { title: "Create VIP Account", path: "/register" },
       { title: "Search Results", path: "/search" },
+      { title: "404 Not Found Page", path: "/404" },
     ],
   },
   {

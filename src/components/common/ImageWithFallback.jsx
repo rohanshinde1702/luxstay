@@ -6,7 +6,7 @@ import {
 export default function ImageWithFallback({
   src,
   alt = "LuxStay Image",
-  fallbackSrc = "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+  fallbackSrc = "/images/placeholders/800x600.svg",
   className = "",
   aspectRatio = "aspect-16/10",
   loading = "lazy",

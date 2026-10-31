@@ -136,18 +136,11 @@ export default function GalleryVideoPage() {
     <div className="bg-[#FAF8F5] dark:bg-[#070b14] min-h-screen text-slate-900 dark:text-slate-100 transition-colors duration-300 pb-24">
       {/* 1. Cinematic Hero Header */}
       <section className="relative overflow-hidden bg-slate-950 text-white pt-24 pb-20 lg:pt-32 lg:pb-28">
-        {/* Background ambient video stream */}
+        {/* Background ambient video stream placeholder */}
         <div className="absolute inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="h-full w-full object-cover scale-105"
-            poster={featuredFilm.poster}
-          >
-            <source src={featuredFilm.videoUrl} type="video/mp4" />
-          </video>
+          <img src="/images/placeholders/1920x1080.svg"
+            alt="Cinematic Video Ambient Background (1920x1080 Placeholder)"
+            className="h-full w-full object-cover scale-105" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/80 to-slate-950/60 z-1" />
 
@@ -258,7 +251,7 @@ export default function GalleryVideoPage() {
                     src={video.poster}
                     alt={video.title}
                     className={`h-full w-full object-cover transition-all duration-700 ${
-                      isHovered ? "scale-105 opacity-0" : "scale-100 opacity-100"
+                      isHovered ? "scale-105" : "scale-100"
                     }`}
                   />
 
@@ -400,19 +393,35 @@ export default function GalleryVideoPage() {
           {/* Modal Content Box */}
           <div className="relative w-full max-w-5xl rounded-2xl sm:rounded-3xl overflow-hidden bg-black border border-white/15 shadow-2xl flex flex-col">
             
-            {/* Real HTML5 Video Player */}
-            <div className="relative aspect-16/9 bg-black overflow-hidden group">
-              <video
-                ref={modalVideoRef}
-                controls={false}
-                playsInline
-                poster={activeVideo.poster}
-                onClick={togglePlayPause}
-                className="h-full w-full object-contain cursor-pointer"
-              >
-                <source src={activeVideo.videoUrl} type="video/mp4" />
-                Your browser does not support high-definition HTML5 video streaming.
-              </video>
+            {/* Real HTML5 Video Player / Placeholder Showcase */}
+            <div className="relative aspect-16/9 bg-black overflow-hidden group flex items-center justify-center">
+              <img src={activeVideo.poster || "/images/placeholders/1200x800.svg"}
+                alt={activeVideo.title}
+                className="h-full w-full object-contain" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
+              {activeVideo.videoUrl ? (
+                <video
+                  ref={modalVideoRef}
+                  controls={false}
+                  playsInline
+                  poster={activeVideo.poster}
+                  onClick={togglePlayPause}
+                  className="absolute inset-0 h-full w-full object-contain cursor-pointer"
+                >
+                  <source src={activeVideo.videoUrl} type="video/mp4" />
+                </video>
+              ) : (
+                <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-6 text-center text-white backdrop-blur-[2px]">
+                  <div className="w-16 h-16 rounded-full bg-[#C5A880] text-slate-950 flex items-center justify-center mb-4 shadow-xl">
+                    <Play className="h-7 w-7 fill-current ml-1" />
+                  </div>
+                  <h4 className="font-serif text-xl sm:text-2xl font-bold text-white mb-2">
+                    {activeVideo.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-slate-300 max-w-md font-light">
+                    ThemeForest Video Stream Placeholder (1200 × 800). Easily connect your MP4 or video CDN stream URL in <code className="bg-white/10 px-2 py-0.5 rounded text-[#C5A880] font-mono text-xs">src/data/gallery.js</code>.
+                  </p>
+                </div>
+              )}
 
               {/* Top Video Overlay Bar */}
               <div className="absolute top-0 inset-x-0 p-4 sm:p-6 bg-linear-to-b from-black/80 to-transparent flex items-center justify-between text-white pointer-events-none">

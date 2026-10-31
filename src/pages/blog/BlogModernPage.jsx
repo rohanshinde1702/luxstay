@@ -91,11 +91,9 @@ export default function BlogModernPage() {
 
                 <div className="pt-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-800/80">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={featuredPost.author.avatar}
+                    <img src={featuredPost.author.avatar}
                       alt={featuredPost.author.name}
-                      className="h-10 w-10 rounded-full object-cover ring-2 ring-[#C5A880]/30"
-                    />
+                      className="h-10 w-10 rounded-full object-cover ring-2 ring-[#C5A880]/30" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div>
                       <p className="text-xs font-bold text-slate-900 dark:text-white">{featuredPost.author.name}</p>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400">{featuredPost.author.role}</p>
@@ -169,11 +167,9 @@ export default function BlogModernPage() {
 
                 <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                   <div className="flex items-center gap-2.5 text-xs text-slate-600 dark:text-slate-300">
-                    <img
-                      src={post.author.avatar}
+                    <img src={post.author.avatar}
                       alt={post.author.name}
-                      className="h-7 w-7 rounded-full object-cover ring-1 ring-[#C5A880]/30"
-                    />
+                      className="h-7 w-7 rounded-full object-cover ring-1 ring-[#C5A880]/30" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <span className="font-medium text-slate-800 dark:text-slate-200">{post.author.name}</span>
                   </div>
 

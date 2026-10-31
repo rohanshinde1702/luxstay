@@ -5,7 +5,7 @@ import { GALLERY_ITEMS } from "../../data/gallery";
 
 export default function GalleryPage() {
   return (
-    <div className="space-y-16 pb-24">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 space-y-16 pb-24 transition-colors">
       {/* Hero Header */}
       <section className="relative bg-slate-950 py-16 sm:py-24 text-white overflow-hidden">
         <div className="absolute top-0 right-1/4 h-80 w-80 rounded-full bg-[#C5A880]/10 blur-3xl pointer-events-none" />

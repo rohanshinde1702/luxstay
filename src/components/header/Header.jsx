@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LuPhone as Phone, LuMail as Mail, LuSearch as Search, LuMenu as Menu, LuGlobe as Globe, LuSparkles as Sparkles, 
-  LuSun as Sun, LuMoon as Moon, LuCompass as Compass, LuHeart as Heart, LuLogOut as LogOut, LuCrown as Crown } from "react-icons/lu";
+  LuSun as Sun, LuMoon as Moon, LuCompass as Compass, LuHeart as Heart, LuLogOut as LogOut, LuCrown as Crown,
+  LuUser as User, LuLogIn as LogIn, LuUserPlus as UserPlus } from "react-icons/lu";
 import { FaAngleRight } from "react-icons/fa6";
 import { NAV_LINKS } from "../../constants/navigation";
 import { SITE_CONFIG } from "../../constants/theme";
 import { useTheme } from "../../hooks/useTheme";
 import { useFavorites } from "../../hooks/useFavorites";
 import { useAuth } from "../../hooks/useAuth";
+import { isAdminAuthenticated } from "../../pages/admin/adminStorage";
 import SavedDrawer from "../common/SavedDrawer";
 import MobileNav from "./MobileNav";
 
@@ -31,10 +33,22 @@ export default function Header({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [savedDrawerOpen, setSavedDrawerOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [navUserMenuOpen, setNavUserMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
   const location = useLocation();
   const userMenuRef = useRef(null);
+  const navUserMenuRef = useRef(null);
+
+  useEffect(() => {
+    const checkAdmin = () => {
+      setIsAdmin(isAdminAuthenticated());
+    };
+    checkAdmin();
+    window.addEventListener("storage", checkAdmin);
+    return () => window.removeEventListener("storage", checkAdmin);
+  }, [location.pathname]);
 
   useEffect(() => {
     let ticking = false;
@@ -68,15 +82,18 @@ export default function Header({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
 
-  // Click outside listener for VIP user menu dropdown (crucial for tablet/touch devices)
+  // Click outside listener for user menu dropdowns (crucial for tablet/touch devices)
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
         setUserMenuOpen(false);
       }
+      if (navUserMenuRef.current && !navUserMenuRef.current.contains(event.target)) {
+        setNavUserMenuOpen(false);
+      }
     };
 
-    if (userMenuOpen) {
+    if (userMenuOpen || navUserMenuOpen) {
       document.addEventListener("mousedown", handleClickOutside);
       document.addEventListener("touchstart", handleClickOutside);
     }
@@ -84,11 +101,12 @@ export default function Header({
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
     };
-  }, [userMenuOpen]);
+  }, [userMenuOpen, navUserMenuOpen]);
 
   // Close menus on route change
   useEffect(() => {
     setUserMenuOpen(false);
+    setNavUserMenuOpen(false);
     setSearchOpen(false);
   }, [location.pathname]);
 
@@ -181,36 +199,36 @@ export default function Header({
                   {SITE_CONFIG.email}
                 </a>
               </div>
-
-              {/* Booking Privileges Banner - on xl+ screens */}
-              <div className="hidden xl:flex items-center gap-1.5 text-slate-300 dark:text-slate-400 shrink-0">
-                <Sparkles className="h-3.5 w-3.5 text-[#C5A880] shrink-0" />
-                <span className="whitespace-nowrap">Direct Booking Privileges • ₹25,000 Welcome Credit</span>
-              </div>
-
-              {/* Master Landing Page Shortcut */}
-              <Link
-                to="/"
-                className="hidden 2xl:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#C5A880]/20 hover:bg-[#C5A880]/30 text-[#dfcaa4] hover:text-white transition-colors text-[11px] font-bold shrink-0"
-              >
-                <Sparkles className="h-3 w-3 text-[#C5A880]" />
-                <span>All Demos & Pages (Landing)</span>
-              </Link>
             </div>
 
             {/* Right Utility Items */}
             <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+              {/* Admin Shortcut - strictly visible ONLY to authenticated admin */}
+              {isAdmin && (
+                <>
+                  <Link
+                    to="/admin"
+                    className="hover:text-[#C5A880] text-[#dfcaa4] transition-colors whitespace-nowrap flex items-center gap-1.5 font-medium text-xs bg-slate-900/80 px-2.5 py-0.5 rounded border border-[#C5A880]/40 shadow-xs"
+                    title="Admin Control Panel"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Admin</span>
+                  </Link>
+                  <div className="h-3 w-px bg-white/20 dark:bg-slate-700 shrink-0" />
+                </>
+              )}
+
               {/* Currency / Language */}
               <div className="flex items-center gap-1.5 hover:text-white cursor-pointer transition-colors whitespace-nowrap">
                 <Globe className="h-3.5 w-3.5 text-[#C5A880] shrink-0" />
-                <span>EN / INR (₹)</span>
+                <span>EN / USD ($)</span>
               </div>
 
               <div className="h-3 w-px bg-white/20 dark:bg-slate-700 shrink-0" />
 
               {/* Concierge Desk */}
               <Link to="/contact" className="hover:text-white transition-colors whitespace-nowrap">
-                Concierge Desk
+                Concierge
               </Link>
 
               <div className="h-3 w-px bg-white/20 dark:bg-slate-700 shrink-0" />
@@ -235,9 +253,20 @@ export default function Header({
                       <div className="p-2 border-b border-slate-800 space-y-0.5">
                         <span className="block text-xs font-bold text-white truncate">{user.name}</span>
                         <span className="block text-[10px] text-[#dfcaa4]">{user.tier}</span>
-                        <span className="block text-[10px] text-emerald-400 font-mono">Credit: ₹{user.welcomeCredit.toLocaleString()}</span>
+                        <span className="block text-[10px] text-emerald-400 font-mono">Credit: ${user.welcomeCredit.toLocaleString()}</span>
                       </div>
                       <div className="py-1 space-y-0.5 text-xs">
+                        <Link
+                          to="/dashboard"
+                          onClick={() => setUserMenuOpen(false)}
+                          className="flex items-center justify-between px-2.5 py-1.5 rounded bg-[#C5A880]/15 hover:bg-[#C5A880]/25 text-[#dfcaa4] hover:text-white font-bold transition-colors"
+                        >
+                          <span className="flex items-center gap-1.5">
+                            <Crown className="h-3.5 w-3.5 text-[#C5A880]" />
+                            <span>My Dashboard</span>
+                          </span>
+                          <span className="text-[10px] text-[#C5A880]">→</span>
+                        </Link>
                         <button
                           type="button"
                           onClick={() => {
@@ -256,6 +285,16 @@ export default function Header({
                         >
                           Butler Inquiries
                         </Link>
+                        {isAdmin && (
+                          <Link
+                            to="/admin"
+                            onClick={() => setUserMenuOpen(false)}
+                            className="flex items-center justify-between px-2.5 py-1.5 rounded hover:bg-slate-900 text-[#dfcaa4] hover:text-[#C5A880] transition-colors"
+                          >
+                            <span>Admin Portal</span>
+                            <span className="text-[9px] px-1 py-0.2 rounded bg-emerald-500/20 text-emerald-400 font-mono">LIVE</span>
+                          </Link>
+                        )}
                         <button
                           type="button"
                           onClick={() => {
@@ -437,6 +476,193 @@ export default function Header({
             >
               <Search className="h-4 w-4" />
             </button>
+
+            {/* User Account / Sign In & Sign Up Trigger */}
+            <div className="relative" ref={navUserMenuRef}>
+              <button
+                type="button"
+                onClick={() => setNavUserMenuOpen((prev) => !prev)}
+                className={`relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full transition-all cursor-pointer ${
+                  isTransparent
+                    ? "bg-white/15 hover:bg-white/25 text-white border border-white/20 backdrop-blur-md shadow-xs"
+                    : isDarkVariant
+                    ? "bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700"
+                } ${navUserMenuOpen ? "ring-2 ring-[#C5A880]/60" : ""}`}
+                aria-label="Account, Sign In or Sign Up"
+                aria-expanded={navUserMenuOpen}
+                title={isAuthenticated && user ? `${user.name} (${user.tier})` : "Sign In / Sign Up"}
+              >
+                {isAuthenticated && user ? (
+                  <Crown className="h-4 w-4 text-[#C5A880]" />
+                ) : (
+                  <User className="h-4 w-4" />
+                )}
+                {isAuthenticated && (
+                  <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2 rounded-full bg-emerald-400 ring-2 ring-white dark:ring-slate-950" />
+                )}
+              </button>
+
+              {/* Interactive Auth Dropdown */}
+              {navUserMenuOpen && (
+                <div className="absolute right-0 top-full mt-2 w-72 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-3 shadow-2xl z-50 text-slate-800 dark:text-slate-100">
+                  {isAuthenticated && user ? (
+                    <div>
+                      {/* Authenticated User Summary */}
+                      <div className="flex items-center gap-3 p-2.5 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 mb-2">
+                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#C5A880]/20 text-[#997548] dark:text-[#dfcaa4] font-serif font-bold text-sm">
+                          {user.name.charAt(0)}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-semibold text-xs text-slate-900 dark:text-white truncate">{user.name}</span>
+                            <span className="shrink-0 px-1.5 py-0.2 rounded-full bg-[#C5A880]/20 text-[9px] font-bold text-[#997548] dark:text-[#dfcaa4] uppercase">
+                              {user.tier}
+                            </span>
+                          </div>
+                          <span className="block text-[11px] text-slate-500 dark:text-slate-400 truncate">{user.email}</span>
+                          <span className="block text-[10px] text-emerald-600 dark:text-emerald-400 font-medium mt-0.5">
+                            Credit: ${user.welcomeCredit.toLocaleString()}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Navigation Actions */}
+                      <div className="space-y-0.5 text-xs">
+                        <Link
+                          to="/dashboard"
+                          onClick={() => setNavUserMenuOpen(false)}
+                          className="flex items-center justify-between px-2.5 py-2 rounded-lg bg-[#C5A880]/15 hover:bg-[#C5A880]/25 text-[#997548] dark:text-[#dfcaa4] font-bold transition-colors"
+                        >
+                          <span className="flex items-center gap-2">
+                            <Crown className="h-4 w-4 text-[#C5A880]" />
+                            <span>My Member Dashboard</span>
+                          </span>
+                          <span>→</span>
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setSavedDrawerOpen(true);
+                            setNavUserMenuOpen(false);
+                          }}
+                          className="w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors cursor-pointer text-left"
+                        >
+                          <span className="flex items-center gap-2">
+                            <Heart className="h-3.5 w-3.5 text-[#C5A880]" />
+                            <span>Saved Sanctuaries</span>
+                          </span>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#C5A880]/20 text-[#997548] dark:text-[#dfcaa4] font-bold">
+                            {favoritesCount}
+                          </span>
+                        </button>
+                        <Link
+                          to="/dashboard"
+                          onClick={() => setNavUserMenuOpen(false)}
+                          className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
+                        >
+                          <Crown className="h-3.5 w-3.5 text-[#C5A880]" />
+                          <span>VIP Loyalty Privileges</span>
+                        </Link>
+                        <Link
+                          to="/contact"
+                          onClick={() => setNavUserMenuOpen(false)}
+                          className="flex items-center gap-2 px-2.5 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
+                        >
+                          <Sparkles className="h-3.5 w-3.5 text-[#C5A880]" />
+                          <span>Butler & Concierge Inquiries</span>
+                        </Link>
+                        {isAdmin && (
+                          <Link
+                            to="/admin"
+                            onClick={() => setNavUserMenuOpen(false)}
+                            className="flex items-center justify-between px-2.5 py-2 rounded-lg text-[#997548] dark:text-[#dfcaa4] hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors font-medium"
+                          >
+                            <span className="flex items-center gap-2">
+                              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                              <span>Admin Portal</span>
+                            </span>
+                            <span className="text-[10px] uppercase font-bold text-emerald-500 font-mono">LIVE</span>
+                          </Link>
+                        )}
+                        <div className="border-t border-slate-100 dark:border-slate-800 my-1 pt-1">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              logout();
+                              setNavUserMenuOpen(false);
+                            }}
+                            className="w-full flex items-center gap-2 px-2.5 py-2 rounded-lg text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer text-left"
+                          >
+                            <LogOut className="h-3.5 w-3.5" />
+                            <span>Sign Out</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      {/* Unauthenticated Guest Header */}
+                      <div className="p-2 border-b border-slate-100 dark:border-slate-800/80 mb-2.5">
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#C5A880]/20 text-[#997548] dark:text-[#dfcaa4]">
+                            <User className="h-3.5 w-3.5" />
+                          </div>
+                          <div>
+                            <span className="block text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                              Member Sanctuary
+                            </span>
+                            <span className="block text-[10px] text-slate-500 dark:text-slate-400">
+                              Access VIP rates & member perks
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Primary Actions: Sign In & Sign Up */}
+                      <div className="space-y-2 py-0.5">
+                        <Link
+                          to="/login"
+                          onClick={() => setNavUserMenuOpen(false)}
+                          className="flex items-center justify-center gap-2 w-full px-3.5 py-2 rounded-lg bg-slate-900 dark:bg-[#C5A880] text-white dark:text-slate-950 font-semibold text-xs uppercase tracking-wider hover:bg-[#C5A880] hover:text-slate-950 transition-all shadow-xs"
+                        >
+                          <LogIn className="h-3.5 w-3.5" />
+                          <span>Sign In</span>
+                        </Link>
+                        <Link
+                          to="/register"
+                          onClick={() => setNavUserMenuOpen(false)}
+                          className="flex items-center justify-center gap-2 w-full px-3.5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-700 dark:text-slate-200 font-semibold text-xs uppercase tracking-wider hover:border-[#C5A880] hover:text-[#997548] dark:hover:text-[#dfcaa4] transition-all"
+                        >
+                          <UserPlus className="h-3.5 w-3.5" />
+                          <span>Sign Up / Register</span>
+                        </Link>
+                      </div>
+
+                      {/* VIP Teaser */}
+                      <div className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800">
+                        <Link
+                          to="/offers"
+                          onClick={() => setNavUserMenuOpen(false)}
+                          className="group block p-2 rounded-lg bg-[#C5A880]/10 hover:bg-[#C5A880]/20 transition-colors"
+                        >
+                          <div className="flex items-center justify-between text-[11px] font-semibold text-[#997548] dark:text-[#dfcaa4]">
+                            <span className="flex items-center gap-1.5">
+                              <Sparkles className="h-3 w-3 text-[#C5A880]" />
+                              <span>LuxStay Club VIP</span>
+                            </span>
+                            <span className="text-[10px] uppercase font-bold group-hover:translate-x-0.5 transition-transform">→</span>
+                          </div>
+                          <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">
+                            Join today for $2,500 welcome credit
+                          </p>
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
 
             {/* Quick Booking CTA */}
             <Link

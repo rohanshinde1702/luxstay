@@ -61,7 +61,7 @@ const ROOMS_DATA = [
     bed: "1 King Bed",
     size: "32 m²",
     desc: "Wake up to breathtaking ocean views from your private balcony.",
-    price: "₹ 12,999",
+    price: "$ 12,999",
     priceNum: 12999,
   },
   {
@@ -74,7 +74,7 @@ const ROOMS_DATA = [
     bed: "1 King Bed",
     size: "45 m²",
     desc: "Stay above the turquoise waters with direct lagoon access.",
-    price: "₹ 18,999",
+    price: "$ 18,999",
     priceNum: 18999,
   },
   {
@@ -87,7 +87,7 @@ const ROOMS_DATA = [
     bed: "2 King Beds",
     size: "60 m²",
     desc: "Spacious suites perfect for families and groups.",
-    price: "₹ 24,999",
+    price: "$ 24,999",
     priceNum: 24999,
   },
   {
@@ -100,7 +100,7 @@ const ROOMS_DATA = [
     bed: "1 King Bed",
     size: "80 m²",
     desc: "Ultimate privacy with your own pool and garden.",
-    price: "₹ 34,999",
+    price: "$ 34,999",
     priceNum: 34999,
   },
 ];
@@ -253,11 +253,9 @@ export default function HomeBeach() {
               type="video/mp4"
             />
             {/* Fallback Image */}
-            <img
-              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=85"
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=85"
               alt="LuxStay Luxury Beachfront Sunset Coast Drone"
-              className="w-full h-full object-cover object-center"
-            />
+              className="w-full h-full object-cover object-center" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           </video>
 
           {/* Cinematic Dual-Tone Vignette Gradients for Crystal-Clear Text Legibility & Sunset Glow */}
@@ -397,28 +395,22 @@ export default function HomeBeach() {
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-12 gap-4">
               {/* Main Large Beach House Photo (Takes exact same height as the right column) */}
               <div className="sm:col-span-7 rounded-lg overflow-hidden shadow-xl h-64 sm:h-full">
-                <img
-                  src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=85"
+                <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&w=1200&q=85"
                   alt="Luxury Beach House on the Sand"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                />
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               </div>
 
               {/* Right 2 Stacked Beach House Photos */}
               <div className="sm:col-span-5 flex flex-col gap-4">
                 <div className="rounded-lg overflow-hidden shadow-md h-48 sm:h-52">
-                  <img
-                    src="https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  <img src="https://images.pexels.com/photos/753626/pexels-photo-753626.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Tropical Beach Bungalow & Lagoon"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md h-48 sm:h-52">
-                  <img
-                    src="https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  <img src="https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg?auto=compress&cs=tinysrgb&w=800"
                     alt="Luxury Oceanfront Coastal Beach Villa"
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 </div>
               </div>
             </div>
@@ -466,11 +458,9 @@ export default function HomeBeach() {
                 <div>
                   {/* Image with Badge */}
                   <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={room.image}
+                    <img src={room.image}
                       alt={room.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <span className={`absolute top-3.5 left-3.5 font-bold text-[10px] uppercase tracking-wider px-3 py-1 rounded-md shadow-md ${room.badgeStyle}`}>
                       {room.badge}
                     </span>
@@ -534,11 +524,9 @@ export default function HomeBeach() {
       <section className="relative py-28 overflow-hidden bg-[#08201E] text-white">
         {/* Ocean Lagoon Background */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=85"
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=85"
             alt="Ocean Experiences Lagoon"
-            className="w-full h-full object-cover opacity-35"
-          />
+            className="w-full h-full object-cover opacity-35" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-linear-to-r from-[#08201E]/95 via-[#08201E]/85 to-[#08201E]/70" />
         </div>
 
@@ -578,11 +566,9 @@ export default function HomeBeach() {
                 }}
                 className="group relative h-80 rounded-lg overflow-hidden cursor-pointer shadow-xl border border-white/10 flex flex-col justify-end p-6 transition-all duration-300 hover:border-[#D4B68A]/50 hover:shadow-2xl"
               >
-                <img
-                  src={exp.image}
+                <img src={exp.image}
                   alt={exp.title}
-                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 <div className="absolute inset-0 bg-linear-to-t from-slate-950/95 via-slate-950/50 to-transparent group-hover:from-slate-950/98 group-hover:via-slate-950/60 transition-colors duration-500" />
 
                 <div className="relative z-10 space-y-1.5 transition-transform duration-300 group-hover:-translate-y-1">
@@ -643,11 +629,9 @@ export default function HomeBeach() {
                 onClick={() => setActiveLightboxImg(photo)}
                 className="relative h-60 sm:h-72 rounded-lg overflow-hidden group cursor-pointer shadow-md border border-stone-200 dark:border-slate-800"
               >
-                <img
-                  src={photo.image}
+                <img src={photo.image}
                   alt={photo.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="text-xs font-medium text-white">{photo.title}</span>
                 </div>
@@ -699,11 +683,9 @@ export default function HomeBeach() {
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={t.avatar}
+                    <img src={t.avatar}
                       alt={t.name}
-                      className="h-11 w-11 rounded-full object-cover border border-[#C5A880]/30"
-                    />
+                      className="h-11 w-11 rounded-full object-cover border border-[#C5A880]/30" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div>
                       <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                         {t.name}
@@ -749,11 +731,9 @@ export default function HomeBeach() {
             <source src="/videos/blue-sky-over-blue-sea.mp4" type="video/mp4" />
             <source src="https://videos.pexels.com/video-files/10782300/10782300-hd_1920_1080_30fps.mp4" type="video/mp4" />
             <source src="/videos/golden-sunset-waves.mp4" type="video/mp4" />
-            <img
-              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=85"
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=85"
               alt="Blue Sky Over Blue Sea"
-              className="w-full h-full object-cover opacity-50"
-            />
+              className="w-full h-full object-cover opacity-50" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           </video>
           {/* Dual Overlay Gradients for Perfect Text Contrast & Sea Visibility */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#08201E]/95 via-[#08201E]/75 to-[#08201E]/40" />
@@ -869,11 +849,9 @@ export default function HomeBeach() {
             >
               <X className="h-5 w-5" />
             </button>
-            <img
-              src={activeLightboxImg.image}
+            <img src={activeLightboxImg.image}
               alt={activeLightboxImg.title}
-              className="w-full h-full object-contain max-h-[80vh]"
-            />
+              className="w-full h-full object-contain max-h-[80vh]" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             <div className="bg-slate-950/95 p-4 text-white text-center">
               <p className="text-sm font-light">{activeLightboxImg.title}</p>
             </div>

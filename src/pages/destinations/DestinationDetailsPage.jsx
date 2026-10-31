@@ -28,7 +28,12 @@ export default function DestinationDetailsPage() {
   const { slug } = useParams();
 
   const destination = useMemo(() => {
-    return DESTINATIONS_DATA.find((d) => d.slug === slug);
+    return (
+      DESTINATIONS_DATA.find((d) => d.slug === slug) ||
+      DESTINATIONS_DATA.find((d) => d.slug.startsWith(slug)) ||
+      DESTINATIONS_DATA.find((d) => d.id.includes(slug)) ||
+      DESTINATIONS_DATA[0]
+    );
   }, [slug]);
 
   // Find related curated rooms and tours
@@ -101,7 +106,7 @@ export default function DestinationDetailsPage() {
             <div className="flex flex-col sm:items-end gap-2 shrink-0">
               <Rating value={destination.rating} reviewsCount={destination.reviewsCount} size="md" />
               <div className="text-xs text-slate-300">
-                Starting from <span className="font-serif text-2xl font-bold text-[#dfcaa4]">₹{typeof destination.startingPrice === 'number' ? destination.startingPrice.toLocaleString() : destination.startingPrice}</span> / night
+                Starting from <span className="font-serif text-2xl font-bold text-[#dfcaa4]">${typeof destination.startingPrice === 'number' ? destination.startingPrice.toLocaleString() : destination.startingPrice}</span> / night
               </div>
             </div>
           </div>

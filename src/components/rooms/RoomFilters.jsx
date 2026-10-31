@@ -103,11 +103,11 @@ export default function RoomFilters({
       <div className="space-y-2.5 pt-4 border-t border-slate-100 dark:border-slate-800/80">
         <div className="flex items-center justify-between">
           <label className="text-[11px] font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-1">
-            <span className="text-[#C5A880] font-bold text-xs">₹</span>
+            <span className="text-[#C5A880] font-bold text-xs">$</span>
             <span>Max Price Per Night</span>
           </label>
           <span className="font-serif text-sm font-bold text-slate-900 dark:text-[#dfcaa4]">
-            ₹{maxPrice.toLocaleString()}
+            ${maxPrice.toLocaleString()}
           </span>
         </div>
         <input
@@ -120,8 +120,8 @@ export default function RoomFilters({
           className="w-full accent-[#C5A880] cursor-pointer"
         />
         <div className="flex justify-between text-[10px] text-slate-400 dark:text-slate-500 font-medium">
-          <span>₹15,000 / nt</span>
-          <span>₹80,000+ / nt</span>
+          <span>$15,000 / nt</span>
+          <span>$80,000+ / nt</span>
         </div>
       </div>
 

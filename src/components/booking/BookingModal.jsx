@@ -366,7 +366,7 @@ export default function BookingModal({
                 <div className="flex items-center gap-1.5 w-full">
                   <Car className="h-4 w-4 text-[#C5A880]" />
                   <span className="font-semibold text-slate-800 dark:text-white">VIP Airport Chauffeur</span>
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold ml-auto">+₹2,500</span>
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-bold ml-auto">+$2,500</span>
                 </div>
               </label>
             </div>
@@ -396,7 +396,7 @@ export default function BookingModal({
             {appliedPromo && (
               <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
                 <Check className="h-3.5 w-3.5" />
-                <span>{appliedPromo.label} applied (-₹{appliedPromo.discount.toLocaleString()})</span>
+                <span>{appliedPromo.label} applied (-${appliedPromo.discount.toLocaleString()})</span>
               </p>
             )}
             {promoError && (
@@ -409,29 +409,29 @@ export default function BookingModal({
           {/* Dynamic Price Breakdown */}
           <div className="rounded-lg bg-slate-900 dark:bg-slate-950 dark:border dark:border-slate-800 text-white p-4 space-y-2 text-xs">
             <div className="flex justify-between text-slate-300">
-              <span>₹{roomPrice.toLocaleString()} x {nights} Nights</span>
-              <span>₹{roomSubtotal.toLocaleString()}</span>
+              <span>${roomPrice.toLocaleString()} x {nights} Nights</span>
+              <span>${roomSubtotal.toLocaleString()}</span>
             </div>
             {airportTransfer && (
               <div className="flex justify-between text-slate-300">
                 <span>VIP Airport Transfer</span>
-                <span>+₹2,500</span>
+                <span>+$2,500</span>
               </div>
             )}
             <div className="flex justify-between text-slate-300">
               <span>Estimated Taxes & Resort Fees (12%)</span>
-              <span>₹{taxesAndFees.toLocaleString()}</span>
+              <span>${taxesAndFees.toLocaleString()}</span>
             </div>
             {appliedPromo && (
               <div className="flex justify-between text-emerald-400 font-semibold">
                 <span>Privilege Voucher Discount</span>
-                <span>-₹{discountAmount.toLocaleString()}</span>
+                <span>-${discountAmount.toLocaleString()}</span>
               </div>
             )}
             <div className="pt-2 border-t border-slate-800 flex justify-between items-center text-sm font-bold">
               <span>Total Estimated:</span>
               <span className="font-serif text-lg text-[#dfcaa4]">
-                ₹{totalAmount.toLocaleString()}
+                ${totalAmount.toLocaleString()}
               </span>
             </div>
           </div>
@@ -608,7 +608,7 @@ export default function BookingModal({
               </button>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-300">
-              {checkIn} to {checkOut} ({nights} Nights) • {guests} Guests • Total: ₹{totalAmount.toLocaleString()}
+              {checkIn} to {checkOut} ({nights} Nights) • {guests} Guests • Total: ${totalAmount.toLocaleString()}
             </p>
           </div>
 

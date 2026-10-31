@@ -210,7 +210,7 @@ const EXPERIENCES_DATA = [
     cat: "culinary",
     title: "Sunset Wine Tasting in Coastal Cellars",
     duration: "3 Hours",
-    price: "₹ 18,500 per guest",
+    price: "$ 18,500 per guest",
     desc: "Guided tasting of rare Italian vintages led by Master Sommelier Giovanni Rossi in our 400-year-old subterranean stone cellar.",
     image:
       "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80",
@@ -225,7 +225,7 @@ const EXPERIENCES_DATA = [
     cat: "wellness",
     title: "Sunrise Ocean Yoga & Sound Bath Ritual",
     duration: "2 Hours",
-    price: "₹ 12,000 per guest",
+    price: "$ 12,000 per guest",
     desc: "Realign body and mind atop our cliffside pavilion listening to waves below, followed by Tibetan singing bowl therapy.",
     image:
       "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80",
@@ -240,7 +240,7 @@ const EXPERIENCES_DATA = [
     cat: "charter",
     title: "Private Capri & Blue Grotto Yacht Voyage",
     duration: "Full Day (7 Hours)",
-    price: "₹ 1,50,000 charter",
+    price: "$ 1,50,000 charter",
     desc: "Set sail aboard our custom Riva boat with a dedicated skipper and personal butler. Includes champagne lunch in a hidden cove.",
     image:
       "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80",
@@ -258,8 +258,8 @@ const OFFERS_DATA = [
     tag: "ROMANCE EDITION",
     title: "Amalfi Romance & Sunset Serenade",
     subtitle: "STAY 3 NIGHTS, RECEIVE COMPLIMENTARY YACHT CRUISE",
-    price: "₹ 1,95,000",
-    value: "Includes ₹ 45,000 in Perks",
+    price: "$ 1,95,000",
+    value: "Includes $ 45,000 in Perks",
     validity: "Valid through Nov 2026",
     inclusions: [
       "Daily gourmet champagne breakfast on private suite terrace",
@@ -275,7 +275,7 @@ const OFFERS_DATA = [
     tag: "EPICUREAN RETREAT",
     title: "Michelin Star Culinary Journey",
     subtitle: "A 4-NIGHT IMMERSION IN MEDITERRANEAN FLAVORS",
-    price: "₹ 2,45,000",
+    price: "$ 2,45,000",
     value: "Curated Gastronomy",
     validity: "All Season",
     inclusions: [
@@ -294,39 +294,39 @@ const MENU_ITEMS = {
     {
       name: "Raw Scallop & White Truffle",
       desc: "Wild Capresian scallops, pressed citrus blossom oil, shaved Piedmont white truffle",
-      price: "₹ 5,800",
+      price: "$ 5,800",
     },
     {
       name: "Handcrafted Tagliolini al Limone",
       desc: "Aged 36-month Parmigiano Reggiano, organic Amalfi lemons, Oscietra caviar",
-      price: "₹ 6,900",
+      price: "$ 6,900",
     },
     {
       name: "Mediterranean Sea Bass in Salt Crust",
       desc: "Wild-caught line bass, braised fennel bulb, saffron fumet",
-      price: "₹ 8,500",
+      price: "$ 8,500",
     },
     {
       name: "Wagyu A5 Rossini",
       desc: "Miyazaki A5 Wagyu fillet, pan-seared foie gras, Madeira jus",
-      price: "₹ 12,500",
+      price: "$ 12,500",
     },
   ],
   wine: [
     {
       name: "Solaia Tenuta San Guido 2018",
       desc: "Tuscany, Italy - Deep ruby, complex dark fruits and cedar notes",
-      price: "₹ 55,000 / bottle",
+      price: "$ 55,000 / bottle",
     },
     {
       name: "Dom Pérignon P2 Vintage 2004",
       desc: "Champagne, France - Remarkable energy, toasted brioche and ripe citrus",
-      price: "₹ 75,000 / bottle",
+      price: "$ 75,000 / bottle",
     },
     {
       name: "Barolo Monfortino Riserva 2013",
       desc: "Piemonte, Italy - World-famous structure, rose petal, liquorice",
-      price: "₹ 1,05,000 / bottle",
+      price: "$ 1,05,000 / bottle",
     },
   ],
 };
@@ -461,11 +461,9 @@ function CinematicHero({ onSearchAvailability }) {
             }`}
             style={{ transitionProperty: "opacity, transform" }}
           >
-            <img
-              src={item.image}
+            <img src={item.image}
               alt={item.title}
-              className="w-full h-full object-cover object-center transform transition-transform duration-10000 ease-linear scale-105"
-            />
+              className="w-full h-full object-cover object-center transform transition-transform duration-10000 ease-linear scale-105" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             <div className="absolute inset-0 bg-linear-to-t from-[#1C1B18] via-[#1C1B18]/40 to-black/60" />
           </div>
         ))}
@@ -722,11 +720,9 @@ function EditorialStory() {
 
             {/* General Manager Quote & Signature Box */}
             <div className="pt-4 border-t border-[#E6E0D6] dark:border-slate-800 flex items-center space-x-4">
-              <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
                 alt="General Manager"
-                className="w-14 h-14 object-cover rounded-full border border-[#C5A059]"
-              />
+                className="w-14 h-14 object-cover rounded-full border border-[#C5A059]" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               <div>
                 <p className="font-serif italic text-lg text-stone-800 dark:text-stone-200">
                   "True luxury is not defined by excess, but by seamless
@@ -742,19 +738,15 @@ function EditorialStory() {
           {/* Overlapping Editorial Imagery Right Column */}
           <div className="lg:col-span-6 relative">
             <div className="relative z-10 overflow-hidden shadow-xl border border-[#E6E0D6] dark:border-slate-800 rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80"
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=900&q=80"
                 alt="Hotel Gardens"
-                className="w-full h-[440px] object-cover hover:scale-105 transition-transform duration-700"
-              />
+                className="w-full h-[440px] object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             </div>
             {/* Overlapping smaller framed photo */}
             <div className="hidden sm:block absolute -bottom-8 -left-8 z-20 w-3/5 overflow-hidden shadow-2xl border-4 border-[#FDFBF7] dark:border-slate-900 rounded-lg">
-              <img
-                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=700&q=80"
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=700&q=80"
                 alt="Butler Service"
-                className="w-full h-56 object-cover hover:scale-105 transition-transform duration-700"
-              />
+                className="w-full h-56 object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             </div>
 
             {/* Floating Gold Badge */}
@@ -868,11 +860,9 @@ function SuitesShowcase({ onSelectSuiteQuickView, onBookSuite }) {
             >
               {/* Suite Image Thumbnail */}
               <div className="relative h-56 sm:h-60 overflow-hidden">
-                <img
-                  src={suite.image}
+                <img src={suite.image}
                   alt={suite.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 <div className="absolute top-3.5 left-3.5 bg-[#1C1B18]/85 backdrop-blur-md px-2.5 py-1 text-[9px] uppercase tracking-widest text-[#C5A059] border border-[#C5A059]/30 rounded-md font-semibold">
                   {suite.categoryLabel}
                 </div>
@@ -902,7 +892,7 @@ function SuitesShowcase({ onSelectSuiteQuickView, onBookSuite }) {
                     <span className="text-[11px] text-stone-500 dark:text-stone-400">Rate / Night</span>
                     <div className="text-right">
                       <span className="font-serif text-xl font-medium text-[#1C1B18] dark:text-[#C5A059]">
-                        ₹{suite.price.toLocaleString()}
+                        ${suite.price.toLocaleString()}
                       </span>
                     </div>
                   </div>
@@ -998,11 +988,9 @@ function BespokeFacilities() {
               >
                 <div>
                   <div className="h-48 mb-6 overflow-hidden relative rounded-lg">
-                    <img
-                      src={fac.image}
+                    <img src={fac.image}
                       alt={fac.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div className="absolute top-3 right-3 bg-[#1C1B18] text-[#C5A059] text-[9px] uppercase tracking-widest px-2 py-1 font-medium">
                       {fac.stat}
                     </div>
@@ -1125,11 +1113,9 @@ function CuratedExperiences({ onRequestExperience }) {
             </div>
 
             <div className="lg:col-span-5 h-80 sm:h-96 border border-[#E6E0D6]/20 overflow-hidden rounded-lg">
-              <img
-                src={selectedExp.image}
+              <img src={selectedExp.image}
                 alt={selectedExp.title}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              />
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             </div>
           </div>
         )}
@@ -1164,11 +1150,9 @@ function SeasonalOffers({ onBookOffer }) {
               className="bg-[#F4EFEA] dark:bg-[#131c2e] border border-[#E6E0D6] dark:border-slate-800 flex flex-col justify-between overflow-hidden group hover:border-[#C5A059] transition-all rounded-lg"
             >
               <div className="relative h-64 overflow-hidden">
-                <img
-                  src={offer.image}
+                <img src={offer.image}
                   alt={offer.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 <div className="absolute top-4 left-4 bg-[#1C1B18] text-[#C5A059] text-[10px] uppercase tracking-widest px-3 py-1 border border-[#C5A059]/40 font-semibold">
                   {offer.tag}
                 </div>
@@ -1380,11 +1364,9 @@ function PhotoGallery({ onOpenLightbox }) {
               onClick={() => onOpenLightbox(idx)}
               className="relative h-72 cursor-pointer group shadow-md border border-[#E6E0D6] dark:border-slate-800 overflow-hidden rounded-lg"
             >
-              <img
-                src={img.url}
+              <img src={img.url}
                 alt={img.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 text-white">
                 <p className="text-xs uppercase tracking-widest text-[#C5A059] font-medium">
                   {img.cat}
@@ -1513,11 +1495,9 @@ function LocationGuide() {
           </div>
 
           <div className="lg:col-span-7 relative h-96 border border-[#C5A059]/30 overflow-hidden rounded-lg">
-            <img
-              src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80"
+            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80"
               alt="Location Coastline"
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-            />
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             <div className="absolute inset-0 bg-black/30" />
             <div className="absolute bottom-6 left-6 bg-[#1C1B18]/90 p-4 border border-[#C5A059]/40 max-w-xs rounded-sm">
               <p className="text-xs text-[#C5A059] uppercase font-bold tracking-widest">
@@ -1815,7 +1795,7 @@ function BookingWizardDrawer({ isOpen, onClose, initialData }) {
                       </div>
                       <div className="text-right">
                         <span className="font-serif text-lg text-[#C5A059]">
-                          ₹{s.price.toLocaleString()}
+                          ${s.price.toLocaleString()}
                         </span>
                         <span className="text-[10px] text-stone-500 block">
                           / night
@@ -1836,7 +1816,7 @@ function BookingWizardDrawer({ isOpen, onClose, initialData }) {
                     className="accent-[#C5A059]"
                   />
                   <span>
-                    Add Helicopter / Luxury Private Transfer from Airport (+₹15,000)
+                    Add Helicopter / Luxury Private Transfer from Airport (+$15,000)
                   </span>
                 </label>
               </div>
@@ -1929,7 +1909,7 @@ function BookingWizardDrawer({ isOpen, onClose, initialData }) {
                   <span className="text-stone-400">Guests:</span> {guests}
                 </p>
                 <p>
-                  <span className="text-stone-400">Total Price:</span> ₹
+                  <span className="text-stone-400">Total Price:</span> $
                   {totalCost.toLocaleString()} INR
                 </p>
                 <p>
@@ -1951,7 +1931,7 @@ function BookingWizardDrawer({ isOpen, onClose, initialData }) {
             <div className="flex justify-between items-center text-xs">
               <span className="text-stone-400">Est. Total Cost:</span>
               <span className="font-serif text-2xl text-[#C5A059] font-semibold">
-                ₹{totalCost.toLocaleString()}
+                ${totalCost.toLocaleString()}
               </span>
             </div>
           )}
@@ -2172,11 +2152,9 @@ function SuiteQuickViewModal({ suite, onClose, onBook }) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="h-64 sm:h-full overflow-hidden rounded-lg">
-            <img
-              src={suite.image}
+            <img src={suite.image}
               alt={suite.title}
-              className="w-full h-full object-cover"
-            />
+              className="w-full h-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           </div>
 
           <div className="space-y-4">
@@ -2187,7 +2165,7 @@ function SuiteQuickViewModal({ suite, onClose, onBook }) {
               {suite.title}
             </h3>
             <p className="font-serif text-2xl text-[#C5A059]">
-              ₹{suite.price.toLocaleString()} / night
+              ${suite.price.toLocaleString()} / night
             </p>
 
             <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
@@ -2316,11 +2294,9 @@ export default function HomeHotel() {
             <X className="w-8 h-8" />
           </button>
 
-          <img
-            src={GALLERY_IMAGES[lightboxIndex].url}
+          <img src={GALLERY_IMAGES[lightboxIndex].url}
             alt="Enlarged gallery view"
-            className="max-w-5xl max-h-[80vh] object-contain border border-stone-800 shadow-2xl rounded-sm"
-          />
+            className="max-w-5xl max-h-[80vh] object-contain border border-stone-800 shadow-2xl rounded-sm" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
 
           <div className="absolute bottom-6 text-center text-white space-y-1">
             <p className="font-serif text-2xl">

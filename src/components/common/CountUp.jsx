@@ -51,7 +51,7 @@ function easeOutCubic(t) {
  * Props:
  * - value / children / end: string | number (e.g. "38°C", "100%", 12, "2,400+")
  * - duration: duration in milliseconds (default: 1800ms)
- * - prefix: optional prefix string (e.g. "$", "₹")
+ * - prefix: optional prefix string (e.g. "$", "€")
  * - suffix: optional suffix string (e.g. "°C", "%", "+")
  * - decimals: optional decimal places count
  * - separator: boolean or string (default: true if input has commas)

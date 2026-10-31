@@ -64,7 +64,7 @@ const ROYAL_ROOMS_DATA = [
     bed: "1 King Bed",
     size: "45 m²",
     desc: "Elegant suite with classic interiors, private balcony and lake views.",
-    price: "₹ 18,999",
+    price: "$ 18,999",
     priceNum: 18999,
   },
   {
@@ -77,7 +77,7 @@ const ROYAL_ROOMS_DATA = [
     bed: "2 King Beds",
     size: "90 m²",
     desc: "Spacious villa with private pool, garden and outdoor lounge.",
-    price: "₹ 34,999",
+    price: "$ 34,999",
     priceNum: 34999,
   },
   {
@@ -90,7 +90,7 @@ const ROYAL_ROOMS_DATA = [
     bed: "1 King Bed",
     size: "60 m²",
     desc: "Panoramic lake views with luxury amenities and private deck.",
-    price: "₹ 24,999",
+    price: "$ 24,999",
     priceNum: 24999,
   },
   {
@@ -103,7 +103,7 @@ const ROYAL_ROOMS_DATA = [
     bed: "2 King Beds",
     size: "120 m²",
     desc: "A royal experience with grand interiors, private lounge and heritage views.",
-    price: "₹ 44,999",
+    price: "$ 44,999",
     priceNum: 44999,
   },
 ];
@@ -212,11 +212,9 @@ export default function HomeDark() {
       <section className="relative min-h-[92vh] lg:min-h-[96vh] flex items-center overflow-hidden py-28 sm:py-36 border-b border-white/5">
         {/* Full-bleed Palace Terrace & Lake Backdrop */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/heritage/hero-palace.jpg"
+          <img src="/images/heritage/hero-palace.jpg"
             alt="LuxStay Royal Heritage Palace Resort"
-            className="w-full h-full object-cover object-center"
-          />
+            className="w-full h-full object-cover object-center" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-slate-950/20" />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-950/40" />
         </div>
@@ -345,11 +343,9 @@ export default function HomeDark() {
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-12 gap-4 items-stretch">
               {/* Main Large Lake Palace Photo */}
               <Link to="/gallery-masonry" className="sm:col-span-7 rounded-xl overflow-hidden shadow-2xl h-72 sm:h-full min-h-[300px] sm:min-h-[440px] border border-white/10 group relative block">
-                <img
-                  src="/images/heritage/lake-palace.jpg"
+                <img src="/images/heritage/lake-palace.jpg"
                   alt="Lake Palace Udaipur Panoramic View"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
                 <div className="absolute bottom-4 left-4 right-4 text-white">
                   <span className="text-[10px] uppercase font-bold tracking-widest text-[#D4B68A]">Historic Landmark</span>
@@ -360,22 +356,18 @@ export default function HomeDark() {
               {/* Right 2 Stacked Palace Photos */}
               <div className="sm:col-span-5 flex flex-col gap-4 h-full">
                 <Link to="/gallery-masonry" className="flex-1 rounded-xl overflow-hidden shadow-xl min-h-[140px] sm:min-h-0 border border-white/10 group relative block">
-                  <img
-                    src="/images/heritage/jharokha-lounge.jpg"
+                  <img src="/images/heritage/jharokha-lounge.jpg"
                     alt="Royal Jharokha Balcony Suite"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3 text-white">
                     <p className="text-xs font-bold">Jharokha Balconies</p>
                   </div>
                 </Link>
                 <Link to="/gallery-masonry" className="flex-1 rounded-xl overflow-hidden shadow-xl min-h-[140px] sm:min-h-0 border border-white/10 group relative block">
-                  <img
-                    src="/images/heritage/royal-tea.jpg"
+                  <img src="/images/heritage/royal-tea.jpg"
                     alt="Traditional Royal Palace Tea Feast"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-3 text-white">
                     <p className="text-xs font-bold">Royal High Tea</p>
@@ -429,11 +421,9 @@ export default function HomeDark() {
                   <div>
                     {/* Image with Direct Link & Badge */}
                     <Link to={targetUrl} className="relative h-56 block overflow-hidden">
-                      <img
-                        src={room.image}
+                      <img src={room.image}
                         alt={room.title}
-                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
-                      />
+                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0D181C] via-transparent to-transparent opacity-60" />
                       <span className={`absolute top-3.5 left-3.5 font-bold text-[10px] uppercase tracking-wider px-3 py-1 rounded-md shadow-md ${room.badgeStyle}`}>
                         {room.badge}
@@ -501,11 +491,9 @@ export default function HomeDark() {
       <section className="relative py-32 overflow-hidden bg-slate-950 text-white border-b border-white/5">
         {/* Full-bleed Candlelit Palace Terrace Backdrop */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/heritage/dining-palace.jpg"
+          <img src="/images/heritage/dining-palace.jpg"
             alt="Candlelit Dining at Lake Palace"
-            className="w-full h-full object-cover opacity-50"
-          />
+            className="w-full h-full object-cover opacity-50" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/40" />
         </div>
 
@@ -622,11 +610,9 @@ export default function HomeDark() {
               >
                 <div>
                   <div className="relative h-48 sm:h-52 overflow-hidden">
-                    <img
-                      src={exp.image}
+                    <img src={exp.image}
                       alt={exp.title}
-                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
-                    />
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0C1518] via-transparent to-transparent opacity-60" />
                   </div>
                   <div className="p-5 space-y-1.5">
@@ -674,11 +660,9 @@ export default function HomeDark() {
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={t.avatar}
+                    <img src={t.avatar}
                       alt={t.name}
-                      className="h-11 w-11 rounded-full object-cover border border-[#D4B68A]/40"
-                    />
+                      className="h-11 w-11 rounded-full object-cover border border-[#D4B68A]/40" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div>
                       <h4 className="text-sm font-bold text-white">
                         {t.name}
@@ -712,11 +696,9 @@ export default function HomeDark() {
       <section className="relative py-20 overflow-hidden bg-slate-950 text-white">
         {/* Panoramic Sunset Lake Palace Backdrop */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/images/heritage/lake-palace.jpg"
+          <img src="/images/heritage/lake-palace.jpg"
             alt="Lake Palace Sunset Panorama"
-            className="w-full h-full object-cover opacity-50"
-          />
+            className="w-full h-full object-cover opacity-50" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 to-slate-950/40" />
         </div>
 

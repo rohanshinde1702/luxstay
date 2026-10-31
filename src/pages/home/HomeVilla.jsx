@@ -293,11 +293,9 @@ export default function HomeVilla() {
       <section className="relative min-h-[90vh] lg:min-h-[94vh] flex items-center justify-center py-24 sm:py-32">
         {/* Background Image */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <img
-            src={activeHero.image}
+          <img src={activeHero.image}
             alt="LuxStay Luxury Villa"
-            className="w-full h-full object-cover object-center"
-          />
+            className="w-full h-full object-cover object-center" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-linear-to-r from-slate-950/85 via-slate-950/60 to-slate-950/35" />
           <div className="absolute inset-0 bg-linear-to-t from-slate-950/80 via-transparent to-slate-950/40" />
         </div>
@@ -497,11 +495,9 @@ export default function HomeVilla() {
                 <div>
                   {/* Image with Badge */}
                   <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={villa.image}
+                    <img src={villa.image}
                       alt={villa.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <span className="absolute top-3.5 left-3.5 bg-slate-950/80 backdrop-blur-md text-white font-medium text-[10px] uppercase tracking-wider px-3 py-1 rounded-full border border-white/10">
                       {villa.badge}
                     </span>
@@ -536,7 +532,7 @@ export default function HomeVilla() {
                     {/* Price */}
                     <div className="pt-2">
                       <span className="text-lg font-bold text-slate-900 dark:text-white">
-                        ₹{villa.price}
+                        ${villa.price}
                       </span>
                       <span className="text-[11px] text-slate-400"> / night</span>
                     </div>
@@ -566,11 +562,9 @@ export default function HomeVilla() {
       <section className="relative py-28 overflow-hidden bg-slate-950 text-white">
         {/* Panoramic Sunset Firepit Lounge Image */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=85"
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=85"
             alt="Sunset Villa Lounge"
-            className="w-full h-full object-cover opacity-50"
-          />
+            className="w-full h-full object-cover opacity-50" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-linear-to-r from-slate-950/90 via-slate-950/70 to-slate-950/40" />
         </div>
 
@@ -718,11 +712,9 @@ export default function HomeVilla() {
                 className="group flex flex-col justify-between rounded-lg bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-xs transition-all duration-300 cursor-pointer"
               >
                 <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={exp.image}
+                  <img src={exp.image}
                     alt={exp.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                 </div>
 
                 <div className="p-5 space-y-1.5">
@@ -759,7 +751,7 @@ export default function HomeVilla() {
             </div>
 
             <Link
-              to="/reviews"
+              to="/testimonials"
               className="inline-flex items-center gap-1 text-xs font-semibold text-[#2C3E35] dark:text-[#dfcaa4] hover:text-slate-900 dark:hover:text-white transition-colors"
             >
               <span>View All Reviews</span>
@@ -776,11 +768,9 @@ export default function HomeVilla() {
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={t.avatar}
+                    <img src={t.avatar}
                       alt={t.name}
-                      className="h-11 w-11 rounded-full object-cover border border-[#2C3E35]/30"
-                    />
+                      className="h-11 w-11 rounded-full object-cover border border-[#2C3E35]/30" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div>
                       <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                         {t.name}
@@ -813,11 +803,9 @@ export default function HomeVilla() {
       {/* -------------------------------------------------------------------------- */}
       <section className="relative py-20 overflow-hidden bg-slate-950 text-white">
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2400&q=85"
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=2400&q=85"
             alt="Dream Villa Sunset"
-            className="w-full h-full object-cover opacity-45"
-          />
+            className="w-full h-full object-cover opacity-45" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
           <div className="absolute inset-0 bg-linear-to-r from-slate-950/95 via-slate-950/80 to-slate-950/50" />
         </div>
 

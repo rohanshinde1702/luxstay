@@ -95,7 +95,7 @@ export default function DestinationCard({
                 <div className="text-right">
                   <span className="text-[10px] uppercase font-bold text-slate-400 block">Starting From</span>
                   <span className="font-serif text-lg sm:text-xl font-bold text-slate-900 dark:text-[#dfcaa4]">
-                    ₹{typeof startingPrice === "number" ? startingPrice.toLocaleString() : startingPrice}
+                    ${typeof startingPrice === "number" ? startingPrice.toLocaleString() : startingPrice}
                     <span className="text-xs text-slate-500 dark:text-slate-400 font-normal"> / nt</span>
                   </span>
                 </div>
@@ -203,7 +203,7 @@ export default function DestinationCard({
           <div className="flex items-center gap-2">
             {startingPrice && (
               <span className="rounded-full bg-slate-950/80 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-[#dfcaa4] border border-white/20">
-                From ₹{typeof startingPrice === "number" ? startingPrice.toLocaleString() : startingPrice}/nt
+                From ${typeof startingPrice === "number" ? startingPrice.toLocaleString() : startingPrice}/nt
               </span>
             )}
             <button
@@ -307,7 +307,7 @@ export default function DestinationCard({
         <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
           <div>
             <span className="text-[10px] uppercase font-bold text-slate-400 block">Starting From</span>
-            <span className="text-xs font-bold text-slate-900 dark:text-white">₹{typeof startingPrice === 'number' ? startingPrice.toLocaleString() : startingPrice} / nt</span>
+            <span className="text-xs font-bold text-slate-900 dark:text-white">${typeof startingPrice === 'number' ? startingPrice.toLocaleString() : startingPrice} / nt</span>
           </div>
 
           <Link

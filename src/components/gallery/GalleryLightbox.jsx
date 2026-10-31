@@ -196,11 +196,9 @@ export default function GalleryLightbox({
           {/* Main Image Stage */}
           <div className="relative z-10 max-h-[82vh] max-w-5xl w-full flex flex-col items-center justify-center px-4 sm:px-12 pointer-events-none">
             <div className="relative overflow-hidden rounded-lg shadow-2xl bg-slate-900 flex flex-col items-center max-w-full max-h-[75vh] pointer-events-auto border border-white/10">
-              <img
-                src={currentImage.src}
+              <img src={currentImage.src}
                 alt={currentImage.title}
-                className="max-h-[62vh] sm:max-h-[68vh] w-auto max-w-full object-contain"
-              />
+                className="max-h-[62vh] sm:max-h-[68vh] w-auto max-w-full object-contain" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               {(currentImage.caption || currentImage.title) && (
                 <div className="w-full bg-slate-950/90 backdrop-blur-md p-3.5 sm:p-4 text-center border-t border-white/10 shrink-0">
                   <p className="font-serif text-sm sm:text-base font-semibold text-white">

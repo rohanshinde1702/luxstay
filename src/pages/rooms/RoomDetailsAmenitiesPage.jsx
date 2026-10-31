@@ -52,9 +52,9 @@ export default function RoomDetailsAmenitiesPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-24">
+    <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen pb-24 transition-colors">
       {/* Header Bar */}
-      <div className="border-b border-slate-200 bg-white">
+      <div className="border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
         <Container className="py-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <Breadcrumbs
@@ -95,11 +95,11 @@ export default function RoomDetailsAmenitiesPage() {
             <Rating value={room.rating} reviewsCount={room.reviewsCount} size="sm" />
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white">
             {room.title}
           </h1>
 
-          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
             {room.description}
           </p>
         </div>
@@ -123,7 +123,7 @@ export default function RoomDetailsAmenitiesPage() {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="mb-8 border-b border-slate-200">
+        <div className="mb-8 border-b border-slate-200 dark:border-slate-800">
           <div className="flex space-x-6 overflow-x-auto pb-px">
             {[
               { id: "amenities", label: "Full Amenity Matrix" },
@@ -136,8 +136,8 @@ export default function RoomDetailsAmenitiesPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`whitespace-nowrap pb-3 text-sm font-semibold transition-colors cursor-pointer border-b-2 ${
                   activeTab === tab.id
-                    ? "border-[#C5A880] text-slate-900 font-bold"
-                    : "border-transparent text-slate-500 hover:text-slate-700"
+                    ? "border-[#C5A880] text-slate-900 dark:text-white font-bold"
+                    : "border-transparent text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
                 }`}
               >
                 {tab.label}
@@ -151,18 +151,18 @@ export default function RoomDetailsAmenitiesPage() {
           {/* Main Content (2 Cols) */}
           <div className="lg:col-span-2 space-y-8">
             {activeTab === "amenities" && (
-              <div className="space-y-6 rounded-lg border border-slate-200/80 bg-white p-8 shadow-xs">
-                <h3 className="font-serif text-2xl font-bold text-slate-900">
+              <div className="space-y-6 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-xs">
+                <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white">
                   Comprehensive Suite Amenities
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {room.amenities?.map((am, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-3 rounded-lg bg-slate-50 p-4 border border-slate-100"
+                      className="flex items-center gap-3 rounded-lg bg-slate-50 dark:bg-slate-800/60 p-4 border border-slate-100 dark:border-slate-700/60"
                     >
-                      <CheckCircle2 className="h-5 w-5 text-emerald-600 shrink-0" />
-                      <span className="text-xs sm:text-sm font-medium text-slate-800">
+                      <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                      <span className="text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-200">
                         {am}
                       </span>
                     </div>
@@ -172,13 +172,13 @@ export default function RoomDetailsAmenitiesPage() {
             )}
 
             {activeTab === "floorplan" && (
-              <div className="space-y-6 rounded-lg border border-slate-200/80 bg-white p-8 shadow-xs">
+              <div className="space-y-6 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-xs">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="font-serif text-2xl font-bold text-slate-900">
+                    <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white">
                       Architectural Blueprint
                     </h3>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
                       Total Living Area: {room.size} • Master Suite with Private Dressing Room
                     </p>
                   </div>
@@ -187,12 +187,12 @@ export default function RoomDetailsAmenitiesPage() {
                   </Badge>
                 </div>
 
-                <div className="rounded-lg border-2 border-dashed border-slate-300 bg-slate-100/60 p-8 sm:p-12 text-center space-y-3">
+                <div className="rounded-lg border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-100/60 dark:bg-slate-800/40 p-8 sm:p-12 text-center space-y-3">
                   <Layers className="h-12 w-12 text-[#C5A880] mx-auto" />
-                  <h4 className="font-serif text-lg font-bold text-slate-800">
+                  <h4 className="font-serif text-lg font-bold text-slate-800 dark:text-slate-200">
                     Interactive 3D Virtual Tour & Blueprint
                   </h4>
-                  <p className="text-xs text-slate-500 max-w-md mx-auto">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 max-w-md mx-auto">
                     Features open-concept living pavilion, master king wing, freestanding soaking terrace, and oceanfront plunge pool deck.
                   </p>
                 </div>
@@ -200,44 +200,44 @@ export default function RoomDetailsAmenitiesPage() {
             )}
 
             {activeTab === "bathroom" && (
-              <div className="space-y-6 rounded-lg border border-slate-200/80 bg-white p-8 shadow-xs">
-                <h3 className="font-serif text-2xl font-bold text-slate-900">
+              <div className="space-y-6 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-xs">
+                <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white">
                   Spa & Wellness Bathroom Specs
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700">
-                  <div className="rounded-lg bg-slate-50 p-4 border border-slate-100 space-y-1">
-                    <strong className="block text-slate-900 font-bold">Freestanding Soaking Tub</strong>
-                    <p className="text-slate-500 text-xs">Hand-carved volcanic stone or hammered copper overlooking private gardens.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                  <div className="rounded-lg bg-slate-50 dark:bg-slate-800/60 p-4 border border-slate-100 dark:border-slate-700/60 space-y-1">
+                    <strong className="block text-slate-900 dark:text-white font-bold">Freestanding Soaking Tub</strong>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs">Hand-carved volcanic stone or hammered copper overlooking private gardens.</p>
                   </div>
-                  <div className="rounded-lg bg-slate-50 p-4 border border-slate-100 space-y-1">
-                    <strong className="block text-slate-900 font-bold">Dual Rain Showers</strong>
-                    <p className="text-slate-500 text-xs">Thermostatic high-pressure rainfall cascades with steam therapy mode.</p>
+                  <div className="rounded-lg bg-slate-50 dark:bg-slate-800/60 p-4 border border-slate-100 dark:border-slate-700/60 space-y-1">
+                    <strong className="block text-slate-900 dark:text-white font-bold">Dual Rain Showers</strong>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs">Thermostatic high-pressure rainfall cascades with steam therapy mode.</p>
                   </div>
-                  <div className="rounded-lg bg-slate-50 p-4 border border-slate-100 space-y-1">
-                    <strong className="block text-slate-900 font-bold">Heated Marble Floors</strong>
-                    <p className="text-slate-500 text-xs">Radiant underfloor heating throughout all bathroom and dressing areas.</p>
+                  <div className="rounded-lg bg-slate-50 dark:bg-slate-800/60 p-4 border border-slate-100 dark:border-slate-700/60 space-y-1">
+                    <strong className="block text-slate-900 dark:text-white font-bold">Heated Marble Floors</strong>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs">Radiant underfloor heating throughout all bathroom and dressing areas.</p>
                   </div>
-                  <div className="rounded-lg bg-slate-50 p-4 border border-slate-100 space-y-1">
-                    <strong className="block text-slate-900 font-bold">Bespoke Toiletries</strong>
-                    <p className="text-slate-500 text-xs">Refillable botanical fragrances distilled on-site by resident aromatherapists.</p>
+                  <div className="rounded-lg bg-slate-50 dark:bg-slate-800/60 p-4 border border-slate-100 dark:border-slate-700/60 space-y-1">
+                    <strong className="block text-slate-900 dark:text-white font-bold">Bespoke Toiletries</strong>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs">Refillable botanical fragrances distilled on-site by resident aromatherapists.</p>
                   </div>
                 </div>
               </div>
             )}
 
             {activeTab === "technology" && (
-              <div className="space-y-6 rounded-lg border border-slate-200/80 bg-white p-8 shadow-xs">
-                <h3 className="font-serif text-2xl font-bold text-slate-900">
+              <div className="space-y-6 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-xs">
+                <h3 className="font-serif text-2xl font-bold text-slate-900 dark:text-white">
                   Smart In-Suite Technology
                 </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700">
-                  <div className="rounded-lg bg-slate-50 p-4 border border-slate-100 space-y-1">
-                    <strong className="block text-slate-900 font-bold">Lutron Lighting Automation</strong>
-                    <p className="text-slate-500 text-xs">Circadian-tuned ambient lighting presets for morning, dinner, and relaxation.</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                  <div className="rounded-lg bg-slate-50 dark:bg-slate-800/60 p-4 border border-slate-100 dark:border-slate-700/60 space-y-1">
+                    <strong className="block text-slate-900 dark:text-white font-bold">Lutron Lighting Automation</strong>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs">Circadian-tuned ambient lighting presets for morning, dinner, and relaxation.</p>
                   </div>
-                  <div className="rounded-lg bg-slate-50 p-4 border border-slate-100 space-y-1">
-                    <strong className="block text-slate-900 font-bold">Sonos Acoustic Architecture</strong>
-                    <p className="text-slate-500 text-xs">Multi-room lossless audio streaming with curated high-fidelity playlists.</p>
+                  <div className="rounded-lg bg-slate-50 dark:bg-slate-800/60 p-4 border border-slate-100 dark:border-slate-700/60 space-y-1">
+                    <strong className="block text-slate-900 dark:text-white font-bold">Sonos Acoustic Architecture</strong>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs">Multi-room lossless audio streaming with curated high-fidelity playlists.</p>
                   </div>
                 </div>
               </div>
@@ -246,15 +246,15 @@ export default function RoomDetailsAmenitiesPage() {
 
           {/* Sticky Booking Widget Column */}
           <div className="lg:col-span-1">
-            <div className="sticky top-28 rounded-lg border border-slate-200/80 bg-white p-6 shadow-xl space-y-6">
-              <div className="flex items-baseline justify-between border-b border-slate-100 pb-4">
+            <div className="sticky top-28 rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-xl space-y-6">
+              <div className="flex items-baseline justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
                     Nightly Rate
                   </span>
-                  <div className="font-serif text-3xl font-bold text-slate-900">
-                    ₹{typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
-                    <span className="text-xs font-sans font-normal text-slate-500"> / night</span>
+                  <div className="font-serif text-3xl font-bold text-slate-900 dark:text-white">
+                    ${typeof room.price === 'number' ? room.price.toLocaleString() : room.price}
+                    <span className="text-xs font-sans font-normal text-slate-500 dark:text-slate-400"> / night</span>
                   </div>
                 </div>
                 <Badge variant="glass" size="xs">
@@ -262,18 +262,18 @@ export default function RoomDetailsAmenitiesPage() {
                 </Badge>
               </div>
 
-              <div className="space-y-3 text-xs text-slate-600">
+              <div className="space-y-3 text-xs text-slate-600 dark:text-slate-400">
                 <div className="flex justify-between">
                   <span>Dimensions</span>
-                  <strong className="text-slate-900">{room.size}</strong>
+                  <strong className="text-slate-900 dark:text-slate-200">{room.size}</strong>
                 </div>
                 <div className="flex justify-between">
                   <span>Bed Configuration</span>
-                  <strong className="text-slate-900">{room.bedType}</strong>
+                  <strong className="text-slate-900 dark:text-slate-200">{room.bedType}</strong>
                 </div>
                 <div className="flex justify-between">
                   <span>Maximum Occupancy</span>
-                  <strong className="text-slate-900">{room.capacity}</strong>
+                  <strong className="text-slate-900 dark:text-slate-200">{room.capacity || 2} Adults</strong>
                 </div>
               </div>
 

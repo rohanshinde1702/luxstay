@@ -176,19 +176,19 @@ const SPA_MENU_DATA = {
     {
       title: "Volcanic Mineral Thermal Circuit",
       duration: "90 MIN",
-      price: "₹ 14,000",
+      price: "$ 14,000",
       desc: "Guided immersion through five temperature-controlled mineral pools, geothermal mud mask, and oxygenating herbal bath.",
     },
     {
       title: "Cold Plunge & Infrared Detox",
       duration: "60 MIN",
-      price: "₹ 11,500",
+      price: "$ 11,500",
       desc: "Custom combination of full-spectrum infrared therapy paired with contrast ice plunge to stimulate lymphatic circulation.",
     },
     {
       title: "Aromatherapy Herbal Vapor Cave",
       duration: "75 MIN",
-      price: "₹ 12,500",
+      price: "$ 12,500",
       desc: "Natural underground quartz cave infused with organic eucalyptus, rosemary, and native wild lavender steam.",
     },
   ],
@@ -196,19 +196,19 @@ const SPA_MENU_DATA = {
     {
       title: "Deep Tissue Botanical Relief",
       duration: "90 MIN",
-      price: "₹ 15,500",
+      price: "$ 15,500",
       desc: "Targeted deep muscle work using warm Arnica and organic CBD-infused cold-pressed botanical oils.",
     },
     {
       title: "Luxstay Signature Warm Stone Massage",
       duration: "100 MIN",
-      price: "₹ 17,500",
+      price: "$ 17,500",
       desc: "Smooth basalt volcanic stones heated in herbal infusion water to release deep physical and energetic tension.",
     },
     {
       title: "Four-Hands Synchronized Harmony",
       duration: "75 MIN",
-      price: "₹ 21,000",
+      price: "$ 21,000",
       desc: "Two master therapists work in synchronized rhythm with warm sandalwood oils for ultimate neurological relaxation.",
     },
   ],
@@ -216,19 +216,19 @@ const SPA_MENU_DATA = {
     {
       title: "Gold Leaf & Marine Collagen Rejuvenation",
       duration: "90 MIN",
-      price: "₹ 19,000",
+      price: "$ 19,000",
       desc: "Pure 24k gold leaf application combined with micro-current lifting and deep sea marine algae serum.",
     },
     {
       title: "Cellular Oxygen & Botanical Hydration",
       duration: "75 MIN",
-      price: "₹ 14,500",
+      price: "$ 14,500",
       desc: "Hyperbaric oxygen mist infused with botanical hyaluronic acid for instantly glowing and revitalized skin.",
     },
     {
       title: "Custom Organic Facial & Scalp Ritual",
       duration: "60 MIN",
-      price: "₹ 12,000",
+      price: "$ 12,000",
       desc: "Tailored to your skin analysis using estate-harvested botanicals and warm herbal scalp acupressure.",
     },
   ],
@@ -236,19 +236,19 @@ const SPA_MENU_DATA = {
     {
       title: "Shirodhara Mind Awakening Therapy",
       duration: "90 MIN",
-      price: "₹ 16,500",
+      price: "$ 16,500",
       desc: "Continuous stream of warm, herbal-infused sesame oil poured gently onto the third eye to quiet mental chatter.",
     },
     {
       title: "Abhyanga Full Body Marma Detox",
       duration: "90 MIN",
-      price: "₹ 15,500",
+      price: "$ 15,500",
       desc: "Traditional warm oil herbal massage targeting vital energy points to release physical toxins and fatigue.",
     },
     {
       title: "Pizhichil Royal Herbal Bath",
       duration: "105 MIN",
-      price: "₹ 19,500",
+      price: "$ 19,500",
       desc: "Warm herbal oils squeezed systematically over the body by two therapists for deep cellular renewal.",
     },
   ],
@@ -256,13 +256,13 @@ const SPA_MENU_DATA = {
     {
       title: "Tibetan Singing Bowl Sound Immersion",
       duration: "60 MIN",
-      price: "₹ 11,000",
+      price: "$ 11,000",
       desc: "Acoustic sound therapy utilizing hand-hammered quartz and Tibetan bronze bowls to balance energy centers.",
     },
     {
       title: "Full Moon Gong & Crystal Meditation",
       duration: "75 MIN",
-      price: "₹ 13,000",
+      price: "$ 13,000",
       desc: "Deep vibrational healing frequency experience performed inside the open-air oceanfront stone dome.",
     },
   ],
@@ -465,7 +465,7 @@ export default function HomeResort() {
         </div>
         <p className="flex-1 text-center font-normal text-xs tracking-wider">
           <span className="text-[#C5A059]">Exclusive Reserve Offer:</span>{" "}
-          Complimentary ₹15,000 Thermal Spa Credit on 4+ Night Stays
+          Complimentary $15,000 Thermal Spa Credit on 4+ Night Stays
         </p>
         <div className="hidden md:flex items-center gap-4 text-[11px]">
           <select
@@ -474,7 +474,7 @@ export default function HomeResort() {
             className="bg-transparent text-[#FDFBF7] focus:outline-hidden cursor-pointer"
           >
             <option value="INR" className="bg-[#1C3326]">
-              INR (₹)
+              INR ($)
             </option>
             <option value="USD" className="bg-[#1C3326]">
               USD ($)
@@ -728,11 +728,9 @@ export default function HomeResort() {
           {/* Right Asymmetric Photo Grid */}
           <div className="lg:col-span-6 grid grid-cols-2 gap-4 relative">
             <div className="space-y-4">
-              <img
-                src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=85"
+              <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=85"
                 alt="Spa Treatment"
-                className="rounded-lg w-full h-72 md:h-80 object-cover shadow-lg border border-[#E6E0D6] dark:border-slate-800"
-              />
+                className="rounded-lg w-full h-72 md:h-80 object-cover shadow-lg border border-[#E6E0D6] dark:border-slate-800" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               <div className="rounded-lg bg-[#1C3326] text-[#FDFBF7] p-6 text-center border border-[#C5A059]">
                 <Sparkles className="w-6 h-6 text-[#C5A059] mx-auto mb-2" />
                 <p className="font-serif text-lg font-light">
@@ -753,11 +751,9 @@ export default function HomeResort() {
                   Geothermal Powered
                 </p>
               </div>
-              <img
-                src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=85"
+              <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=85"
                 alt="Luxury Villa Interior"
-                className="rounded-lg w-full h-72 md:h-80 object-cover shadow-lg border border-[#E6E0D6] dark:border-slate-800"
-              />
+                className="rounded-lg w-full h-72 md:h-80 object-cover shadow-lg border border-[#E6E0D6] dark:border-slate-800" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
             </div>
           </div>
         </div>
@@ -814,11 +810,9 @@ export default function HomeResort() {
                 <div>
                   {/* Image Container (clips the hover zoom inside rounded corners) */}
                   <div className="relative overflow-hidden h-64 rounded-t-lg isolate">
-                    <img
-                      src={villa.image}
+                    <img src={villa.image}
                       alt={villa.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <span className="absolute top-4 left-4 bg-[#1C3326]/90 text-[#FDFBF7] text-[10px] uppercase tracking-widest px-3 py-1 border border-[#C5A059]/40">
                       {villa.tag}
                     </span>
@@ -868,7 +862,7 @@ export default function HomeResort() {
                       From
                     </span>
                     <span className="font-serif text-2xl font-light text-[#1C3326] dark:text-[#C5A059]">
-                      ₹{villa.price.toLocaleString()}
+                      ${villa.price.toLocaleString()}
                     </span>
                     <span className="text-[10px] text-stone-500"> / night</span>
                   </div>
@@ -1065,7 +1059,7 @@ export default function HomeResort() {
                 title: "3-Day Geothermal Thermal Reset",
                 subtitle: "Deep cellular detox & stress dissolution",
                 days: "3 Days / 2 Nights",
-                price: "₹ 1,20,000 / person",
+                price: "$ 1,20,000 / person",
                 details:
                   "Day 1: Arrival botanical welcome & diagnostic consultation. Day 2: Volcanic mud wrap, 90-min deep tissue massage, full thermal circuit. Day 3: Morning oceanfront yoga & sound bowl release.",
               },
@@ -1073,7 +1067,7 @@ export default function HomeResort() {
                 title: "5-Day Mindful Ayurvedic & Sleep Awakening",
                 subtitle: "Neurological alignment & circadian rhythm repair",
                 days: "5 Days / 4 Nights",
-                price: "₹ 2,40,000 / person",
+                price: "$ 2,40,000 / person",
                 details:
                   "Includes daily Shirodhara head massage, custom herbal elixirs, bedtime magnesium baths, guided evening yoga nidra, and tailored organic anti-inflammatory menu.",
               },
@@ -1081,7 +1075,7 @@ export default function HomeResort() {
                 title: "7-Day Royal Botanical Rejuvenation",
                 subtitle: "The ultimate luxury holistic body & mind overhaul",
                 days: "7 Days / 6 Nights",
-                price: "₹ 3,90,000 / person",
+                price: "$ 3,90,000 / person",
                 details:
                   "Complete immersion featuring personalized chef nutrition, daily private spa sessions, yacht excursion with breathwork master, 24k gold facials, and unlimited thermal springs.",
               },
@@ -1206,11 +1200,9 @@ export default function HomeResort() {
               >
                 <div>
                   <div className="relative h-60 overflow-hidden">
-                    <img
-                      src={venue.image}
+                    <img src={venue.image}
                       alt={venue.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div className="absolute top-4 left-4 bg-[#1C3326] text-[#FDFBF7] text-[10px] uppercase tracking-widest px-3 py-1">
                       {venue.cuisine}
                     </div>
@@ -1301,11 +1293,9 @@ export default function HomeResort() {
               onClick={() => setActiveLightboxImg(item)}
               className="relative h-64 overflow-hidden group cursor-pointer border border-[#E6E0D6] dark:border-slate-800 rounded-lg"
             >
-              <img
-                src={item.img}
+              <img src={item.img}
                 alt={item.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 text-white">
                 <span className="text-[10px] uppercase tracking-widest text-[#C5A059] font-medium">
                   {item.category}
@@ -1579,11 +1569,9 @@ export default function HomeResort() {
 
             {/* Modal Image */}
             <div className="md:w-1/2 h-64 md:h-auto relative">
-              <img
-                src={selectedVilla.image}
+              <img src={selectedVilla.image}
                 alt={selectedVilla.name}
-                className="w-full h-full object-cover"
-              />
+                className="w-full h-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
               <span className="absolute bottom-4 left-4 bg-[#1C3326] text-[#FDFBF7] text-[10px] uppercase tracking-widest px-3 py-1">
                 {selectedVilla.tag}
               </span>
@@ -1634,7 +1622,7 @@ export default function HomeResort() {
               <div className="pt-6 border-t border-[#E6E0D6] dark:border-slate-800 flex justify-between items-center mt-6">
                 <div>
                   <span className="font-serif text-2xl font-light text-[#1C3326] dark:text-[#C5A059]">
-                    ₹{selectedVilla.price.toLocaleString()}
+                    ${selectedVilla.price.toLocaleString()}
                   </span>
                   <span className="text-[10px] text-stone-500"> / night</span>
                 </div>
@@ -1751,11 +1739,9 @@ export default function HomeResort() {
               <X className="w-6 h-6" />
             </button>
 
-            <img
-              src={activeLightboxImg.img}
+            <img src={activeLightboxImg.img}
               alt={activeLightboxImg.title}
-              className="rounded-lg max-h-[80vh] mx-auto border border-[#C5A059]/40 object-contain"
-            />
+              className="rounded-lg max-h-[80vh] mx-auto border border-[#C5A059]/40 object-contain" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
 
             <div className="mt-4 text-white">
               <span className="text-[10px] uppercase tracking-widest text-[#C5A059] font-medium">
@@ -1870,7 +1856,7 @@ export default function HomeResort() {
                   >
                     {VILLAS_DATA.map((v) => (
                       <option key={v.id} value={v.name}>
-                        {v.name} (₹{v.price.toLocaleString()}/night)
+                        {v.name} (${v.price.toLocaleString()}/night)
                       </option>
                     ))}
                   </select>
@@ -1890,7 +1876,7 @@ export default function HomeResort() {
                     }
                     className="w-full bg-[#F6F2EA] dark:bg-slate-900 border border-[#E6E0D6] dark:border-slate-700 p-3 text-[#1E1D1B] dark:text-white focus:outline-hidden cursor-pointer"
                   >
-                    <option>₹15,000 Geothermal Spa Credit (Included)</option>
+                    <option>$15,000 Geothermal Spa Credit (Included)</option>
                     <option>Complimentary Helicopter Transfer Upgrade</option>
                     <option>Private Chef Wine Pairing Tasting Dinner</option>
                   </select>
@@ -1900,7 +1886,7 @@ export default function HomeResort() {
                   <div className="flex justify-between font-medium">
                     <span>Estimated Total</span>
                     <span className="font-serif text-xl text-[#1C3326] dark:text-[#C5A059]">
-                      ₹ 1,85,000
+                      $ 1,85,000
                     </span>
                   </div>
                   <p className="text-[10px] text-stone-500">

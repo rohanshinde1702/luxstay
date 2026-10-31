@@ -24,11 +24,9 @@ export default function ToursModernPage() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-slate-950 py-16 sm:py-24 text-white">
         <div className="absolute inset-0 z-0 opacity-25">
-          <img
-            src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&w=2000&q=80"
+          <img src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?auto=format&fit=crop&w=2000&q=80"
             alt="Alpine & Marine Tours"
-            className="h-full w-full object-cover"
-          />
+            className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-linear-to-b from-slate-950/80 via-slate-950/90 to-slate-950 z-0" />
 
@@ -100,7 +98,7 @@ export default function ToursModernPage() {
                 </div>
                 <div className="absolute bottom-4 right-4 z-10 rounded-md bg-slate-950/80 backdrop-blur-md px-3.5 py-1.5 text-white shadow-lg pointer-events-none">
                   <span className="font-serif text-lg font-bold text-[#dfcaa4]">
-                    ₹{typeof tour.price === 'number' ? tour.price.toLocaleString() : tour.price}
+                    ${typeof tour.price === 'number' ? tour.price.toLocaleString() : tour.price}
                   </span>
                   <span className="text-[10px] text-slate-300"> / guest</span>
                 </div>

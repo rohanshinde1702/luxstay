@@ -85,11 +85,9 @@ export default function BlogGridPage() {
       {/* -------------------------------------------------------------------------- */}
       <section className="relative overflow-hidden bg-slate-950 py-16 sm:py-24 text-white border-b border-white/10">
         <div className="absolute inset-0 z-0 opacity-30">
-          <img
-            src="/images/heritage/lake-palace.jpg"
+          <img src="/images/placeholders/800x600.svg"
             alt="LuxStay Journal Editorial Background"
-            className="h-full w-full object-cover"
-          />
+            className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-slate-950/60 z-0" />
 
@@ -200,11 +198,9 @@ export default function BlogGridPage() {
                   <div className="pt-4 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between">
                     {leadPost.author && (
                       <div className="flex items-center gap-3">
-                        <img
-                          src={leadPost.author.avatar}
+                        <img src={leadPost.author.avatar}
                           alt={leadPost.author.name}
-                          className="h-10 w-10 rounded-full object-cover ring-2 ring-[#C5A880]/40"
-                        />
+                          className="h-10 w-10 rounded-full object-cover ring-2 ring-[#C5A880]/40" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                         <div>
                           <p className="text-xs font-bold text-slate-900 dark:text-white">
                             {leadPost.author.name}

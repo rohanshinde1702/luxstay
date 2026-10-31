@@ -39,7 +39,12 @@ export default function TourDetailsPage() {
   const [activeTab, setActiveTab] = useState("itinerary"); // 'itinerary' | 'inclusions' | 'guide' | 'policies'
 
   const tour = useMemo(() => {
-    return TOURS_DATA.find((t) => t.slug === slug);
+    return (
+      TOURS_DATA.find((t) => t.slug === slug) ||
+      TOURS_DATA.find((t) => t.slug.startsWith(slug)) ||
+      TOURS_DATA.find((t) => t.id.includes(slug)) ||
+      TOURS_DATA[0]
+    );
   }, [slug]);
 
   const isSaved = tour ? isFavorite(tour.id) : false;
@@ -377,11 +382,9 @@ export default function TourDetailsPage() {
               <div className="rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-[#0c1322] p-6 sm:p-8 shadow-xs">
                 <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
                   <div className="relative">
-                    <img
-                      src={tour.guide.avatar}
+                    <img src={tour.guide.avatar}
                       alt={tour.guide.name}
-                      className="h-24 w-24 sm:h-28 sm:w-28 rounded-lg object-cover shadow-md"
-                    />
+                      className="h-24 w-24 sm:h-28 sm:w-28 rounded-lg object-cover shadow-md" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
                     <div className="absolute -bottom-2 -right-2 rounded-full bg-[#C5A880] p-1.5 text-white shadow-md">
                       <Award className="h-4 w-4" />
                     </div>
@@ -447,11 +450,11 @@ export default function TourDetailsPage() {
                   <div className="flex items-baseline gap-2">
                     {tour.oldPrice && (
                       <span className="text-sm text-slate-400 line-through">
-                        ₹{typeof tour.oldPrice === 'number' ? tour.oldPrice.toLocaleString() : tour.oldPrice}
+                        ${typeof tour.oldPrice === 'number' ? tour.oldPrice.toLocaleString() : tour.oldPrice}
                       </span>
                     )}
                     <span className="font-serif text-3xl font-bold text-slate-900 dark:text-white">
-                      ₹{typeof tour.price === 'number' ? tour.price.toLocaleString() : tour.price}
+                      ${typeof tour.price === 'number' ? tour.price.toLocaleString() : tour.price}
                     </span>
                     <span className="text-xs text-slate-500 dark:text-slate-400 font-medium"> / person</span>
                   </div>
@@ -503,8 +506,8 @@ export default function TourDetailsPage() {
                 {/* Pricing Summary */}
                 <div className="rounded-xl bg-slate-50 dark:bg-slate-900/60 p-3.5 space-y-2 text-xs border border-slate-100 dark:border-slate-800">
                   <div className="flex justify-between text-slate-600 dark:text-slate-400">
-                    <span>₹{typeof tour.price === 'number' ? tour.price.toLocaleString() : tour.price} × {selectedGuests} guests</span>
-                    <span className="font-semibold text-slate-900 dark:text-white">₹{totalPrice.toLocaleString()}</span>
+                    <span>${typeof tour.price === 'number' ? tour.price.toLocaleString() : tour.price} × {selectedGuests} guests</span>
+                    <span className="font-semibold text-slate-900 dark:text-white">${totalPrice.toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-slate-600 dark:text-slate-400">
                     <span>VIP Concierge Service</span>
@@ -516,7 +519,7 @@ export default function TourDetailsPage() {
                   </div>
                   <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex justify-between text-sm font-bold text-slate-900 dark:text-white">
                     <span>Total Estimate</span>
-                    <span className="font-serif text-base text-[#997548] dark:text-[#D4B68A]">₹{totalPrice.toLocaleString()}</span>
+                    <span className="font-serif text-base text-[#997548] dark:text-[#D4B68A]">${totalPrice.toLocaleString()}</span>
                   </div>
                 </div>
               </div>

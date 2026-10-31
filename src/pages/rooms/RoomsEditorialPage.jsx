@@ -21,11 +21,9 @@ export default function RoomsEditorialPage() {
       {/* Editorial Cover */}
       <section className="relative overflow-hidden bg-slate-950 py-20 lg:py-28 text-white">
         <div className="absolute inset-0 z-0 opacity-25">
-          <img
-            src="/images/placeholders/1905x680.svg"
+          <img src="/images/placeholders/1905x680.svg"
             alt="Editorial Rooms"
-            className="h-full w-full object-cover"
-          />
+            className="h-full w-full object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "/images/placeholders/800x600.svg"; }} />
         </div>
         <div className="absolute inset-0 bg-linear-to-b from-slate-950/80 via-slate-950/90 to-slate-950 z-0" />
 

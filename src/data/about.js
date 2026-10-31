@@ -1,80 +1,8 @@
-/**
- * LuxStay — About & Heritage Mock Data
- * Edit this file to customize the brand story, historical milestones, and sustainability pillars.
- */
+import aboutData from "./json/about.json";
 
-export const TIMELINE_EVENTS_DATA = [
-  {
-    year: "1928",
-    title: "Foundation on the Amalfi Cliffs",
-    desc: "Founded by Count Alessandro De Luca as a private cliffside estate for royalty and artists.",
-    image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    year: "1964",
-    title: "The Golden Age of Cinema",
-    desc: "Became the favored Mediterranean hideaway for international filmmakers, authors, and luminaries.",
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    year: "1998",
-    title: "Global Sanctuary Expansion",
-    desc: "Introduced alpine ski chalets in Zermatt and secluded tropical overwater villas in Bali.",
-    image: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?auto=format&fit=crop&w=600&q=80",
-  },
-  {
-    year: "2025",
-    title: "A New Era of Sustainable Luxury",
-    desc: "Achieved 100% carbon-neutral operations with regenerative organic agriculture and marine protection.",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80",
-  },
-];
+export const CORE_VALUES_DATA = aboutData.CORE_VALUES_DATA;
+export const HERITAGE_STATS_DATA = aboutData.HERITAGE_STATS_DATA;
+export const SUSTAINABILITY_PILLARS_DATA = aboutData.SUSTAINABILITY_PILLARS_DATA;
+export const TIMELINE_EVENTS_DATA = aboutData.TIMELINE_EVENTS_DATA;
 
-export const CORE_VALUES_DATA = [
-  {
-    title: "Uncompromising Discretion",
-    desc: "Absolute privacy for every distinguished guest with private elevator access, encrypted arrivals, and dedicated butler wings.",
-  },
-  {
-    title: "Architectural Harmony",
-    desc: "Structures engineered to merge with cliff faces, tropical coastlines, and alpine ridges with sustainable local materials.",
-  },
-  {
-    title: "Artisanal Gastronomy",
-    desc: "Direct farm-to-table partnerships with zero kilometers of transport, paired with rare century-old vintages.",
-  },
-  {
-    title: "Transformative Wellness",
-    desc: "Ancient thermal bathing, bespoke holistic consultations, and circadian light therapies in natural sanctuaries.",
-  },
-];
-
-export const SUSTAINABILITY_PILLARS_DATA = [
-  {
-    title: "100% Renewable Micro-Grid",
-    desc: "Solar kinetic roof tiles and geothermal heating supply 100% of our energy across all properties.",
-    metric: "0 kg CO2 / guest night",
-  },
-  {
-    title: "Regenerative Farm-to-Table",
-    desc: "Over 85% of our restaurant produce is harvested within 5 miles from certified biodynamic soil.",
-    metric: "85% Zero-KM Produce",
-  },
-  {
-    title: "Marine & Forest Conservation",
-    desc: "Every reservation funds the protection of 50 sqm of marine coral reef and native rainforests.",
-    metric: "50,000+ SQM Protected",
-  },
-  {
-    title: "Zero Single-Use Plastic",
-    desc: "Complete elimination of single-use plastics with handcrafted glass, ceramic, and bamboo amenities.",
-    metric: "100% Plastic Neutral",
-  },
-];
-
-export const HERITAGE_STATS_DATA = [
-  { value: "1928", label: "Year Established" },
-  { value: "48", label: "Signature Suites" },
-  { value: "6", label: "Global Destinations" },
-  { value: "14", label: "World Luxury Awards" },
-];
+export default aboutData;
